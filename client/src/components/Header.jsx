@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import { useAuth } from '../hooks/useAuth';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
-  const { user, logout } = useAuth();
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -126,6 +124,7 @@ export default function Header() {
                 <Link 
                   key={item.path} 
                   href={item.path}
+                  className={`nav-link-enhanced ${location === item.path ? 'active' : ''}`}
                   style={{
                     ...styles.navLink,
                     ...(location === item.path ? styles.navLinkActive : {})
@@ -138,24 +137,9 @@ export default function Header() {
             </nav>
             
             <div style={styles.headerActions}>
-              {user ? (
-                <div style={styles.userMenu}>
-                  <span style={styles.username}>{user.username}</span>
-                  {user.role === 'admin' && (
-                    <Link href="/admin" className="btn-secondary btn-sm">
-                      Admin
-                    </Link>
-                  )}
-                  <button onClick={logout} className="btn-secondary btn-sm">
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <Link href="/login" className="btn-secondary">Login</Link>
-                  <Link href="/signup" className="btn-primary">Get Started</Link>
-                </>
-              )}
+              <Link href="/products" className="btn-primary btn-enhanced hover-glow-intense">
+                Explore Products
+              </Link>
               <button 
                 style={styles.mobileMenuBtn}
                 className="mobile-menu-btn"
@@ -190,16 +174,9 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          {!user && (
-            <>
-              <Link href="/login" className="btn-secondary" onClick={() => setIsMobileMenuOpen(false)}>
-                Login
-              </Link>
-              <Link href="/signup" className="btn-primary" onClick={() => setIsMobileMenuOpen(false)}>
-                Get Started
-              </Link>
-            </>
-          )}
+          <Link href="/products" className="btn-primary" onClick={() => setIsMobileMenuOpen(false)}>
+            Explore Products
+          </Link>
         </nav>
       </header>
     </>

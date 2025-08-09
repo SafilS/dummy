@@ -11,6 +11,7 @@ export default function ProductCard({ product }) {
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
+      position: 'relative',
     },
     cardHover: {
       transform: 'scale(1.02)',
@@ -118,12 +119,12 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div 
-      style={styles.card}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div style={styles.imageContainer}>
+    <Link href={`/products/${product.slug}`}>
+      <div 
+        className="product-card-enhanced hover-lift"
+        style={styles.card}
+      >
+        <div style={styles.imageContainer}>
         {product.images && product.images[0] ? (
           <img 
             src={product.images[0]} 
@@ -194,9 +195,9 @@ export default function ProductCard({ product }) {
         </div>
         
         <div style={styles.actions}>
-          <Link href={`/products/${product.slug}`} className="btn-primary btn-sm">
+          <button className="btn-primary btn-sm">
             View Details
-          </Link>
+          </button>
           {product.demoUrl && (
             <a 
               href={product.demoUrl} 
@@ -209,6 +210,7 @@ export default function ProductCard({ product }) {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </Link>
   );
 }

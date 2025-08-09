@@ -91,17 +91,17 @@ export default function Home() {
       <section style={styles.hero}>
         <div className="container">
           <div style={styles.heroContent}>
-            <h1 style={styles.heroTitle} className="text-gradient">
+            <h1 style={styles.heroTitle} className="text-shimmer fade-in-up">
               Welcome to the Future
             </h1>
-            <p style={styles.heroSubtitle}>
+            <p style={styles.heroSubtitle} className="fade-in-up">
               Cutting-edge VR, cybersecurity, and digital solutions for tomorrow's challenges
             </p>
-            <div style={styles.heroActions} className="hero-actions">
-              <Link href="/products" className="btn-primary">
+            <div style={styles.heroActions} className="hero-actions fade-in-up">
+              <Link href="/products" className="btn-primary btn-enhanced bounce-hover">
                 Explore Products
               </Link>
-              <Link href="/about" className="btn-secondary">
+              <Link href="/about" className="btn-secondary btn-enhanced hover-glow-intense">
                 Learn More
               </Link>
             </div>
@@ -112,10 +112,10 @@ export default function Home() {
       {/* Featured Products Section */}
       <section style={styles.featuredSection}>
         <div className="container">
-          <h2 style={styles.sectionTitle} className="text-gradient">
+          <h2 style={styles.sectionTitle} className="text-gradient pulse-glow slide-in-left">
             Featured Solutions
           </h2>
-          <p style={styles.sectionSubtitle}>
+          <p style={styles.sectionSubtitle} className="slide-in-right">
             Discover our most innovative and impactful products that are transforming industries
           </p>
 
@@ -151,18 +151,18 @@ export default function Home() {
       <section>
         <div className="container">
           <div style={styles.ctaSection}>
-            <h2 style={{ fontSize: '36px', marginBottom: 'var(--spacing-md)' }} className="text-gradient">
+            <h2 style={{ fontSize: '36px', marginBottom: 'var(--spacing-md)' }} className="text-gradient floating-element">
               Ready to Transform Your Business?
             </h2>
-            <p style={{ fontSize: '18px', opacity: 0.8, marginBottom: 'var(--spacing-xl)' }}>
+            <p style={{ fontSize: '18px', opacity: 0.8, marginBottom: 'var(--spacing-xl)' }} className="fade-in-up">
               Join thousands of companies leveraging our cutting-edge solutions
             </p>
             <div style={{ display: 'flex', gap: 'var(--spacing-lg)', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/products" className="btn-primary">
+              <Link href="/products" className="btn-primary btn-enhanced bounce-hover">
                 View All Products
               </Link>
-              <Link href="/signup" className="btn-secondary">
-                Start Free Trial
+              <Link href="/about" className="btn-secondary btn-enhanced hover-rotate-scale">
+                Learn About Us
               </Link>
             </div>
           </div>
