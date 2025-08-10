@@ -477,7 +477,7 @@ export default function About() {
               Ready to transform your business with our innovative solutions? Get in touch with our team today.
             </p>
             <div style={styles.ctaActions} className="cta-actions">
-              <a href="mailto:hello@viruzverse.com" className="btn-primary">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfMUoIF_F4OUKpihGhofkuU036__orZgC8lena-zpfj1BLRBQ/viewform" target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Contact Us
               </a>
               <Link href="/products" className="btn-secondary">

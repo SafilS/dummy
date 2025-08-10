@@ -13,6 +13,7 @@ import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import Features from "./pages/Features";
 import About from "./pages/About";
+import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
         <Route path="/products/:slug" component={ProductDetail} />
         <Route path="/features" component={Features} />
         <Route path="/about" component={About} />
+        <Route path="/careers" component={Careers} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

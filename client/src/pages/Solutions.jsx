@@ -12,7 +12,13 @@ export default function Solutions() {
       description: 'Advanced AI-powered security platforms that protect your digital infrastructure with real-time threat detection and automated response capabilities.',
       icon: '🛡️',
       features: ['Real-time Threat Detection', 'Automated Response', 'Behavioral Analysis', 'Cloud-native Architecture'],
-      category: 'cybersecurity'
+      category: 'cybersecurity',
+      benefits: [
+        'Protect against evolving cyber threats',
+        'Reduce security incident response time',
+        'Comply with industry regulations',
+        'Scale security with your business growth'
+      ]
     },
     {
       id: 'vr-3d',
@@ -20,7 +26,13 @@ export default function Solutions() {
       description: 'Immersive virtual reality and 3D applications for training, education, and entertainment that transform how people learn and interact.',
       icon: '🥽',
       features: ['Immersive Training', 'Educational Simulations', '3D Visualization', 'Multi-platform Support'],
-      category: 'vr-3d'
+      category: 'vr-3d',
+      benefits: [
+        'Improve learning retention by up to 80%',
+        'Reduce training costs and risks',
+        'Enable remote collaboration in 3D spaces',
+        'Create engaging customer experiences'
+      ]
     },
     {
       id: 'mobile',
@@ -28,7 +40,13 @@ export default function Solutions() {
       description: 'Comprehensive mobile solutions for business management, delivery services, and customer engagement across iOS and Android platforms.',
       icon: '📱',
       features: ['Cross-platform Development', 'Real-time Updates', 'Offline Capabilities', 'Cloud Integration'],
-      category: 'mobile-app'
+      category: 'mobile-app',
+      benefits: [
+        'Reach customers on their preferred devices',
+        'Improve operational efficiency',
+        'Enable real-time business monitoring',
+        'Reduce development and maintenance costs'
+      ]
     },
     {
       id: 'fintech',
@@ -36,7 +54,13 @@ export default function Solutions() {
       description: 'Innovative financial technology platforms for trading, billing, and payment processing with enterprise-grade security and compliance.',
       icon: '💰',
       features: ['Secure Transactions', 'Real-time Analytics', 'Regulatory Compliance', 'API Integration'],
-      category: 'fintech'
+      category: 'fintech',
+      benefits: [
+        'Streamline financial operations',
+        'Ensure regulatory compliance',
+        'Provide real-time financial insights',
+        'Enhance customer payment experience'
+      ]
     },
     {
       id: 'utilities',
@@ -44,7 +68,13 @@ export default function Solutions() {
       description: 'Productivity tools and utilities that streamline business operations, from invoice management to workflow automation.',
       icon: '⚡',
       features: ['Workflow Automation', 'Data Analytics', 'Integration APIs', 'Scalable Infrastructure'],
-      category: 'utilities'
+      category: 'utilities',
+      benefits: [
+        'Automate repetitive tasks',
+        'Improve decision-making with data',
+        'Integrate with existing systems',
+        'Scale operations efficiently'
+      ]
     }
   ];
 
@@ -68,7 +98,7 @@ export default function Solutions() {
     },
     solutionsGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
       gap: 'var(--spacing-xl)',
       marginBottom: 'var(--spacing-3xl)',
     },
@@ -112,6 +142,20 @@ export default function Solutions() {
       width: '16px',
       height: '16px',
       color: 'var(--color-accent-3)',
+    },
+    benefitsList: {
+      listStyle: 'none',
+      padding: 0,
+      marginBottom: 'var(--spacing-lg)',
+    },
+    benefitItem: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 'var(--spacing-sm)',
+      marginBottom: 'var(--spacing-sm)',
+      fontSize: '14px',
+      opacity: 0.8,
+      color: 'var(--color-accent-2)',
     },
     relatedSection: {
       padding: 'var(--spacing-3xl) 0',
@@ -203,6 +247,9 @@ export default function Solutions() {
                   {solution.description}
                 </p>
                 
+                <h4 style={{ fontSize: '16px', fontWeight: 600, marginBottom: 'var(--spacing-sm)', color: 'var(--color-accent-3)' }}>
+                  Key Features:
+                </h4>
                 <ul style={styles.featureList}>
                   {solution.features.map((feature, index) => (
                     <li key={index} style={styles.featureItem}>
@@ -210,6 +257,20 @@ export default function Solutions() {
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
                       </svg>
                       {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <h4 style={{ fontSize: '16px', fontWeight: 600, marginBottom: 'var(--spacing-sm)', color: 'var(--color-accent-2)' }}>
+                  Business Benefits:
+                </h4>
+                <ul style={styles.benefitsList}>
+                  {solution.benefits.map((benefit, index) => (
+                    <li key={index} style={styles.benefitItem}>
+                      <svg style={styles.featureIcon} fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                      </svg>
+                      {benefit}
                     </li>
                   ))}
                 </ul>

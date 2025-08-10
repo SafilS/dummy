@@ -8,10 +8,11 @@ export default function Header() {
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/solutions', label: 'Solutions' },
-    { path: '/vr-3d', label: 'VR & 3D' },
+    { path: '/vr-3d', label: 'Industry Focus' },
     { path: '/products', label: 'Products' },
     { path: '/features', label: 'Features' },
     { path: '/about', label: 'About' },
+    { path: '/careers', label: 'Careers' },
   ];
 
   const styles = {
@@ -137,9 +138,6 @@ export default function Header() {
             </nav>
             
             <div style={styles.headerActions}>
-              <Link href="/products" className="btn-primary btn-enhanced hover-glow-intense">
-                Explore Products
-              </Link>
               <button 
                 style={styles.mobileMenuBtn}
                 className="mobile-menu-btn"
@@ -174,9 +172,6 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Link href="/products" className="btn-primary" onClick={() => setIsMobileMenuOpen(false)}>
-            Explore Products
-          </Link>
         </nav>
       </header>
     </>

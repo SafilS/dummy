@@ -1,10 +1,9 @@
 import Header from './Header';
-import Footer from './Footer';
 
 export default function Layout({ children }) {
   const styles = {
     main: {
-      minHeight: 'calc(100vh - 160px)',
+      minHeight: 'calc(100vh - 80px)', // Adjusted since no footer
       paddingTop: '80px', // Account for fixed header
     }
   };
@@ -16,7 +15,6 @@ export default function Layout({ children }) {
       <main id="main-content" style={styles.main}>
         {children}
       </main>
-      <Footer />
     </>
   );
 }

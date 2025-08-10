@@ -1,11 +1,10 @@
-import type { Express, Request, Response } from "express";
-import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertProductSchema, insertCategorySchema, insertUserSchema } from "@shared/schema";
+import { createServer } from "http";
+import { storage } from "./storage.js";
+import { insertProductSchema, insertCategorySchema, insertUserSchema } from "../shared/schema.js";
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export async function registerRoutes(app) {
   // Categories endpoints
-  app.get("/api/categories", async (req: Request, res: Response) => {
+  app.get("/api/categories", async (req, res) => {
     try {
       const categories = await storage.getAllCategories();
       res.json(categories);
@@ -14,7 +13,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/categories/:id", async (req: Request, res: Response) => {
+  app.get("/api/categories/:id", async (req, res) => {
     try {
       const category = await storage.getCategory(req.params.id);
       if (!category) {
@@ -26,7 +25,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/categories", async (req: Request, res: Response) => {
+  app.post("/api/categories", async (req, res) => {
     try {
       const validatedData = insertCategorySchema.parse(req.body);
       const category = await storage.createCategory(validatedData);
@@ -37,16 +36,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Products endpoints
-  app.get("/api/products", async (req: Request, res: Response) => {
+  app.get("/api/products", async (req, res) => {
     try {
       const { category, status, featured, search, tags } = req.query;
-      const filters: any = {};
+      const filters = {};
       
-      if (category) filters.category = category as string;
-      if (status) filters.status = status as string;
+      if (category) filters.category = category;
+      if (status) filters.status = status;
       if (featured !== undefined) filters.featured = featured === 'true';
-      if (search) filters.search = search as string;
-      if (tags) filters.tags = (tags as string).split(',');
+      if (search) filters.search = search;
+      if (tags) filters.tags = tags.split(',');
 
       const products = await storage.getAllProducts(filters);
       
@@ -67,7 +66,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/products/:id", async (req: Request, res: Response) => {
+  app.get("/api/products/:id", async (req, res) => {
     try {
       const product = await storage.getProduct(req.params.id);
       if (!product) {
@@ -84,7 +83,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/products/slug/:slug", async (req: Request, res: Response) => {
+  app.get("/api/products/slug/:slug", async (req, res) => {
     try {
       const product = await storage.getProductBySlug(req.params.slug);
       if (!product) {
@@ -101,7 +100,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/products", async (req: Request, res: Response) => {
+  app.post("/api/products", async (req, res) => {
     try {
       const validatedData = insertProductSchema.parse(req.body);
       const product = await storage.createProduct(validatedData);
@@ -111,7 +110,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.put("/api/products/:id", async (req: Request, res: Response) => {
+  app.put("/api/products/:id", async (req, res) => {
     try {
       const validatedData = insertProductSchema.partial().parse(req.body);
       const product = await storage.updateProduct(req.params.id, validatedData);
@@ -124,7 +123,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.delete("/api/products/:id", async (req: Request, res: Response) => {
+  app.delete("/api/products/:id", async (req, res) => {
     try {
       const success = await storage.deleteProduct(req.params.id);
       if (!success) {
@@ -137,7 +136,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Users endpoints
-  app.post("/api/auth/register", async (req: Request, res: Response) => {
+  app.post("/api/auth/register", async (req, res) => {
     try {
       const validatedData = insertUserSchema.parse(req.body);
       
@@ -156,7 +155,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/auth/login", async (req: Request, res: Response) => {
+  app.post("/api/auth/login", async (req, res) => {
     try {
       const { email, password } = req.body;
       
@@ -178,7 +177,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Contact/Request access endpoint
-  app.post("/api/contact", async (req: Request, res: Response) => {
+  app.post("/api/contact", async (req, res) => {
     try {
       const { name, email, company, message, productId } = req.body;
       

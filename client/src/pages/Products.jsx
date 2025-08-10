@@ -73,7 +73,7 @@ export default function Products() {
             Our Products
           </h1>
           <p style={styles.pageSubtitle}>
-            Discover our innovative solutions across VR, cybersecurity, and digital platforms
+            Discover our innovative solutions across mobile apps, VR/3D, and business utilities
           </p>
         </div>
       </section>
@@ -120,9 +120,19 @@ export default function Products() {
               </div>
               
               <div style={styles.productsGrid} className="products-grid">
-                {products.map(product => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
+                {products
+                  .filter(product => [
+                    'GetMe', 
+                    'Broker App', 
+                    'CafeAura', 
+                    'BillBro', 
+                    'Invoicify', 
+                    'VR Interior & Exterior Designs', 
+                    '3D Elevation'
+                  ].includes(product.title))
+                  .map(product => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
               </div>
             </>
           ) : (

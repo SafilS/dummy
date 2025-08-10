@@ -32,7 +32,7 @@ export const products = pgTable("products", {
   demoUrl: text("demo_url"),
   repoUrl: text("repo_url"),
   downloadUrl: text("download_url"),
-  status: text("status").notNull().default("draft"), // draft, published
+  status: text("status").notNull().default("draft"),
   featured: boolean("featured").default(false),
   rating: integer("rating").default(0),
   downloads: integer("downloads").default(0),
@@ -75,11 +75,3 @@ export const insertProductSchema = createInsertSchema(products).pick({
   publishDate: true,
 });
 
-export type InsertUser = z.infer<typeof insertUserSchema>;
-export type User = typeof users.$inferSelect;
-
-export type InsertCategory = z.infer<typeof insertCategorySchema>;
-export type Category = typeof categories.$inferSelect;
-
-export type InsertProduct = z.infer<typeof insertProductSchema>;
-export type Product = typeof products.$inferSelect;

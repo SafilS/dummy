@@ -5,7 +5,7 @@ import ProductCard from '../components/ProductCard';
 export default function VR3D() {
   const { data: products, isLoading } = useProducts({ category: 'vr-3d', status: 'published' });
 
-  const vrCapabilities = [
+  const digitalCapabilities = [
     {
       title: 'Immersive Training Simulations',
       description: 'Create realistic training environments that improve learning retention and reduce costs.',
@@ -25,10 +25,10 @@ export default function VR3D() {
       features: ['Spatial Audio', 'Gesture Recognition', 'Screen Sharing', 'Cross-platform']
     },
     {
-      title: 'AR/VR Development',
-      description: 'Custom AR and VR application development for various industries and use cases.',
+      title: 'Digital Development',
+      description: 'Custom digital application development for various industries and use cases.',
       icon: '⚙️',
-      features: ['Unity/Unreal', 'WebXR Support', 'Mobile VR', 'Hardware Optimization']
+      features: ['Unity/Unreal', 'WebXR Support', 'Mobile Apps', 'Cross-platform']
     }
   ];
 
@@ -223,10 +223,10 @@ export default function VR3D() {
       <section style={styles.pageHeader}>
         <div className="container">
           <h1 style={styles.pageTitle} className="text-gradient">
-            VR & 3D Solutions
+            Industry Focus
           </h1>
           <p style={styles.pageSubtitle}>
-            Immersive virtual reality and 3D experiences that transform training, collaboration, and visualization across industries
+            Comprehensive digital solutions that transform training, collaboration, and visualization across industries
           </p>
         </div>
       </section>
@@ -235,11 +235,11 @@ export default function VR3D() {
       <section style={styles.capabilitiesSection}>
         <div className="container">
           <h2 style={styles.sectionTitle} className="text-gradient">
-            Our VR Capabilities
+            Our Digital Capabilities
           </h2>
           
           <div style={styles.capabilitiesGrid} className="capabilities-grid">
-            {vrCapabilities.map((capability, index) => (
+            {digitalCapabilities.map((capability, index) => (
               <div 
                 key={index}
                 style={styles.capabilityCard}
@@ -301,9 +301,6 @@ export default function VR3D() {
       {/* VR Products */}
       <section style={styles.productsSection}>
         <div className="container">
-          <h2 style={styles.sectionTitle} className="text-gradient">
-            VR & 3D Products
-          </h2>
           
           {isLoading ? (
             <div style={styles.productsGrid} className="products-grid">
@@ -324,13 +321,7 @@ export default function VR3D() {
             </div>
           ) : (
             <div className="card" style={{ textAlign: 'center', padding: 'var(--spacing-3xl)' }}>
-              <h3>VR Products Coming Soon</h3>
-              <p style={{ opacity: 0.7, marginTop: 'var(--spacing-md)' }}>
-                We're developing exciting new VR and 3D solutions
-              </p>
-              <Link href="/products" className="btn-secondary" style={{ marginTop: 'var(--spacing-lg)' }}>
-                View All Products
-              </Link>
+              
             </div>
           )}
         </div>
@@ -341,18 +332,18 @@ export default function VR3D() {
         <div className="container">
           <div style={styles.ctaSection}>
             <h2 style={styles.ctaTitle} className="text-gradient">
-              Ready to Enter the Virtual World?
+              Ready to Transform Your Industry?
             </h2>
             <p style={styles.ctaDescription}>
-              Let us help you create immersive VR experiences that will transform your business and engage your audience like never before.
+              Let us help you create innovative digital solutions that will transform your business and engage your audience like never before.
             </p>
             <div style={styles.ctaActions} className="cta-actions">
               <Link href="/products" className="btn-primary">
-                Explore VR Solutions
+                Explore Industry Solutions
               </Link>
-              <Link href="/about" className="btn-secondary">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfMUoIF_F4OUKpihGhofkuU036__orZgC8lena-zpfj1BLRBQ/viewform" target="_blank" rel="noopener noreferrer" className="btn-secondary">
                 Contact Our Team
-              </Link>
+              </a>
             </div>
           </div>
         </div>
