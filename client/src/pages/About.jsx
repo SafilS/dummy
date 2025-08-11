@@ -100,6 +100,10 @@ export default function About() {
       padding: 'var(--spacing-3xl) 0',
       textAlign: 'center',
       background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
+      position: 'relative',
+      overflow: 'hidden',
+      paddingTop: '120px',
+      paddingBottom: 'var(--spacing-2xl)',
     },
     pageTitle: {
       fontSize: 'clamp(40px, 7vw, 72px)',

@@ -5,14 +5,18 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "./components/Layout";
 
+
 // Pages
 import Home from "./pages/Home";
 import Solutions from "./pages/Solutions";
-import VR3D from "./pages/VR3D";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import Features from "./pages/Features";
 import About from "./pages/About";
+import Mission from "./pages/Mission";
+import Teams from "./pages/Teams";
+import Journey from "./pages/Journey";
+import Contact from "./pages/Contact";
 import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
 
@@ -22,11 +26,15 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/solutions" component={Solutions} />
-        <Route path="/vr-3d" component={VR3D} />
         <Route path="/products" component={Products} />
         <Route path="/products/:slug" component={ProductDetail} />
         <Route path="/features" component={Features} />
         <Route path="/about" component={About} />
+        <Route path="/mission" component={Mission} />
+        <Route path="/teams" component={Teams} />
+        <Route path="/teams/:teamId" component={Teams} />
+        <Route path="/journey" component={Journey} />
+        <Route path="/contact" component={Contact} />
         <Route path="/careers" component={Careers} />
         <Route component={NotFound} />
       </Switch>
