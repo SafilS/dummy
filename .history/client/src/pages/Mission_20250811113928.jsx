@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import missionBg from '../assests/mission.png';
 
 export default function Mission() {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -122,36 +121,26 @@ export default function Mission() {
     pageHeader: {
       padding: 'var(--spacing-3xl) 0',
       textAlign: 'center',
-      background: `linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.6) 100%), url(${missionBg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
+      background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
+      marginTop: '80px',
       position: 'relative',
       overflow: 'hidden',
-      minHeight: '60vh',
-      display: 'flex',
-      alignItems: 'center',
-      paddingTop: '100px',
     },
     pageTitle: {
       fontSize: 'clamp(40px, 7vw, 72px)',
       fontWeight: 700,
       marginBottom: 'var(--spacing-md)',
-      color: '#ffffff',
-      textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
-      zIndex: 2,
-      position: 'relative',
+      background: 'linear-gradient(135deg, #ffffff, #a34b6e, #6e4bc3, #45b7d1)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
     },
     pageSubtitle: {
       fontSize: '22px',
-      color: '#ffffff',
-      opacity: 0.95,
+      opacity: 0.9,
       maxWidth: '800px',
       margin: '0 auto',
       lineHeight: 1.4,
-      textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
-      zIndex: 2,
-      position: 'relative',
     },
     section: {
       padding: 'var(--spacing-3xl) 0',
@@ -343,7 +332,7 @@ export default function Mission() {
       <section style={styles.pageHeader}>
         <div className="container">
           <h1 style={styles.pageTitle}>
-            Our Mission
+            Mission
           </h1>
           <p style={styles.pageSubtitle}>
             Driving innovation, empowering transformation, and building the future of digital solutions

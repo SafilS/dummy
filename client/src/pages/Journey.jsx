@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../styles/journey-animations.css';
+import journeyBg from '../assests/journey.jpeg';
 
 export default function Journey() {
   const [scrollY, setScrollY] = useState(0);
@@ -109,22 +110,36 @@ export default function Journey() {
     pageHeader: {
       padding: 'var(--spacing-3xl) 0',
       textAlign: 'center',
-      background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
-      marginTop: '80px',
+      background: `linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.6) 100%), url(${journeyBg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      paddingTop: '120px',
       position: 'relative',
       overflow: 'hidden',
+      minHeight: '60vh',
+      display: 'flex',
+      alignItems: 'center',
     },
     pageTitle: {
       fontSize: 'clamp(40px, 7vw, 72px)',
       fontWeight: 700,
       marginBottom: 'var(--spacing-md)',
+      color: '#ffffff',
+      textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
+      zIndex: 2,
+      position: 'relative',
     },
     pageSubtitle: {
       fontSize: '22px',
-      opacity: 0.9,
+      color: '#ffffff',
+      opacity: 0.95,
       maxWidth: '800px',
       margin: '0 auto',
       lineHeight: 1.4,
+      textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
+      zIndex: 2,
+      position: 'relative',
     },
     introSection: {
       padding: 'var(--spacing-3xl) 0',
@@ -435,14 +450,7 @@ export default function Journey() {
       {/* Page Header */}
       <section style={styles.pageHeader}>
         <div className="container">
-          <h1 style={{
-            ...styles.pageTitle,
-            background: 'linear-gradient(135deg, #ffffff, #a34b6e, #6e4bc3, #45b7d1)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            animation: 'shimmer 3s ease-in-out infinite'
-          }}>
+          <h1 style={styles.pageTitle}>
             Our Journey
           </h1>
           <p style={styles.pageSubtitle}>

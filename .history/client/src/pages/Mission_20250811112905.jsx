@@ -1,40 +1,21 @@
-import contactBg from '../assests/contact.jpeg';
-
-export default function Contact() {
+export default function Mission() {
   const styles = {
     pageHeader: {
       padding: 'var(--spacing-2xl) 0',
       textAlign: 'center',
-      background: `linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.6) 100%), url(${contactBg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      paddingTop: '120px',
-      position: 'relative',
-      overflow: 'hidden',
-      minHeight: '60vh',
-      display: 'flex',
-      alignItems: 'center',
+      background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
+      marginTop: '80px',
     },
     pageTitle: {
-      fontSize: 'clamp(40px, 7vw, 72px)',
+      fontSize: '48px',
       fontWeight: 700,
       marginBottom: 'var(--spacing-md)',
-      color: '#ffffff',
-      textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
-      zIndex: 2,
-      position: 'relative',
     },
     pageSubtitle: {
-      fontSize: '22px',
-      color: '#ffffff',
-      opacity: 0.95,
+      fontSize: '18px',
+      opacity: 0.8,
       maxWidth: '600px',
       margin: '0 auto',
-      lineHeight: 1.4,
-      textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
-      zIndex: 2,
-      position: 'relative',
     },
     mainSection: {
       padding: 'var(--spacing-2xl) 0',
@@ -55,11 +36,11 @@ export default function Contact() {
       {/* Page Header */}
       <section style={styles.pageHeader}>
         <div className="container">
-          <h1 style={styles.pageTitle}>
-            Contact Us
+          <h1 style={styles.pageTitle} className="text-gradient">
+            Our Mission
           </h1>
           <p style={styles.pageSubtitle}>
-            Get in touch with our team
+            Discover what drives us forward every day
           </p>
         </div>
       </section>

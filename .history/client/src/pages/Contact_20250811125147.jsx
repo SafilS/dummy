@@ -17,7 +17,7 @@ export default function Contact() {
       alignItems: 'center',
     },
     pageTitle: {
-      fontSize: 'clamp(40px, 7vw, 72px)',
+      fontSize: '48px',
       fontWeight: 700,
       marginBottom: 'var(--spacing-md)',
       color: '#ffffff',
@@ -26,12 +26,11 @@ export default function Contact() {
       position: 'relative',
     },
     pageSubtitle: {
-      fontSize: '22px',
+      fontSize: '18px',
       color: '#ffffff',
       opacity: 0.95,
       maxWidth: '600px',
       margin: '0 auto',
-      lineHeight: 1.4,
       textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
       zIndex: 2,
       position: 'relative',
@@ -55,7 +54,7 @@ export default function Contact() {
       {/* Page Header */}
       <section style={styles.pageHeader}>
         <div className="container">
-          <h1 style={styles.pageTitle}>
+          <h1 style={styles.pageTitle} className="text-gradient">
             Contact Us
           </h1>
           <p style={styles.pageSubtitle}>
