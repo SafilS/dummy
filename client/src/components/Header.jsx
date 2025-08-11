@@ -227,21 +227,23 @@ export default function Header() {
                       )}
                     </div>
                   );
+                } else {
+                  return (
+                    <Link 
+                      key={item.path} 
+                      href={item.path}
+                      className={`nav-link-enhanced ${location === item.path ? 'active' : ''}`}
+                      style={{
+                        ...styles.navLink,
+                        ...(location === item.path ? styles.navLinkActive : {})
+                      }}
+                    >
+                      {item.label}
+                      {location === item.path && <div style={styles.navLinkActiveAfter}></div>}
+                    </Link>
+                  );
                 }
-                return (
-                <Link 
-                  key={item.path} 
-                  href={item.path}
-                  className={`nav-link-enhanced ${location === item.path ? 'active' : ''}`}
-                  style={{
-                    ...styles.navLink,
-                    ...(location === item.path ? styles.navLinkActive : {})
-                  }}
-                >
-                  {item.label}
-                  {location === item.path && <div style={styles.navLinkActiveAfter}></div>}
-                </Link>
-              ))}
+              })}
               
               {/* About Dropdown */}
               <div 
