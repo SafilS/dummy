@@ -1,331 +1,248 @@
 import { Link } from 'wouter';
-import { useProducts } from '../hooks/useProducts';
-import ProductCard from '../components/ProductCard';
+import backgroundVideo from './assets/background.mp4';
 
 export default function Solutions() {
-  const { data: products, isLoading } = useProducts({ status: 'published' });
-
-  const solutions = [
-    {
-      id: 'cybersecurity',
-      title: 'Cybersecurity Solutions',
-      description: 'Advanced AI-powered security platforms that protect your digital infrastructure with real-time threat detection and automated response capabilities.',
-      icon: '🛡️',
-      features: ['Real-time Threat Detection', 'Automated Response', 'Behavioral Analysis', 'Cloud-native Architecture'],
-      category: 'cybersecurity',
-      benefits: [
-        'Protect against evolving cyber threats',
-        'Reduce security incident response time',
-        'Comply with industry regulations',
-        'Scale security with your business growth'
-      ]
+  const industries = [
+    { 
+      name: 'Education & Training', 
+      icon: '📚', 
+      description: 'Interactive learning experiences enhanced by immersive simulations and virtual classrooms for skill mastery.', 
+      img: 'https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?w=800&auto=format&fit=crop&q=80'
     },
-    {
-      id: 'vr-3d',
-      title: 'VR & 3D Experiences',
-      description: 'Immersive virtual reality and 3D applications for training, education, and entertainment that transform how people learn and interact.',
-      icon: '🥽',
-      features: ['Immersive Training', 'Educational Simulations', '3D Visualization', 'Multi-platform Support'],
-      category: 'vr-3d',
-      benefits: [
-        'Improve learning retention by up to 80%',
-        'Reduce training costs and risks',
-        'Enable remote collaboration in 3D spaces',
-        'Create engaging customer experiences'
-      ]
+    { 
+      name: 'Mobile Application Development', 
+      icon: '📱', 
+      description: 'Cross-platform mobile apps with real-time data synchronization and offline capabilities for seamless user experiences.', 
+      img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9iaWxlJTIwYXBwJTIwZGV2ZWxvcG1lbnR8ZW58MHx8MHx8fDA%3D'
     },
-    {
-      id: 'mobile',
-      title: 'Mobile Applications',
-      description: 'Comprehensive mobile solutions for business management, delivery services, and customer engagement across iOS and Android platforms.',
-      icon: '📱',
-      features: ['Cross-platform Development', 'Real-time Updates', 'Offline Capabilities', 'Cloud Integration'],
-      category: 'mobile-app',
-      benefits: [
-        'Reach customers on their preferred devices',
-        'Improve operational efficiency',
-        'Enable real-time business monitoring',
-        'Reduce development and maintenance costs'
-      ]
+    { 
+      name: 'Hospitality', 
+      icon: '🏨', 
+      description:'Applications for hotels, restaurants, and travel agencies to enhance customer engagement.', 
+      img: 'https://plus.unsplash.com/premium_photo-1661302861607-6f3c68a2140d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG9zcGl0YWxpdHl8ZW58MHx8MHx8fDA%3D0'
     },
-    {
-      id: 'fintech',
-      title: 'FinTech Solutions',
-      description: 'Innovative financial technology platforms for trading, billing, and payment processing with enterprise-grade security and compliance.',
-      icon: '💰',
-      features: ['Secure Transactions', 'Real-time Analytics', 'Regulatory Compliance', 'API Integration'],
-      category: 'fintech',
-      benefits: [
-        'Streamline financial operations',
-        'Ensure regulatory compliance',
-        'Provide real-time financial insights',
-        'Enhance customer payment experience'
-      ]
+    { 
+      name: 'Real Estate', 
+      icon: '🏠', 
+      description: 'Virtual tours and interactive 3D layouts to showcase properties remotely with lifelike precision.', 
+      img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80'
     },
-    {
-      id: 'utilities',
-      title: 'Business Utilities',
-      description: 'Productivity tools and utilities that streamline business operations, from invoice management to workflow automation.',
-      icon: '⚡',
-      features: ['Workflow Automation', 'Data Analytics', 'Integration APIs', 'Scalable Infrastructure'],
-      category: 'utilities',
-      benefits: [
-        'Automate repetitive tasks',
-        'Improve decision-making with data',
-        'Integrate with existing systems',
-        'Scale operations efficiently'
-      ]
+    { 
+      name: 'Entertainment', 
+      icon: '🎮', 
+      description: 'Immersive gaming experiences with real-time interaction and enhanced realism.', 
+      img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80'
+    },
+    { 
+      name: 'Virtual Reality (VR)', 
+      icon: '🕶', 
+      description: 'Immersive VR experiences for training, design, entertainment, and collaboration in fully virtual environments.', 
+      img: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dmlydHVhbCUyMHJlYWxpdHl8ZW58MHx8MHx8fDA%3D'
+    },
+    { 
+      name: '3D Modeling', 
+      icon: '🖌', 
+      description: 'High-detail 3D models for product design, architecture, and simulation with realistic rendering.', 
+      img: 'https://images.unsplash.com/photo-1719345539016-f84748d48e37?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fDNEJTIwbW9kZWxsaW5nfGVufDB8fDB8fHww'
     }
   ];
 
   const styles = {
-    pageHeader: {
-      padding: 'var(--spacing-3xl) 0 var(--spacing-2xl)',
-      textAlign: 'center',
-      background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
-    },
-    pageTitle: {
-      fontSize: 'clamp(36px, 6vw, 64px)',
-      fontWeight: 700,
-      marginBottom: 'var(--spacing-md)',
-    },
-    pageSubtitle: {
-      fontSize: '20px',
-      opacity: 0.9,
-      maxWidth: '700px',
-      margin: '0 auto',
-      lineHeight: 1.4,
-    },
-    solutionsGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-      gap: 'var(--spacing-xl)',
-      marginBottom: 'var(--spacing-3xl)',
-    },
-    solutionCard: {
-      background: 'var(--color-surface)',
-      borderRadius: 'var(--radius-lg)',
-      padding: 'var(--spacing-xl)',
-      border: '1px solid rgba(255,255,255,0.1)',
-      transition: 'var(--transition-medium)',
-      cursor: 'pointer',
-    },
-    solutionIcon: {
-      fontSize: '48px',
-      marginBottom: 'var(--spacing-lg)',
-      display: 'block',
-    },
-    solutionTitle: {
-      fontSize: '24px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-md)',
-    },
-    solutionDescription: {
-      opacity: 0.8,
-      lineHeight: 1.6,
-      marginBottom: 'var(--spacing-lg)',
-    },
-    featureList: {
-      listStyle: 'none',
-      padding: 0,
-      marginBottom: 'var(--spacing-lg)',
-    },
-    featureItem: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 'var(--spacing-sm)',
-      marginBottom: 'var(--spacing-sm)',
-      fontSize: '14px',
-      opacity: 0.9,
-    },
-    featureIcon: {
-      width: '16px',
-      height: '16px',
-      color: 'var(--color-accent-3)',
-    },
-    benefitsList: {
-      listStyle: 'none',
-      padding: 0,
-      marginBottom: 'var(--spacing-lg)',
-    },
-    benefitItem: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 'var(--spacing-sm)',
-      marginBottom: 'var(--spacing-sm)',
-      fontSize: '14px',
-      opacity: 0.8,
-      color: 'var(--color-accent-2)',
-    },
-    relatedSection: {
-      padding: 'var(--spacing-3xl) 0',
-      background: 'var(--color-surface)',
-      borderRadius: 'var(--radius-xl)',
-      margin: 'var(--spacing-3xl) 0',
-    },
     sectionTitle: {
-      fontSize: '36px',
+      fontSize: '48px',
       fontWeight: 700,
       textAlign: 'center',
-      marginBottom: 'var(--spacing-xl)',
+      marginBottom: 'var(--spacing-2xl)',
     },
-    productsGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+    industryRow: {
+      display: 'flex',
+      alignItems: 'center',
       gap: 'var(--spacing-xl)',
+      marginBottom: 'var(--spacing-xl)',
+      flexWrap: 'wrap',
+      padding: 'var(--spacing-md)',
+      borderRadius: 'var(--radius-md)',
+      border: '1px solid rgba(255,255,255,0.1)',
+      transition: 'all 0.4s ease',
+      cursor: 'pointer',
+      background: 'rgba(20, 0, 40, 0.4)',
+      backdropFilter: 'blur(6px)'
+    },
+    industryImage: {
+      flex: '1 1 300px',
+      borderRadius: 'var(--radius-md)',
+      overflow: 'hidden',
+      aspectRatio: '16/9',
+      minHeight: '220px',
+      transition: 'transform 0.5s ease'
+    },
+    industryContent: {
+      flex: '1 1 300px',
+    },
+    industryImgTag: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      display: 'block',
+      transition: 'transform 0.5s ease'
+    },
+    industryIcon: {
+      fontSize: '2.5rem',
+      marginBottom: 'var(--spacing-sm)'
+    },
+    industryName: {
+      fontSize: '2rem',
+      marginBottom: 'var(--spacing-xs)',
+      fontWeight: 'bold'
+    },
+    industryDescription: {
+      fontSize: '1.1rem',
+      opacity: 0.9,
+      lineHeight: 1.6
     }
   };
 
-  const mobileStyles = `
-    @media (max-width: 768px) {
-      .solutions-grid {
-        grid-template-columns: 1fr;
-      }
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
+ const mobileStyles = `
+  @media (max-width: 768px) {
+    .industry-row {
+      flex-direction: column !important;
+      text-align: center;
     }
-  `;
-
-  const handleSolutionClick = (categorySlug) => {
-    // Navigate to products page with category filter
-    window.location.href = `/products?category=${categorySlug}`;
-  };
-
-  const handleCardHover = (e, isHovering) => {
-    if (isHovering) {
-      e.currentTarget.style.transform = 'translateY(-8px)';
-      e.currentTarget.style.boxShadow = 'var(--shadow-glow)';
-      e.currentTarget.style.borderColor = 'var(--color-accent-2)';
-    } else {
-      e.currentTarget.style.transform = '';
-      e.currentTarget.style.boxShadow = '';
-      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+    .industry-row img {
+      height: 200px;
     }
-  };
+  }
+  @keyframes glowPulse {
+    0% { box-shadow: 0 0 25px rgba(120, 0, 180, 0.8); }
+    50% { box-shadow: 0 0 60px rgba(180, 0, 255, 1); }
+    100% { box-shadow: 0 0 25px rgba(120, 0, 180, 0.8); }
+  }
+`;
+
+
+ const handleHover = (e, isHovering) => {
+  const img = e.currentTarget.querySelector('img'); // grab the image element
+  if (isHovering) {
+    e.currentTarget.style.transform = 'translateY(-6px)';
+    e.currentTarget.style.animation = 'glowPulse 1.5s infinite';
+    e.currentTarget.style.borderColor = 'rgba(180, 0, 255, 1)';
+    e.currentTarget.style.boxShadow = '0 0 40px rgba(180, 0, 255, 0.9)';
+    if (img) img.style.transform = 'scale(1.08)';
+  } else {
+    e.currentTarget.style.transform = '';
+    e.currentTarget.style.animation = '';
+    e.currentTarget.style.boxShadow = '';
+    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+    if (img) img.style.transform = '';
+  }
+};
 
   return (
     <>
       <style>{mobileStyles}</style>
       
-      {/* Page Header */}
-      <section style={styles.pageHeader}>
-        <div className="container">
-          <h1 style={styles.pageTitle} className="text-gradient">
-            Our Solutions
+      {/* Industry Served Hero Section */}
+      <section style={{
+        minHeight: '60vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        marginBottom: 'var(--spacing-3xl)',
+        overflow: 'hidden'
+      }}>
+        {/* Background Video */}
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            filter: 'blur(2px)',
+            opacity: 0.8,
+            zIndex: 1
+          }}
+        >
+          <source src={backgroundVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Overlay for better text readability */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 2
+        }}></div>
+        
+        {/* Content */}
+        <div className="container" style={{ 
+          position: 'relative', 
+          zIndex: 3, 
+          textAlign: 'center',
+          color: 'white',
+          padding: 'var(--spacing-3xl) var(--spacing-lg)'
+        }}>
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+            fontWeight: 700,
+            marginBottom: 'var(--spacing-lg)',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
+          }}>
+            Industry Served
           </h1>
-          <p style={styles.pageSubtitle}>
-            Comprehensive digital solutions designed to transform your business with cutting-edge technology
+          <p style={{
+            fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
+            opacity: 0.9,
+            maxWidth: '800px',
+            margin: '0 auto',
+            lineHeight: 1.6,
+            textShadow: '1px 1px 2px rgba(0,0,0,0.8)'
+          }}>
+            We provide innovative solutions across diverse industries, leveraging cutting-edge technology 
+            to transform businesses and drive digital excellence in every sector we serve.
           </p>
         </div>
       </section>
 
-      {/* Solutions Grid */}
-      <section style={{ padding: 'var(--spacing-3xl) 0' }}>
-        <div className="container">
-          <div style={styles.solutionsGrid} className="solutions-grid">
-            {solutions.map(solution => (
-              <div 
-                key={solution.id}
-                style={styles.solutionCard}
-                onClick={() => handleSolutionClick(solution.category)}
-                onMouseEnter={(e) => handleCardHover(e, true)}
-                onMouseLeave={(e) => handleCardHover(e, false)}
-                role="button"
-                tabIndex={0}
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    handleSolutionClick(solution.category);
-                  }
-                }}
-              >
-                <span style={styles.solutionIcon}>{solution.icon}</span>
-                <h3 style={styles.solutionTitle} className="text-gradient">
-                  {solution.title}
-                </h3>
-                <p style={styles.solutionDescription}>
-                  {solution.description}
-                </p>
-                
-                <h4 style={{ fontSize: '16px', fontWeight: 600, marginBottom: 'var(--spacing-sm)', color: 'var(--color-accent-3)' }}>
-                  Key Features:
-                </h4>
-                <ul style={styles.featureList}>
-                  {solution.features.map((feature, index) => (
-                    <li key={index} style={styles.featureItem}>
-                      <svg style={styles.featureIcon} fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <h4 style={{ fontSize: '16px', fontWeight: 600, marginBottom: 'var(--spacing-sm)', color: 'var(--color-accent-2)' }}>
-                  Business Benefits:
-                </h4>
-                <ul style={styles.benefitsList}>
-                  {solution.benefits.map((benefit, index) => (
-                    <li key={index} style={styles.benefitItem}>
-                      <svg style={styles.featureIcon} fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
-                      </svg>
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <span className="btn-secondary btn-sm">
-                    Explore Products →
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Related Products */}
+      {/* Industries Grid Section */}
       <section>
         <div className="container">
-          <div style={styles.relatedSection}>
-            <h2 style={styles.sectionTitle} className="text-gradient">
-              Featured Products
-            </h2>
-            
-            {isLoading ? (
-              <div style={styles.productsGrid} className="products-grid">
-                {[...Array(3)].map((_, i) => (
-                  <div key={i} className="card">
-                    <div style={{ height: '200px', marginBottom: 'var(--spacing-md)' }} className="skeleton"></div>
-                    <div style={{ height: '24px', marginBottom: 'var(--spacing-sm)' }} className="skeleton"></div>
-                    <div style={{ height: '16px', marginBottom: 'var(--spacing-md)' }} className="skeleton"></div>
-                    <div style={{ height: '32px' }} className="skeleton"></div>
-                  </div>
-                ))}
+          <h2 style={styles.sectionTitle} className="text-gradient">
+            Our Solutions
+          </h2>
+          {industries.map((industry, index) => (
+            <div
+              key={index}
+              className="industry-row"
+              style={{
+                ...styles.industryRow,
+                flexDirection: index % 2 === 0 ? 'row' : 'row-reverse'
+              }}
+              onMouseEnter={(e) => handleHover(e, true)}
+              onMouseLeave={(e) => handleHover(e, false)}
+            >
+              <div style={styles.industryImage}>
+                <img src={industry.img} alt={industry.name} style={styles.industryImgTag} />
               </div>
-            ) : products && products.length > 0 ? (
-              <div style={styles.productsGrid} className="products-grid">
-                {products.slice(0, 3).map(product => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
+              <div style={styles.industryContent}>
+                <div style={styles.industryIcon}>{industry.icon}</div>
+                <h4 className="text-gradient" style={{ ...styles.industryName }}>
+                  {industry.name}
+                </h4>
+                <p style={styles.industryDescription}>{industry.description}</p>
               </div>
-            ) : (
-              <div className="card" style={{ textAlign: 'center', padding: 'var(--spacing-3xl)' }}>
-                <h3>Products Coming Soon</h3>
-                <p style={{ opacity: 0.7, marginTop: 'var(--spacing-md)' }}>
-                  We're working on exciting new solutions for you
-                </p>
-              </div>
-            )}
-
-            <div style={{ textAlign: 'center', marginTop: 'var(--spacing-xl)' }}>
-              <Link href="/products" className="btn-primary">
-                View All Products
-              </Link>
             </div>
-          </div>
+          ))}
         </div>
       </section>
     </>
