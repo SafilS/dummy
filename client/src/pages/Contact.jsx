@@ -46,8 +46,8 @@ export default function Contact() {
             </div>
             <div style={styles.contactText}>
               <span style={styles.contactLabel}>Email</span>
-              <a href="mailto:info@viruzverse.com" style={styles.contactValue}>
-                info@viruzverse.com
+              <a href="mailto:info@viruzverse.tech" style={styles.contactValue}>
+                info@viruzverse.tech
               </a>
             </div>
           </div>

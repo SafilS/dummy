@@ -853,19 +853,6 @@ body {
   animation: shimmer-gradient 4s ease infinite;
 }
 
-/* Radial gradient utilities */
-.bg-radial-gradient-purple {
-  background: radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.3), transparent 50%);
-}
-
-.bg-radial-gradient-blue {
-  background: radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.3), transparent 50%);
-}
-
-.bg-radial-gradient-pink {
-  background: radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.3), transparent 50%);
-}
-
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
