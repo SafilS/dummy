@@ -81,6 +81,7 @@ export default function Solutions() {
   const styles = {
     pageHeader: {
       padding: 'var(--spacing-3xl) 0 var(--spacing-2xl)',
+      paddingTop: '120px',
       textAlign: 'center',
       background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
     },

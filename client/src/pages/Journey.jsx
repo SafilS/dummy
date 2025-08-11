@@ -1,10 +1,20 @@
 import { useState, useEffect } from 'react';
 import '../styles/journey-animations.css';
+import journeyBg from '../assests/journey.jpeg';
 
 export default function Journey() {
-  const [scrollY, setScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState(0);
+  const [selectedMilestone, setSelectedMilestone] = useState(null);
+  const [showDetails, setShowDetails] = useState(false);
 
+  const handleViewDetails = (milestone) => {
+    setSelectedMilestone(milestone);
+    setShowDetails(true);
+  };
+
+  const handleCloseDetails = () => {
+    setShowDetails(false);
+    setSelectedMilestone(null);
+  };
   const journeyMilestones = [
     {
       phase: 'Phase 01',
@@ -12,13 +22,16 @@ export default function Journey() {
       title: 'The Spark of Innovation',
       subtitle: 'From Vision to Reality',
       icon: '💡',
-      description: 'It all began with a simple yet profound question: What if technology could solve real-world problems while nurturing the next generation of IT leaders? In the depths of a global pandemic, when the world needed digital solutions more than ever, VIRUZVERSE was born from the convergence of three passionate minds.',
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop&crop=center',
+      description: 'VIRUZVERSE was born from a simple question: What if technology could solve real-world problems while nurturing the next generation of IT leaders?',
+      shortDescription: 'The birth of VIRUZVERSE from a vision to solve real-world problems with technology.',
+      fullDescription: 'It all began with a simple yet profound question: What if technology could solve real-world problems while nurturing the next generation of IT leaders? In the depths of a global pandemic, when the world needed digital solutions more than ever, VIRUZVERSE was born from the convergence of three passionate minds.',
       achievements: [
-        'Founded with a clear vision to bridge technology and education',
-        'Identified the gap in immersive learning solutions',
-        'Established core values: Innovation, Security, and Global Impact'
+        'Founded with vision to bridge technology and education',
+        'Identified gap in immersive learning solutions',
+        'Established core values: Innovation, Security, Global Impact'
       ],
-      highlight: 'The moment we realized that virtual reality wasn\'t just entertainment—it was the future of learning.'
+      highlight: 'Virtual reality wasn\'t just entertainment—it was the future of learning.'
     },
     {
       phase: 'Phase 02',
@@ -26,14 +39,17 @@ export default function Journey() {
       title: 'Building the Foundation',
       subtitle: 'First Steps into Tomorrow',
       icon: '🚀',
-      description: 'Our first year was about proving concepts and building trust. We launched with GetMe, a revolutionary school bus tracking solution that showcased our ability to blend cutting-edge technology with practical applications. Parents could finally track their children\'s school buses in real-time, while schools gained unprecedented attendance management capabilities.',
+      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop&crop=center',
+      description: 'We launched GetMe, a revolutionary school bus tracking solution that showcased our ability to blend cutting-edge technology with practical applications.',
+      shortDescription: 'Launched GetMe - our flagship school bus tracking solution.',
+      fullDescription: 'Our first year was about proving concepts and building trust. We launched with GetMe, a revolutionary school bus tracking solution that showcased our ability to blend cutting-edge technology with practical applications. Parents could finally track their children\'s school buses in real-time, while schools gained unprecedented attendance management capabilities.',
       achievements: [
-        'Launched GetMe - our flagship school tracking solution',
+        'Launched GetMe - flagship school tracking solution',
         'Served 1,000+ students across multiple schools',
-        'Developed cross-platform expertise (Mobile and Desktop)',
-        'Established our reputation for reliable, user-focused solutions'
+        'Developed cross-platform expertise',
+        'Established reputation for reliable solutions'
       ],
-      highlight: 'GetMe wasn\'t just our first product—it was proof that technology could make families feel safer.'
+      highlight: 'GetMe was proof that technology could make families feel safer.'
     },
     {
       phase: 'Phase 03',
@@ -41,14 +57,17 @@ export default function Journey() {
       title: 'Expanding Horizons',
       subtitle: 'Diversifying Our Digital DNA',
       icon: '🎯',
-      description: 'Growth meant exploring new territories. We ventured into real estate with our Broker App, revolutionizing how brokers find and present properties. Simultaneously, we entered the hospitality sector with CafeAura, making food ordering seamless for both mobile and desktop users. Each project taught us something new about different industries.',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop&crop=center',
+      description: 'We ventured into real estate with Broker App and hospitality with CafeAura, learning that great technology is industry-intelligent.',
+      shortDescription: 'Expanded into real estate and hospitality sectors.',
+      fullDescription: 'Growth meant exploring new territories. We ventured into real estate with our Broker App, revolutionizing how brokers find and present properties. Simultaneously, we entered the hospitality sector with CafeAura, making food ordering seamless for both mobile and desktop users. Each project taught us something new about different industries.',
       achievements: [
-        'Launched Broker App with location-based property matching',
-        'Introduced CafeAura with QR code verification system',
-        'Expanded team to include specialists in multiple domains',
+        'Launched Broker App with property matching',
+        'Introduced CafeAura with QR verification',
+        'Expanded team with domain specialists',
         'Achieved 95% client satisfaction rate'
       ],
-      highlight: 'The year we learned that great technology isn\'t one-size-fits-all—it\'s industry-intelligent.'
+      highlight: 'Great technology isn\'t one-size-fits-all—it\'s industry-intelligent.'
     },
     {
       phase: 'Phase 04',
@@ -56,14 +75,17 @@ export default function Journey() {
       title: 'The VR Revolution',
       subtitle: 'Stepping into Virtual Realities',
       icon: '🥽',
-      description: 'This was our breakthrough year. We officially established our VR Division, creating immersive interior and exterior design experiences that transformed how architects and clients collaborate. Our 3D elevation renderings became the gold standard for showcasing building exteriors, while our VR solutions enabled clients to \'walk through\' their future spaces before construction began.',
+      image: 'https://images.unsplash.com/photo-1592478411213-6153e4ebc696?w=500&h=300&fit=crop&crop=center',
+      description: 'We established our VR Division, creating immersive experiences that transformed how architects and clients collaborate through virtual walkthroughs.',
+      shortDescription: 'Established VR Division for immersive architectural experiences.',
+      fullDescription: 'This was our breakthrough year. We officially established our VR Division, creating immersive interior and exterior design experiences that transformed how architects and clients collaborate. Our 3D elevation renderings became the gold standard for showcasing building exteriors, while our VR solutions enabled clients to \'walk through\' their future spaces before construction began.',
       achievements: [
         'Established dedicated VR and 3D Division',
         'Created photorealistic architectural visualizations',
         'Developed Unity and Blender expertise',
-        'Completed 50+ VR projects across architecture and training'
+        'Completed 50+ VR projects'
       ],
-      highlight: 'The moment our clients first \'walked\' through their unbuilt homes—that\'s when we knew VR had unlimited potential.'
+      highlight: 'When clients first \'walked\' through unbuilt homes, we knew VR had unlimited potential.'
     },
     {
       phase: 'Phase 05',
@@ -71,14 +93,17 @@ export default function Journey() {
       title: 'Enterprise Evolution',
       subtitle: 'Scaling Solutions, Amplifying Impact',
       icon: '🌍',
-      description: 'Today, VIRUZVERSE stands as a comprehensive digital solutions powerhouse. From BillBro\'s lightning-fast billing for retail shops to Invoicify\'s advanced inventory analytics, we\'ve proven that innovation scales. Our Sentinel AI security platform now protects enterprises globally, while our VR training simulations are reshaping professional education across industries.',
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop&crop=center',
+      description: 'VIRUZVERSE evolved into a comprehensive digital solutions powerhouse with BillBro, Invoicify, and Sentinel AI protecting enterprises globally.',
+      shortDescription: 'Evolved into a comprehensive digital solutions powerhouse.',
+      fullDescription: 'Today, VIRUZVERSE stands as a comprehensive digital solutions powerhouse. From BillBro\'s lightning-fast billing for retail shops to Invoicify\'s advanced inventory analytics, we\'ve proven that innovation scales. Our Sentinel AI security platform now protects enterprises globally, while our VR training simulations are reshaping professional education across industries.',
       achievements: [
         'Launched Sentinel AI for enterprise cybersecurity',
         'Deployed solutions across 10+ countries',
-        'Achieved 99.9% uptime across all platforms',
-        'Built a global network of 10,000+ active users'
+        'Achieved 99.9% uptime across platforms',
+        'Built global network of 10,000+ users'
       ],
-      highlight: 'We\'re no longer just building products—we\'re crafting the digital infrastructure for tomorrow\'s world.'
+      highlight: 'We\'re crafting the digital infrastructure for tomorrow\'s world.'
     }
   ];
 
@@ -106,425 +131,347 @@ export default function Journey() {
   ];
 
   const styles = {
-    container: {
-      maxWidth: '1200px',
-      margin: '0 auto',
-      padding: '0 20px',
+    pageContainer: {
+      minHeight: '100vh',
+      backgroundColor: '#0a0a0a',
+      color: '#ffffff'
     },
-    pageHeader: {
-      padding: 'var(--spacing-3xl) 0',
-      textAlign: 'center',
-      background: 'linear-gradient(135deg, rgba(74, 108, 247, 0.1) 0%, rgba(74, 108, 247, 0.05) 100%)',
-      marginTop: '80px',
+    heroSection: {
       position: 'relative',
-      overflow: 'hidden',
-    },
-    pageTitle: {
-      fontSize: 'clamp(40px, 7vw, 72px)',
-      fontWeight: 700,
-      marginBottom: '16px',
-      color: '#1a1a1a',
-    },
-    pageSubtitle: {
-      fontSize: '22px',
-      opacity: 0.9,
-      maxWidth: '800px',
-      margin: '0 auto',
-      lineHeight: 1.4,
-    },
-    introSection: {
-      padding: 'var(--spacing-3xl) 0',
-      textAlign: 'center',
-    },
-    introTitle: {
-      fontSize: '36px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-lg)',
-    },
-    introText: {
-      fontSize: '20px',
-      lineHeight: 1.6,
-      maxWidth: '900px',
-      margin: '0 auto',
-      opacity: 0.9,
-    },
-    journeySection: {
-      padding: 'var(--spacing-3xl) 0',
-    },
-    timelineContainer: {
-      position: 'relative',
-      maxWidth: '1000px',
-      margin: '0 auto',
-    },
-    milestone: {
-      display: 'flex',
-      gap: 'var(--spacing-2xl)',
-      marginBottom: 'var(--spacing-3xl)',
-      alignItems: 'flex-start',
-      position: 'relative',
-    },
-    milestoneReverse: {
-      flexDirection: 'row-reverse',
-    },
-    milestoneIcon: {
-      fontSize: '48px',
-      width: '80px',
-      height: '80px',
-      borderRadius: '50%',
-      background: 'var(--gradient-primary)',
+      height: '60vh',
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${journeyBg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      flexShrink: 0,
+      textAlign: 'center'
+    },
+    heroContent: {
+      maxWidth: '800px',
+      padding: '0 20px'
+    },
+    heroTitle: {
+      fontSize: '3.5rem',
+      fontWeight: 'bold',
+      marginBottom: '1rem',
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text'
+    },
+    heroSubtitle: {
+      fontSize: '1.3rem',
+      color: '#b0b0b0',
+      marginBottom: '2rem'
+    },
+    milestonesSection: {
+      padding: '80px 0',
+      backgroundColor: '#111111'
+    },
+    sectionTitle: {
+      fontSize: '2.5rem',
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: '3rem',
+      color: '#ffffff'
+    },
+    cardsGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+      gap: '2rem',
+      maxWidth: '1200px',
+      margin: '0 auto',
+      padding: '0 20px'
+    },
+    milestoneCard: {
+      backgroundColor: '#1a1a1a',
+      borderRadius: '16px',
+      border: '1px solid #333',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
       position: 'relative',
-      zIndex: 2,
+      overflow: 'hidden'
     },
-    milestoneContent: {
-      flex: 1,
-      background: 'var(--color-surface)',
-      borderRadius: 'var(--radius-lg)',
-      padding: 'var(--spacing-xl)',
-      border: '1px solid rgba(255,255,255,0.1)',
-      transition: 'var(--transition-medium)',
+    cardImage: {
+      width: '100%',
+      height: '280px',
+      objectFit: 'cover',
+      borderRadius: '12px 12px 0 0'
     },
-    milestonePhase: {
-      fontSize: '12px',
-      fontWeight: 600,
-      textTransform: 'uppercase',
-      letterSpacing: '1px',
-      opacity: 0.7,
-      marginBottom: 'var(--spacing-xs)',
+    cardContent: {
+      padding: '1.5rem'
     },
-    milestoneYear: {
-      fontSize: '24px',
-      fontWeight: 700,
-      color: 'var(--color-accent-3)',
-      marginBottom: 'var(--spacing-sm)',
+    viewDetailsBtn: {
+      backgroundColor: '#667eea',
+      color: 'white',
+      border: 'none',
+      padding: '0.75rem 1.5rem',
+      borderRadius: '8px',
+      fontSize: '0.9rem',
+      fontWeight: '600',
+      cursor: 'pointer',
+      transition: 'all 0.3s ease',
+      marginTop: '1rem',
+      width: '100%'
     },
-    milestoneTitle: {
-      fontSize: '28px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-xs)',
+    detailsModal: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.9)',
+      zIndex: 1000,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '2rem'
     },
-    milestoneSubtitle: {
-      fontSize: '16px',
-      opacity: 0.8,
-      fontStyle: 'italic',
-      marginBottom: 'var(--spacing-lg)',
+    detailsContent: {
+      backgroundColor: '#1a1a1a',
+      borderRadius: '16px',
+      padding: '2rem',
+      maxWidth: '800px',
+      maxHeight: '90vh',
+      overflow: 'auto',
+      position: 'relative',
+      border: '1px solid #333'
     },
-    milestoneDescription: {
-      fontSize: '16px',
-      lineHeight: 1.6,
-      marginBottom: 'var(--spacing-lg)',
-      opacity: 0.9,
+    closeBtn: {
+      position: 'absolute',
+      top: '1rem',
+      right: '1rem',
+      backgroundColor: 'transparent',
+      border: 'none',
+      color: '#ffffff',
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+      padding: '0.5rem',
+      borderRadius: '50%',
+      transition: 'background-color 0.3s ease'
+    },
+    detailsImage: {
+      width: '100%',
+      height: '300px',
+      objectFit: 'cover',
+      borderRadius: '12px',
+      marginBottom: '2rem'
+    },
+    cardHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: '1.5rem'
+    },
+    phaseLabel: {
+      backgroundColor: '#667eea',
+      color: 'white',
+      padding: '0.5rem 1rem',
+      borderRadius: '20px',
+      fontSize: '0.9rem',
+      fontWeight: '600'
+    },
+    yearBadge: {
+      fontSize: '2rem',
+      fontWeight: 'bold',
+      color: '#667eea'
+    },
+    cardTitle: {
+      fontSize: '1.8rem',
+      fontWeight: 'bold',
+      color: '#ffffff',
+      marginBottom: '0.5rem'
+    },
+    cardSubtitle: {
+      fontSize: '1rem',
+      color: '#b0b0b0',
+      marginBottom: '1.5rem',
+      fontStyle: 'italic'
+    },
+    cardDescription: {
+      fontSize: '1rem',
+      lineHeight: '1.6',
+      color: '#d0d0d0',
+      marginBottom: '1.5rem'
     },
     achievementsList: {
       listStyle: 'none',
       padding: 0,
-      marginBottom: 'var(--spacing-lg)',
+      margin: '1.5rem 0'
     },
     achievementItem: {
       display: 'flex',
-      alignItems: 'center',
-      gap: 'var(--spacing-sm)',
-      marginBottom: 'var(--spacing-sm)',
-      fontSize: '14px',
-      opacity: 0.8,
+      alignItems: 'flex-start',
+      marginBottom: '0.8rem',
+      fontSize: '0.95rem',
+      color: '#c0c0c0'
     },
     achievementIcon: {
-      color: 'var(--color-accent-3)',
-      fontSize: '16px',
+      color: '#667eea',
+      marginRight: '0.8rem',
+      marginTop: '0.2rem',
+      fontSize: '0.8rem'
     },
     highlight: {
-      background: 'rgba(110,75,195,0.1)',
-      border: '1px solid rgba(110,75,195,0.3)',
-      borderRadius: 'var(--radius-md)',
-      padding: 'var(--spacing-md)',
-      fontStyle: 'italic',
-      fontSize: '15px',
-      opacity: 0.9,
-      position: 'relative',
+      backgroundColor: '#2a2a2a',
+      padding: '1rem',
+      borderRadius: '8px',
+      borderLeft: '4px solid #667eea',
+      fontSize: '0.95rem',
+      color: '#e0e0e0',
+      fontStyle: 'italic'
+    },
+    cardIcon: {
+      position: 'absolute',
+      top: '15px',
+      right: '15px',
+      fontSize: '1.5rem',
+      opacity: '0.8',
+      backgroundColor: 'rgba(0,0,0,0.7)',
+      padding: '0.5rem',
+      borderRadius: '50%'
     },
     valuesSection: {
-      padding: 'var(--spacing-3xl) 0',
-      background: 'var(--color-surface)',
-    },
-    sectionTitle: {
-      fontSize: '42px',
-      fontWeight: 700,
-      textAlign: 'center',
-      marginBottom: 'var(--spacing-xl)',
+      padding: '80px 0',
+      backgroundColor: '#0a0a0a'
     },
     valuesGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-      gap: 'var(--spacing-xl)',
-      marginTop: 'var(--spacing-2xl)',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+      gap: '2rem',
+      maxWidth: '1000px',
+      margin: '0 auto',
+      padding: '0 20px'
     },
     valueCard: {
-      background: 'rgba(255,255,255,0.03)',
-      borderRadius: 'var(--radius-lg)',
-      padding: 'var(--spacing-xl)',
+      backgroundColor: '#1a1a1a',
+      padding: '2rem',
+      borderRadius: '12px',
       textAlign: 'center',
-      border: '1px solid rgba(255,255,255,0.1)',
-      transition: 'var(--transition-medium)',
+      border: '1px solid #333',
+      transition: 'all 0.3s ease'
     },
     valueIcon: {
-      fontSize: '48px',
-      marginBottom: 'var(--spacing-md)',
+      fontSize: '3rem',
+      marginBottom: '1rem'
     },
     valueTitle: {
-      fontSize: '20px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-md)',
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      color: '#ffffff',
+      marginBottom: '1rem'
     },
     valueDescription: {
-      fontSize: '14px',
-      lineHeight: 1.6,
-      opacity: 0.8,
+      color: '#b0b0b0',
+      lineHeight: '1.6'
     },
     ctaSection: {
       textAlign: 'center',
-      padding: 'var(--spacing-3xl) 0',
-      background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
-      borderRadius: 'var(--radius-xl)',
-      margin: 'var(--spacing-3xl) 0',
+      padding: '80px 20px',
+      backgroundColor: '#111111'
     },
     ctaTitle: {
-      fontSize: '36px',
-      fontWeight: 700,
-      marginBottom: 'var(--spacing-md)',
+      fontSize: '2.5rem',
+      fontWeight: 'bold',
+      marginBottom: '1rem',
+      color: '#ffffff'
     },
     ctaDescription: {
-      fontSize: '18px',
-      opacity: 0.9,
-      marginBottom: 'var(--spacing-xl)',
+      fontSize: '1.2rem',
+      color: '#b0b0b0',
+      marginBottom: '2rem',
       maxWidth: '600px',
-      margin: '0 auto var(--spacing-xl)',
+      margin: '0 auto 2rem'
     }
   };
 
-  // Scroll tracking
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-      
-      // Update active section based on scroll
-      const sections = document.querySelectorAll('section');
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-      
-      sections.forEach((section, index) => {
-        const offsetTop = section.offsetTop;
-        const height = section.offsetHeight;
-        
-        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
-          setActiveSection(index);
-        }
-      });
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  // Simple card hover effect
   const handleCardHover = (e, isHovering) => {
     if (isHovering) {
-      e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
-      e.currentTarget.style.boxShadow = '0 20px 60px rgba(110, 75, 195, 0.4), 0 0 50px rgba(163, 75, 110, 0.2)';
-      e.currentTarget.style.borderColor = 'rgba(110, 75, 195, 0.5)';
-      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))';
+      e.currentTarget.style.transform = 'translateY(-8px)';
+      e.currentTarget.style.boxShadow = '0 20px 40px rgba(102, 126, 234, 0.3)';
+      e.currentTarget.style.borderColor = '#667eea';
     } else {
-      e.currentTarget.style.transform = '';
-      e.currentTarget.style.boxShadow = '';
-      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-      e.currentTarget.style.background = 'var(--color-surface)';
-    }
-  };
-
-  // Enhanced styles with animations
-  const enhancedStyles = {
-    ...styles,
-    pageContainer: {
-      position: 'relative',
-      minHeight: '100vh',
-      background: 'linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(15,10,30,0.98) 50%, rgba(0,0,0,0.95) 100%)',
-      overflow: 'hidden'
-    },
-    threeCanvas: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      zIndex: -1,
-      pointerEvents: 'none'
-    },
-    scrollProgress: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: `${(scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100}%`,
-      height: '3px',
-      background: 'linear-gradient(90deg, #a34b6e, #6e4bc3, #45b7d1)',
-      zIndex: 1000,
-      transition: 'width 0.1s ease',
-      boxShadow: '0 0 10px rgba(110,75,195,0.8)'
-    },
-    floatingNav: {
-      position: 'fixed',
-      right: '30px',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      zIndex: 100,
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '15px'
-    },
-    navDot: {
-      width: '12px',
-      height: '12px',
-      borderRadius: '50%',
-      background: 'rgba(255,255,255,0.3)',
-      cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      border: '2px solid transparent'
-    },
-    navDotActive: {
-      background: 'linear-gradient(45deg, #a34b6e, #6e4bc3)',
-      transform: 'scale(1.2)',
-      boxShadow: '0 0 15px rgba(110,75,195,0.8)'
-    },
-    parallaxElement: {
-      transform: `translateY(${scrollY * 0.5}px) translateZ(0)`,
-      willChange: 'transform'
-    },
-    timelineConnector: {
-      position: 'absolute',
-      left: '50%',
-      top: '0',
-      width: '2px',
-      height: '100%',
-      background: 'linear-gradient(to bottom, transparent, rgba(110,75,195,0.4), rgba(163,75,110,0.4), transparent)',
-      transform: 'translateX(-50%)',
-      zIndex: 1
+      e.currentTarget.style.transform = 'translateY(0)';
+      e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+      e.currentTarget.style.borderColor = '#333';
     }
   };
 
   return (
-    <div style={enhancedStyles.pageContainer}>
-      {/* Scroll Progress Bar */}
-      <div style={enhancedStyles.scrollProgress} />
-      
-      {/* Floating Navigation */}
-      <div style={enhancedStyles.floatingNav}>
-        {['Header', 'Intro', 'Timeline', 'Values', 'CTA'].map((section, index) => (
-          <div
-            key={section}
-            style={{
-              ...enhancedStyles.navDot,
-              ...(activeSection === index ? enhancedStyles.navDotActive : {})
-            }}
-            onClick={() => {
-              const element = document.querySelectorAll('section')[index];
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-          />
-        ))}
-      </div>
-      
-      {/* Page Header */}
-      <section style={styles.pageHeader}>
-        <div className="container">
-          <h1 style={{
-            ...styles.pageTitle,
-            background: 'linear-gradient(135deg, #ffffff, #a34b6e, #6e4bc3, #45b7d1)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            animation: 'shimmer 3s ease-in-out infinite'
-          }}>
-            Our Journey
+    <div style={styles.pageContainer}>
+      {/* Hero Section */}
+      <section style={styles.heroSection}>
+        <div style={styles.heroContent}>
+          <h1 style={styles.heroTitle}>
+            Our Journey Through Innovation
           </h1>
-          <p style={styles.pageSubtitle}>
-            From a spark of innovation to a global digital powerhouse—this is the VIRUZVERSE story
+          <p style={styles.heroSubtitle}>
+            From Vision to Virtual Reality - Discover how VIRUZVERSE evolved through each milestone
           </p>
         </div>
       </section>
 
-      {/* Introduction */}
-      <section style={styles.introSection}>
+      {/* Journey Milestones Cards */}
+      <section style={styles.milestonesSection}>
         <div className="container">
-          <h2 style={styles.introTitle}>
-            Where Innovation Meets Purpose
+          <h2 style={styles.sectionTitle}>
+            Our Journey Milestones
           </h2>
-          <p style={styles.introText}>
-            Every great journey begins with a simple question. Ours was: <em>"What if technology could not only solve today's problems but also prepare us for tomorrow's possibilities?"</em> 
-            What started as a vision has evolved into a mission—to create digital solutions that don't just work, but inspire, protect, and empower.
-          </p>
-        </div>
-      </section>
-
-      {/* Journey Timeline */}
-      <section style={styles.journeySection}>
-        <div className="container">
-          <div style={styles.timelineContainer}>
+          <div style={styles.cardsGrid}>
             {journeyMilestones.map((milestone, index) => (
               <div 
                 key={index}
-                style={{
-                  ...styles.milestone,
-                  ...(index % 2 === 1 ? styles.milestoneReverse : {})
-                }}
+                style={styles.milestoneCard}
+                onMouseEnter={(e) => handleCardHover(e, true)}
+                onMouseLeave={(e) => handleCardHover(e, false)}
               >
-                <div style={styles.milestoneIcon}>
-                  {milestone.icon}
-                </div>
+                <img 
+                  src={milestone.image} 
+                  alt={milestone.title}
+                  style={styles.cardImage}
+                />
                 
-                <div 
-                  style={styles.milestoneContent}
-                  onMouseEnter={(e) => handleCardHover(e, true)}
-                  onMouseLeave={(e) => handleCardHover(e, false)}
-                >
-                  <div style={styles.milestonePhase}>
-                    {milestone.phase}
+                <div style={styles.cardContent}>
+                  <div style={styles.cardIcon}>
+                    {milestone.icon}
                   </div>
                   
-                  <div style={styles.milestoneYear}>
-                    {milestone.year}
+                  <div style={styles.cardHeader}>
+                    <div style={styles.phaseLabel}>
+                      {milestone.phase}
+                    </div>
+                    <div style={styles.yearBadge}>
+                      {milestone.year}
+                    </div>
                   </div>
                   
-                  <h3 style={styles.milestoneTitle}>
+                  <h3 style={styles.cardTitle}>
                     {milestone.title}
                   </h3>
                   
-                  <div style={styles.milestoneSubtitle}>
+                  <div style={styles.cardSubtitle}>
                     {milestone.subtitle}
                   </div>
                   
-                  <p style={styles.milestoneDescription}>
-                    {milestone.description}
+                  <p style={styles.cardDescription}>
+                    {milestone.shortDescription}
                   </p>
                   
-                  <ul style={styles.achievementsList}>
-                    {milestone.achievements.map((achievement, idx) => (
-                      <li key={idx} style={styles.achievementItem}>
-                        <span style={styles.achievementIcon}>
-                          ✦
-                        </span>
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <div style={styles.highlight}>
-                    <strong>💫 The Breakthrough:</strong> {milestone.highlight}
-                  </div>
+                  <button 
+                    style={styles.viewDetailsBtn}
+                    onClick={() => handleViewDetails(milestone)}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = '#5a67d8';
+                      e.target.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = '#667eea';
+                      e.target.style.transform = 'translateY(0)';
+                    }}
+                  >
+                    View Details →
+                  </button>
                 </div>
               </div>
             ))}
@@ -560,26 +507,78 @@ export default function Journey() {
       </section>
 
       {/* CTA Section */}
-      <section>
+      <section style={styles.ctaSection}>
         <div className="container">
-          <div style={styles.ctaSection}>
-            <h2 style={styles.ctaTitle}>
-              The Journey Continues
-            </h2>
-            <p style={styles.ctaDescription}>
-              We're just getting started. Join us as we continue to push the boundaries of what's possible in the digital realm.
-            </p>
-            <div style={{ display: 'flex', gap: 'var(--spacing-lg)', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="/about" className="btn-primary">
-                Learn About Our Mission
-              </a>
-              <a href="/products" className="btn-secondary">
-                Explore Our Solutions
-              </a>
-            </div>
+          <h2 style={styles.ctaTitle}>
+            The Journey Continues
+          </h2>
+          <p style={styles.ctaDescription}>
+            We're just getting started. Join us as we continue to push the boundaries of what's possible in the digital realm.
+          </p>
+          <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="/about" className="btn-primary">
+              Learn About Our Mission
+            </a>
+            <a href="/products" className="btn-secondary">
+              Explore Our Solutions
+            </a>
           </div>
         </div>
       </section>
+
+      {/* Details Modal */}
+      {showDetails && selectedMilestone && (
+        <div style={styles.detailsModal} onClick={handleCloseDetails}>
+          <div style={styles.detailsContent} onClick={(e) => e.stopPropagation()}>
+            <button style={styles.closeBtn} onClick={handleCloseDetails}>
+              ×
+            </button>
+            
+            <img 
+              src={selectedMilestone.image} 
+              alt={selectedMilestone.title}
+              style={styles.detailsImage}
+            />
+            
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+              <div style={styles.phaseLabel}>
+                {selectedMilestone.phase}
+              </div>
+              <div style={styles.yearBadge}>
+                {selectedMilestone.year}
+              </div>
+            </div>
+            
+            <h2 style={{ ...styles.cardTitle, fontSize: '2.5rem', marginBottom: '0.5rem' }}>
+              {selectedMilestone.title}
+            </h2>
+            
+            <div style={{ ...styles.cardSubtitle, fontSize: '1.2rem', marginBottom: '2rem' }}>
+              {selectedMilestone.subtitle}
+            </div>
+            
+            <p style={{ ...styles.cardDescription, fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '2rem' }}>
+              {selectedMilestone.fullDescription}
+            </p>
+            
+            <h3 style={{ color: '#ffffff', fontSize: '1.3rem', marginBottom: '1rem' }}>Key Achievements</h3>
+            <ul style={styles.achievementsList}>
+              {selectedMilestone.achievements.map((achievement, idx) => (
+                <li key={idx} style={{ ...styles.achievementItem, fontSize: '1rem', marginBottom: '1rem' }}>
+                  <span style={styles.achievementIcon}>
+                    ✦
+                  </span>
+                  {achievement}
+                </li>
+              ))}
+            </ul>
+            
+            <div style={{ ...styles.highlight, marginTop: '2rem', fontSize: '1rem', padding: '1.5rem' }}>
+              <strong>💫 The Breakthrough:</strong> {selectedMilestone.highlight}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
