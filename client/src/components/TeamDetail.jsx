@@ -2,19 +2,10 @@ import { useState } from 'react';
 import { Link } from 'wouter';
 
 export default function TeamDetail({ team }) {
-  const [selectedMember, setSelectedMember] = useState(null);
   const [hoveredMember, setHoveredMember] = useState(null);
 
   const handleMemberHover = (index, isHovering) => {
     setHoveredMember(isHovering ? index : null);
-  };
-
-  const openMemberModal = (member) => {
-    setSelectedMember(member);
-  };
-
-  const closeMemberModal = () => {
-    setSelectedMember(null);
   };
 
   const styles = {
@@ -129,7 +120,6 @@ export default function TeamDetail({ team }) {
       padding: 'var(--spacing-xl)',
       border: '1px solid rgba(255,255,255,0.1)',
       transition: 'var(--transition-medium)',
-      cursor: 'pointer',
       position: 'relative',
       overflow: 'hidden',
     },
@@ -386,133 +376,16 @@ export default function TeamDetail({ team }) {
                   }}
                   onMouseEnter={() => handleMemberHover(index, true)}
                   onMouseLeave={() => handleMemberHover(index, false)}
-                  onClick={() => openMemberModal(member)}
-                >
+>
                   <div style={styles.memberAvatar}>{member.avatar}</div>
                   <h3 style={styles.memberName}>{member.name}</h3>
                   <div style={styles.memberRole}>{member.role}</div>
-                  <p style={styles.memberBio}>{member.bio}</p>
-                  
-                  <div style={styles.memberSkills}>
-                    {member.skills.slice(0, 4).map((skill, idx) => (
-                      <span key={idx} style={styles.skillTag}>{skill}</span>
-                    ))}
-                    {member.skills.length > 4 && (
-                      <span style={styles.skillTag}>+{member.skills.length - 4} more</span>
-                    )}
-                  </div>
-
-                  <div style={styles.contactInfo}>
-                    <a 
-                      href={`mailto:${member.email}`} 
-                      style={styles.contactLink}
-                      onClick={(e) => e.stopPropagation()}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = `${team.color}40`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
-                      }}
-                    >
-                      📧 Email
-                    </a>
-                    <a 
-                      href={member.linkedin} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      style={styles.contactLink}
-                      onClick={(e) => e.stopPropagation()}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = `${team.color}40`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
-                      }}
-                    >
-                      💼 LinkedIn
-                    </a>
-                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
       </div>
-
-      {/* Member Detail Modal */}
-      {selectedMember && (
-        <div style={styles.modal} onClick={closeMemberModal}>
-          <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <button style={styles.closeButton} onClick={closeMemberModal}>
-              ×
-            </button>
-            
-            <div style={styles.modalAvatar}>{selectedMember.avatar}</div>
-            <h2 style={styles.modalName}>{selectedMember.name}</h2>
-            <div style={styles.modalRole}>{selectedMember.role}</div>
-
-            <div style={styles.infoGrid}>
-              <div style={styles.infoItem}>
-                <div style={styles.infoLabel}>Experience</div>
-                <div style={styles.infoValue}>{selectedMember.experience}</div>
-              </div>
-              <div style={styles.infoItem}>
-                <div style={styles.infoLabel}>Education</div>
-                <div style={styles.infoValue}>{selectedMember.education}</div>
-              </div>
-            </div>
-
-            <div style={styles.modalSection}>
-              <h3 style={styles.modalSectionTitle}>About</h3>
-              <p style={{ fontSize: '14px', lineHeight: 1.6, opacity: 0.9 }}>
-                {selectedMember.bio}
-              </p>
-            </div>
-
-            <div style={styles.modalSection}>
-              <h3 style={styles.modalSectionTitle}>Skills & Expertise</h3>
-              <div style={{ ...styles.memberSkills, gap: 'var(--spacing-sm)' }}>
-                {selectedMember.skills.map((skill, idx) => (
-                  <span key={idx} style={{ ...styles.skillTag, background: `${team.color}30`, padding: '4px 8px', fontSize: '12px' }}>
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div style={styles.modalSection}>
-              <h3 style={styles.modalSectionTitle}>Key Achievements</h3>
-              <ul style={styles.modalList}>
-                {selectedMember.achievements.map((achievement, idx) => (
-                  <li key={idx} style={styles.modalListItem}>
-                    <span style={styles.modalBullet}>▸</span>
-                    <span>{achievement}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div style={{ display: 'flex', gap: 'var(--spacing-md)', justifyContent: 'center', marginTop: 'var(--spacing-lg)' }}>
-              <a 
-                href={`mailto:${selectedMember.email}`}
-                className="btn-primary"
-                style={{ fontSize: '14px', padding: '8px 16px' }}
-              >
-                📧 Send Email
-              </a>
-              <a 
-                href={selectedMember.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-                style={{ fontSize: '14px', padding: '8px 16px' }}
-              >
-                💼 LinkedIn
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

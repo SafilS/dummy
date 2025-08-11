@@ -152,8 +152,8 @@ export default function Teams() {
           name: 'Vibitha BK',
           role: 'Cloud Solutions Architect',
           bio: 'Senior cloud architect specializing in designing and implementing scalable cloud infrastructures. Expert in multi-cloud environments and enterprise-grade solutions.',
-          avatar: '👩‍💻',
-          email: 'vibithabkviruzverse.com',
+          avatar: '👨‍💻',
+          email: 'pranesh@viruzverse.com',
           linkedin: 'https://linkedin.com/in/praneshkumar',
           skills: ['AWS', 'Azure', 'Cloud Architecture', 'Terraform', 'Kubernetes', 'Docker'],
           experience: '6+ years',
@@ -167,7 +167,7 @@ export default function Teams() {
         },
         
         {
-          id: 105,
+          id: 104,
           name: 'Prisha',
           role: 'Cloud Data Engineer',
           bio: 'Data engineer specializing in cloud-native data pipelines and analytics. Expert in building scalable data architectures using modern cloud services.',
