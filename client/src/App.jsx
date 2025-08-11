@@ -8,7 +8,6 @@ import Layout from "./components/Layout";
 // Pages
 import Home from "./pages/Home";
 import Solutions from "./pages/Solutions";
-import VR3D from "./pages/VR3D";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import Features from "./pages/Features";
@@ -26,7 +25,6 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/solutions" component={Solutions} />
-        <Route path="/vr-3d" component={VR3D} />
         <Route path="/products" component={Products} />
         <Route path="/products/:slug" component={ProductDetail} />
         <Route path="/features" component={Features} />
