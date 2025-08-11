@@ -12,122 +12,130 @@ export default function TeamDetail({ team }) {
     container: {
       minHeight: '100vh',
       paddingTop: '80px',
+      background: '#000000',
     },
     backButton: {
       display: 'inline-flex',
       alignItems: 'center',
-      gap: 'var(--spacing-sm)',
-      padding: 'var(--spacing-sm) var(--spacing-md)',
-      background: 'rgba(255,255,255,0.1)',
-      border: '1px solid rgba(255,255,255,0.2)',
-      borderRadius: 'var(--radius-md)',
-      color: 'inherit',
+      gap: '12px',
+      padding: '12px 20px',
+      background: 'rgba(255,255,255,0.05)',
+      border: '1px solid rgba(255,255,255,0.1)',
+      borderRadius: '12px',
+      color: '#ffffff',
       textDecoration: 'none',
-      fontSize: '14px',
-      marginBottom: 'var(--spacing-xl)',
-      transition: 'var(--transition-medium)',
+      fontSize: '15px',
+      fontWeight: 500,
+      marginBottom: '60px',
+      transition: 'all 0.3s ease',
+      backdropFilter: 'blur(10px)',
     },
-    teamHeader: {
+    pageHeader: {
       textAlign: 'center',
-      padding: 'var(--spacing-3xl) 0',
-      background: `linear-gradient(135deg, ${team.color}20 0%, ${team.color}10 50%, ${team.color}05 100%)`,
-      borderRadius: 'var(--radius-xl)',
-      marginBottom: 'var(--spacing-3xl)',
-    },
-    teamIcon: {
-      fontSize: '80px',
-      marginBottom: 'var(--spacing-lg)',
-      display: 'block',
+      marginBottom: '80px',
+      padding: '0 20px',
     },
     teamName: {
-      fontSize: 'clamp(36px, 6vw, 56px)',
-      fontWeight: 700,
-      marginBottom: 'var(--spacing-md)',
-      background: 'linear-gradient(135deg, #ffffff, #a34b6e, #6e4bc3, #45b7d1)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text',
+      fontSize: 'clamp(48px, 8vw, 72px)',
+      fontWeight: 800,
+      marginBottom: '24px',
+      color: '#ffffff',
+      letterSpacing: '-0.02em',
+      textShadow: '0 4px 20px rgba(0,0,0,0.3)',
     },
     teamDescription: {
-      fontSize: '20px',
-      opacity: 0.9,
-      maxWidth: '800px',
-      margin: '0 auto var(--spacing-xl)',
-      lineHeight: 1.6,
-    },
-    teamStatsGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-      gap: 'var(--spacing-lg)',
-      maxWidth: '600px',
+      fontSize: '18px',
+      opacity: 0.85,
+      maxWidth: '100%',
       margin: '0 auto',
-    },
-    teamStat: {
-      textAlign: 'center',
-      padding: 'var(--spacing-md)',
-      background: 'rgba(255,255,255,0.05)',
-      borderRadius: 'var(--radius-lg)',
-      border: '1px solid rgba(255,255,255,0.1)',
-    },
-    statNumber: {
-      fontSize: '24px',
-      fontWeight: 700,
-      color: team.color,
-      marginBottom: 'var(--spacing-xs)',
-    },
-    statLabel: {
-      fontSize: '14px',
-      opacity: 0.8,
-      textTransform: 'uppercase',
-      letterSpacing: '1px',
+      lineHeight: 1.7,
+      color: '#e2e8f0',
+      fontWeight: 300,
+      textAlign: 'justify',
+      padding: '0 40px',
+      textIndent: '0',
+      wordSpacing: '0.05em',
+      letterSpacing: '0.01em',
     },
     specialtiesSection: {
-      padding: 'var(--spacing-3xl) 0',
-      background: 'var(--color-surface)',
-    },
-    sectionTitle: {
-      fontSize: '32px',
-      fontWeight: 700,
-      textAlign: 'center',
-      marginBottom: 'var(--spacing-xl)',
+      padding: '80px 0',
+      background: 'rgba(255,255,255,0.01)',
+      position: 'relative',
     },
     specialtiesGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-      gap: 'var(--spacing-lg)',
-      maxWidth: '800px',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+      gap: '20px',
+      maxWidth: '900px',
       margin: '0 auto',
     },
     specialtyCard: {
-      background: 'rgba(255,255,255,0.03)',
-      padding: 'var(--spacing-lg)',
-      borderRadius: 'var(--radius-lg)',
+      background: 'rgba(255,255,255,0.02)',
+      padding: '24px 20px',
+      borderRadius: '16px',
       textAlign: 'center',
-      border: '1px solid rgba(255,255,255,0.1)',
-      transition: 'var(--transition-medium)',
+      border: '1px solid rgba(255,255,255,0.05)',
+      transition: 'all 0.3s ease',
+      position: 'relative',
+      overflow: 'hidden',
     },
     membersSection: {
-      padding: 'var(--spacing-3xl) 0',
+      padding: '80px 0',
+      marginBottom: '60px',
+    },
+    sectionTitle: {
+      fontSize: 'clamp(28px, 4vw, 36px)',
+      fontWeight: 700,
+      textAlign: 'center',
+      marginBottom: '16px',
+      color: '#ffffff',
+      letterSpacing: '-0.02em',
+    },
+    sectionSubtitle: {
+      fontSize: '16px',
+      textAlign: 'center',
+      opacity: 0.6,
+      marginBottom: '60px',
+      color: '#a0aec0',
+      maxWidth: '600px',
+      margin: '0 auto 60px',
     },
     membersGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-      gap: 'var(--spacing-xl)',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+      gap: '32px',
+      maxWidth: '1200px',
+      margin: '0 auto',
     },
     memberCard: {
       background: 'var(--color-surface)',
-      borderRadius: 'var(--radius-xl)',
-      padding: 'var(--spacing-xl)',
+      borderRadius: '24px',
+      padding: '24px',
       border: '1px solid rgba(255,255,255,0.1)',
-      transition: 'var(--transition-medium)',
+      transition: 'all 0.3s ease',
       position: 'relative',
       overflow: 'hidden',
+      width: '100%',
+      height: '320px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
     },
     memberAvatar: {
       fontSize: '64px',
       marginBottom: 'var(--spacing-md)',
       display: 'block',
       textAlign: 'center',
+    },
+    memberAvatarImg: {
+      width: '80px',
+      height: '80px',
+      borderRadius: '50%',
+      objectFit: 'cover',
+      marginBottom: 'var(--spacing-md)',
+      border: '3px solid rgba(255,255,255,0.1)',
+      display: 'block',
+      margin: '0 auto var(--spacing-md)',
     },
     memberName: {
       fontSize: '22px',
@@ -300,70 +308,30 @@ export default function TeamDetail({ team }) {
           href="/teams" 
           style={styles.backButton}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(255,255,255,0.2)';
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
-          }}
-          onMouseLeave={(e) => {
             e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
             e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
           }}
         >
           ← Back to All Teams
         </Link>
 
-        {/* Team Header */}
-        <div style={styles.teamHeader}>
-          <div style={styles.teamIcon}>{team.icon}</div>
+        {/* Page Header - Team Name & Description */}
+        <div style={styles.pageHeader}>
           <h1 style={styles.teamName}>{team.name}</h1>
           <p style={styles.teamDescription}>{team.description}</p>
-          
-          <div style={styles.teamStatsGrid}>
-            <div style={styles.teamStat}>
-              <div style={styles.statNumber}>{team.memberCount}</div>
-              <div style={styles.statLabel}>Members</div>
-            </div>
-            <div style={styles.teamStat}>
-              <div style={styles.statNumber}>{team.specialties.length}</div>
-              <div style={styles.statLabel}>Specialties</div>
-            </div>
-            <div style={styles.teamStat}>
-              <div style={styles.statNumber}>5+</div>
-              <div style={styles.statLabel}>Years Avg</div>
-            </div>
-          </div>
         </div>
 
-        {/* Team Specialties */}
-        <section style={styles.specialtiesSection}>
-          <div className="container">
-            <h2 style={styles.sectionTitle}>Team Specialties</h2>
-            <div style={styles.specialtiesGrid}>
-              {team.specialties.map((specialty, index) => (
-                <div 
-                  key={index} 
-                  style={styles.specialtyCard}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = `${team.color}20`;
-                    e.currentTarget.style.borderColor = `${team.color}40`;
-                    e.currentTarget.style.transform = 'translateY(-5px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-                    e.currentTarget.style.transform = '';
-                  }}
-                >
-                  {specialty}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Team Members */}
+        {/* Team Members Section */}
         <section style={styles.membersSection}>
           <div className="container">
             <h2 style={styles.sectionTitle}>Meet the Team</h2>
+            <p style={styles.sectionSubtitle}>
+              Get to know the talented professionals who make our team exceptional
+            </p>
             <div style={styles.membersGrid}>
               {team.members.map((member, index) => (
                 <div
@@ -372,14 +340,133 @@ export default function TeamDetail({ team }) {
                     ...styles.memberCard,
                     transform: hoveredMember === index ? 'translateY(-8px) scale(1.02)' : '',
                     boxShadow: hoveredMember === index ? `0 20px 40px ${team.color}40` : '',
-                    borderColor: hoveredMember === index ? `${team.color}80` : 'rgba(255,255,255,0.1)'
+                    borderColor: hoveredMember === index ? `${team.color}80` : 'rgba(255,255,255,0.1)',
+                    ...(typeof member.avatar === 'string' && (member.avatar.includes('.jpg') || member.avatar.includes('.png') || member.avatar.includes('.jpeg')) ? {
+                      backgroundImage: `linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%), url(${member.avatar})`,
+                      backgroundSize: (() => {
+                        // Custom sizing for better face visibility
+                        switch(member.name) {
+                          case 'Pranesh Kumar': return 'cover';
+                          case 'Priya': return 'cover';
+                          case 'Vibitha BK': return 'cover';
+                          case 'Prisha': return 'cover';
+                          case 'Sankar': return 'cover';
+                          case 'Pradeep': return 'cover';
+                          case 'Steffania': return 'cover';
+                          case 'Aditya K': return 'cover';
+                          default: return 'cover';
+                        }
+                      })(),
+                      backgroundPosition: (() => {
+                        // Custom positioning for each member to ensure faces are visible
+                        switch(member.name) {
+                          case 'Pranesh Kumar': return 'center 20%'; // Face positioned higher
+                          case 'Priya': return 'center 30%'; // Slightly above center
+                          case 'Vibitha BK': return 'center 25%'; // Face positioned higher
+                          case 'Prisha': return 'center 35%'; // Above center
+                          case 'Sankar': return 'center 20%'; // Face positioned higher
+                          case 'Pradeep': return 'center 30%'; // Above center
+                          case 'Steffania': return 'center 25%'; // Face positioned higher
+                          case 'Aditya K': return 'center 20%'; // Face positioned higher
+                          default: return 'center 30%';
+                        }
+                      })(),
+                      backgroundRepeat: 'no-repeat',
+                      color: '#ffffff',
+                    } : {})
                   }}
                   onMouseEnter={() => handleMemberHover(index, true)}
                   onMouseLeave={() => handleMemberHover(index, false)}
->
-                  <div style={styles.memberAvatar}>{member.avatar}</div>
-                  <h3 style={styles.memberName}>{member.name}</h3>
-                  <div style={styles.memberRole}>{member.role}</div>
+                >
+                  {typeof member.avatar === 'string' && (member.avatar.includes('.jpg') || member.avatar.includes('.png') || member.avatar.includes('.jpeg')) ? (
+                    <>
+                      <h3 style={{
+                        fontSize: '24px',
+                        fontWeight: 800,
+                        color: '#ffffff',
+                        textShadow: '0 2px 10px rgba(0,0,0,0.8)',
+                        marginTop: 'auto',
+                        marginBottom: '12px',
+                        textAlign: 'center',
+                      }}>{member.name}</h3>
+                      <div style={{
+                        background: `linear-gradient(135deg, ${team.color}90, ${team.color}70)`,
+                        border: `1px solid ${team.color}`,
+                        color: '#ffffff',
+                        textShadow: '0 1px 5px rgba(0,0,0,0.5)',
+                        fontWeight: 600,
+                        backdropFilter: 'blur(10px)',
+                        padding: '8px 16px',
+                        borderRadius: '12px',
+                        textAlign: 'center',
+                        fontSize: '15px',
+                      }}>{member.role}</div>
+                    </>
+                  ) : (
+                    <>
+                      <div style={{
+                        fontSize: '64px',
+                        textAlign: 'center',
+                        marginBottom: '20px',
+                      }}>{member.avatar}</div>
+                      <h3 style={{
+                        fontSize: '22px',
+                        fontWeight: 700,
+                        textAlign: 'center',
+                        marginBottom: '8px',
+                        color: '#ffffff',
+                      }}>{member.name}</h3>
+                      <div style={{
+                        fontSize: '14px',
+                        padding: '6px 12px',
+                        background: `${team.color}30`,
+                        border: `1px solid ${team.color}60`,
+                        borderRadius: '8px',
+                        textAlign: 'center',
+                        color: '#ffffff',
+                      }}>{member.role}</div>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Core Expertise Section */}
+        <section style={styles.specialtiesSection}>
+          <div className="container">
+            <h2 style={styles.sectionTitle}>Core Expertise</h2>
+            <p style={styles.sectionSubtitle}>
+              The key technologies and skills that drive our team's success
+            </p>
+            <div style={styles.specialtiesGrid}>
+              {team.specialties.map((specialty, index) => (
+                <div 
+                  key={index} 
+                  style={styles.specialtyCard}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = `${team.color}10`;
+                    e.currentTarget.style.borderColor = `${team.color}40`;
+                    e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+                    e.currentTarget.style.boxShadow = `0 8px 25px ${team.color}20`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  <div style={{
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    color: '#ffffff',
+                    position: 'relative',
+                    zIndex: 2,
+                  }}>
+                    {specialty}
+                  </div>
                 </div>
               ))}
             </div>
