@@ -188,7 +188,7 @@ export default function Teams() {
     },
     {
       id: 'application-dev',
-      name: 'App Development ',
+      name: 'Application Development ',
       description: 'Innovative app developers crafting cutting-edge mobile and desktop applications using modern frameworks, cross-platform technologies, and user-centered design principles to deliver exceptional digital experiences.',
       icon: '📱',
       color: '#45b7d1',
