@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
+import Contact from './Contact';
 
 export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
   const [location] = useLocation();
 
   const navItems = [
@@ -121,7 +123,35 @@ export default function Header() {
             </Link>
             
             <nav style={styles.nav} className="nav-desktop" role="navigation" aria-label="Main navigation">
-              {navItems.map(item => (
+              {navItems.map(item => {
+                if (item.label === 'About') {
+                  return (
+                    <div 
+                      key={item.path}
+                      style={{position: 'relative'}}
+                      onMouseEnter={() => setIsContactDropdownOpen(true)}
+                      onMouseLeave={() => setIsContactDropdownOpen(false)}
+                    >
+                      <Link 
+                        href={item.path}
+                        className={`nav-link-enhanced ${location === item.path ? 'active' : ''}`}
+                        style={{
+                          ...styles.navLink,
+                          ...(location === item.path ? styles.navLinkActive : {})
+                        }}
+                      >
+                        {item.label}
+                        {location === item.path && <div style={styles.navLinkActiveAfter}></div>}
+                      </Link>
+                      {isContactDropdownOpen && (
+                        <div style={{position: 'absolute', top: '100%', left: '-50%', zIndex: 100}}>
+                           <Contact />
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+                return (
                 <Link 
                   key={item.path} 
                   href={item.path}
@@ -134,7 +164,7 @@ export default function Header() {
                   {item.label}
                   {location === item.path && <div style={styles.navLinkActiveAfter}></div>}
                 </Link>
-              ))}
+              );})}
             </nav>
             
             <div style={styles.headerActions}>
