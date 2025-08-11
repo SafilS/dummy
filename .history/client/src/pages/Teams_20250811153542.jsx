@@ -153,7 +153,7 @@ export default function Teams() {
           role: 'Cloud Solutions Architect',
           bio: 'Senior cloud architect specializing in designing and implementing scalable cloud infrastructures. Expert in multi-cloud environments and enterprise-grade solutions.',
           avatar: '👩‍💻',
-          email: 'vibithabkviruzverse.com',
+          email: 'viruzverse.com',
           linkedin: 'https://linkedin.com/in/praneshkumar',
           skills: ['AWS', 'Azure', 'Cloud Architecture', 'Terraform', 'Kubernetes', 'Docker'],
           experience: '6+ years',

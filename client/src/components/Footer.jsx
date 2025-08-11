@@ -3,186 +3,201 @@ import { Link } from 'wouter';
 export default function Footer() {
   const styles = {
     footer: {
-      background: 'var(--color-surface)',
+      background: 'linear-gradient(135deg, rgba(110,75,195,0.1) 0%, rgba(163,75,110,0.1) 50%, rgba(69,183,209,0.1) 100%)',
       borderTop: '1px solid rgba(255,255,255,0.1)',
-      padding: 'var(--spacing-2xl) 0',
+      padding: 'var(--spacing-xl) 0',
       marginTop: 'var(--spacing-3xl)',
+      position: 'relative',
+      overflow: 'hidden',
     },
     footerContent: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'flex-start',
+      display: 'grid',
+      gridTemplateColumns: '2fr 1fr 1fr',
       gap: 'var(--spacing-xl)',
-      flexWrap: 'wrap',
+      alignItems: 'start',
     },
-    footerSection: {
-      flex: '1',
-      minWidth: '200px',
+    brandSection: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'var(--spacing-md)',
     },
-    footerTitle: {
-      marginBottom: 'var(--spacing-md)',
-      fontSize: '18px',
-      fontWeight: 600,
+    logo: {
+      fontSize: '28px',
+      fontWeight: 800,
+      background: 'var(--gradient-primary)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+      letterSpacing: '0.5px',
     },
-    footerLinks: {
-      listStyle: 'none',
-      padding: 0,
-    },
-    footerLink: {
-      display: 'block',
-      color: 'rgba(255,255,255,0.8)',
-      textDecoration: 'none',
-      marginBottom: 'var(--spacing-sm)',
-      transition: 'var(--transition-fast)',
-    },
-    footerLinkHover: {
-      color: 'var(--color-accent-3)',
+    tagline: {
+      color: 'rgba(255,255,255,0.9)',
+      fontSize: '16px',
+      fontWeight: 500,
+      lineHeight: 1.4,
     },
     socialIcons: {
       display: 'flex',
-      gap: 'var(--spacing-md)',
-      marginTop: 'var(--spacing-md)',
+      gap: 'var(--spacing-sm)',
+      marginTop: 'var(--spacing-sm)',
     },
     socialIcon: {
-      width: '40px',
-      height: '40px',
-      background: 'var(--gradient-primary)',
-      borderRadius: '50%',
+      width: '36px',
+      height: '36px',
+      background: 'rgba(255,255,255,0.1)',
+      borderRadius: '8px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      color: 'white',
-      textDecoration: 'none',
-      transition: 'var(--transition-medium)',
-      fontSize: '18px',
-    },
-    socialIconHover: {
-      transform: 'translateY(-2px)',
-      boxShadow: 'var(--shadow-glow)',
-    },
-    footerBottom: {
-      marginTop: 'var(--spacing-2xl)',
-      paddingTop: 'var(--spacing-lg)',
-      borderTop: '1px solid rgba(255,255,255,0.1)',
-      textAlign: 'center',
-      opacity: 0.7,
-    },
-    footerDescription: {
-      marginTop: 'var(--spacing-sm)',
       color: 'rgba(255,255,255,0.8)',
+      textDecoration: 'none',
+      transition: 'all 0.3s ease',
+      fontSize: '16px',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255,255,255,0.1)',
     },
-    productsGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-      gap: 'var(--spacing-md)',
-      marginTop: 'var(--spacing-md)',
-    },
-    productColumn: {
+    quickLinks: {
       display: 'flex',
       flexDirection: 'column',
       gap: 'var(--spacing-sm)',
+    },
+    sectionTitle: {
+      fontSize: '16px',
+      fontWeight: 700,
+      color: '#ffffff',
+      marginBottom: 'var(--spacing-sm)',
+      textTransform: 'uppercase',
+      letterSpacing: '1px',
+    },
+    footerLink: {
+      color: 'rgba(255,255,255,0.7)',
+      textDecoration: 'none',
+      fontSize: '14px',
+      transition: 'all 0.3s ease',
+      padding: '2px 0',
+    },
+    contactInfo: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'var(--spacing-xs)',
+    },
+    contactItem: {
+      color: 'rgba(255,255,255,0.7)',
+      fontSize: '14px',
+      textDecoration: 'none',
+    },
+    footerBottom: {
+      marginTop: 'var(--spacing-lg)',
+      paddingTop: 'var(--spacing-md)',
+      borderTop: '1px solid rgba(255,255,255,0.1)',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      fontSize: '14px',
+      color: 'rgba(255,255,255,0.6)',
+    },
+    copyright: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 'var(--spacing-xs)',
+    },
+    legalLinks: {
+      display: 'flex',
+      gap: 'var(--spacing-md)',
+    },
+    legalLink: {
+      color: 'rgba(255,255,255,0.6)',
+      textDecoration: 'none',
+      fontSize: '14px',
+      transition: 'color 0.3s ease',
     },
   };
 
   return (
     <footer style={styles.footer}>
       <style>{`
-        @media (max-width: 1200px) {
-          .footer-content {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-          }
-          .footer-section {
-            min-width: auto;
-            width: 100%;
-            max-width: 300px;
-          }
-          .products-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-lg);
-          }
+        .footer-hover:hover {
+          color: #ffffff !important;
+          transform: translateY(-1px);
+        }
+        .social-hover:hover {
+          background: var(--gradient-primary) !important;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(110,75,195,0.4);
         }
         @media (max-width: 768px) {
           .footer-content {
-            gap: var(--spacing-lg);
+            grid-template-columns: 1fr !important;
+            text-align: center;
+            gap: var(--spacing-lg) !important;
           }
-          .footer-section {
-            max-width: 100%;
-          }
-          .products-grid {
-            grid-template-columns: 1fr;
-            gap: var(--spacing-md);
-          }
-          .product-column {
-            align-items: center;
+          .footer-bottom {
+            flex-direction: column !important;
+            gap: var(--spacing-sm) !important;
           }
         }
       `}</style>
       
       <div className="container">
         <div style={styles.footerContent} className="footer-content">
-          <div style={styles.footerSection} className="footer-section">
-            <h3 style={styles.footerTitle} className="text-gradient">VIRUZVERSE</h3>
-            <p style={styles.footerDescription}>
-              Pioneering the future of digital solutions with cutting-edge VR, AI, and cybersecurity technologies.
+          {/* Brand Section */}
+          <div style={styles.brandSection}>
+            <h2 style={styles.logo}>VIRUZVERSE</h2>
+            <p style={styles.tagline}>
+              Pioneering the future with VR, AI & Cybersecurity
             </p>
-          </div>
-
-          <div style={styles.footerSection} className="footer-section">
-            <h3 style={styles.footerTitle} className="text-gradient">Products</h3>
-            <div style={styles.productsGrid} className="products-grid">
-              <div style={styles.productColumn}>
-                <Link href="/products/sentinel-ai" style={styles.footerLink}>Sentinel AI</Link>
-                <Link href="/products/vr-training-suite" style={styles.footerLink}>VR Training Suite</Link>
-                <Link href="/products/cafeaura" style={styles.footerLink}>CafeAura</Link>
-              </div>
-              <div style={styles.productColumn}>
-                <Link href="/products/billbro" style={styles.footerLink}>BillBro</Link>
-                <Link href="/products/getme" style={styles.footerLink}>GetMe</Link>
-                <Link href="/products/broker-app" style={styles.footerLink}>Broker App</Link>
-              </div>
-              <div style={styles.productColumn}>
-                <Link href="/products/invoicify" style={styles.footerLink}>Invoicify</Link>
-                <Link href="/products/vr-interior-exterior-designs" style={styles.footerLink}>VR Interior & Exterior</Link>
-                <Link href="/products/3d-elevation" style={styles.footerLink}>3D Elevation</Link>
-              </div>
+            <div style={styles.socialIcons}>
+              <a href="#" style={styles.socialIcon} className="social-hover" title="LinkedIn">
+                💼
+              </a>
+              <a href="#" style={styles.socialIcon} className="social-hover" title="Twitter">
+                🐦
+              </a>
+              <a href="#" style={styles.socialIcon} className="social-hover" title="GitHub">
+                💻
+              </a>
+              <a href="mailto:viruzverse@proton.me" style={styles.socialIcon} className="social-hover" title="Email">
+                ✉️
+              </a>
             </div>
           </div>
-          
-          <div style={styles.footerSection} className="footer-section">
-            <h3 style={styles.footerTitle} className="text-gradient">Solutions</h3>
-            <ul style={styles.footerLinks}>
-              <li><Link href="/solutions" style={styles.footerLink}>Cybersecurity</Link></li>
-              <li><Link href="/solutions" style={styles.footerLink}>VR & 3D</Link></li>
-              <li><Link href="/solutions" style={styles.footerLink}>Mobile Apps</Link></li>
-              <li><Link href="/solutions" style={styles.footerLink}>Enterprise Tools</Link></li>
-            </ul>
+
+          {/* Quick Links */}
+          <div style={styles.quickLinks}>
+            <h3 style={styles.sectionTitle}>Quick Links</h3>
+            <Link href="/products" style={styles.footerLink} className="footer-hover">Products</Link>
+            <Link href="/solutions" style={styles.footerLink} className="footer-hover">Solutions</Link>
+            <Link href="/teams" style={styles.footerLink} className="footer-hover">Our Teams</Link>
+            <Link href="/about" style={styles.footerLink} className="footer-hover">About Us</Link>
+            <Link href="/contact" style={styles.footerLink} className="footer-hover">Contact</Link>
           </div>
-          
-          <div style={styles.footerSection} className="footer-section">
-            <h3 style={styles.footerTitle} className="text-gradient">Company</h3>
-            <ul style={styles.footerLinks}>
-              <li><Link href="/about" style={styles.footerLink}>About Us</Link></li>
-              <li><Link href="/careers" style={styles.footerLink}>Careers</Link></li>
-              <li><Link href="/features" style={styles.footerLink}>Features</Link></li>
-            </ul>
-          </div>
-          
-          <div style={styles.footerSection} className="footer-section">
-            <h3 style={styles.footerTitle} className="text-gradient">Contact</h3>
-            <ul style={styles.footerLinks}>
-              <li><Link href="/contact" style={styles.footerLink}>Contact Form</Link></li>
-              <li><a href="mailto:viruzverse@proton.me" style={styles.footerLink}>viruzverse@proton.me</a></li>
-              <li><a href="tel:+917418676100" style={styles.footerLink}>+91 7418676100</a></li>
-              <li style={styles.footerLink}>India, Tamil Nadu</li>
-            </ul>
+
+          {/* Contact Info */}
+          <div style={styles.contactInfo}>
+            <h3 style={styles.sectionTitle}>Connect</h3>
+            <a href="mailto:viruzverse@proton.me" style={styles.contactItem} className="footer-hover">
+              📧 viruzverse@proton.me
+            </a>
+            <a href="tel:+917418676100" style={styles.contactItem} className="footer-hover">
+              📞 +91 7418676100
+            </a>
+            <span style={styles.contactItem}>
+              🌍 India, Tamil Nadu
+            </span>
           </div>
         </div>
         
-        <div style={styles.footerBottom}>
-          <p>&copy; 2024 VIRUZVERSE. All rights reserved. Pioneering the future of digital solutions.</p>
+        {/* Footer Bottom */}
+        <div style={styles.footerBottom} className="footer-bottom">
+          <div style={styles.copyright}>
+            <span>© 2024 VIRUZVERSE</span>
+            <span>•</span>
+            <span>Innovating Tomorrow</span>
+          </div>
+          <div style={styles.legalLinks}>
+            <Link href="/privacy" style={styles.legalLink} className="footer-hover">Privacy</Link>
+            <Link href="/terms" style={styles.legalLink} className="footer-hover">Terms</Link>
+          </div>
         </div>
       </div>
     </footer>

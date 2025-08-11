@@ -34,6 +34,7 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/mission" component={Mission} />
         <Route path="/teams" component={Teams} />
+        <Route path="/teams/:teamId" component={Teams} />
         <Route path="/journey" component={Journey} />
         <Route path="/contact" component={Contact} />
         <Route path="/careers" component={Careers} />

@@ -3,14 +3,6 @@ import { useRoute, Link } from 'wouter';
 import TeamDetail from '../components/TeamDetail';
 import teamBg from '../assests/team.jpg';
 
-// Import team images
-import vrTeamImg from '../assests/VR team.jpg';
-import cloudTeamImg from '../assests/cloud team.png';
-import appDevTeamImg from '../assests/application developer team.jpg';
-import fullStackTeamImg from '../assests/fullstack team.jpg';
-import mediaBrandingTeamImg from '../assests/media and branding team.jpg';
-import digitalMarketingTeamImg from '../assests/digital marketing team.jpeg';
-
 export default function Teams() {
   const [match, params] = useRoute('/teams/:teamId');
   const [hoveredTeam, setHoveredTeam] = useState(null);
@@ -20,65 +12,83 @@ export default function Teams() {
     {
       id: 'vr-team',
       name: 'VR Team',
-      description: 'Creative technologists crafting immersive virtual reality experiences using Unity, 3D modeling, and cutting-edge VR technologies to deliver stunning virtual worlds.',
+      description: 'Creative technologists crafting immersive virtual reality experiences',
       icon: '🥽',
       color: '#6e4bc3',
-      memberCount: 3,
-      specialties: ['Unity Development', '3D Modeling', 'VR Design', 'Immersive Experiences'],
+      memberCount: 8,
+      specialties: ['Unity Development', '3D Modeling', 'UX Design', 'Immersive Technology'],
       image: '/api/placeholder/400/200',
       members: [
         {
           id: 1,
-          name: 'Hrithik Ram .M',
-          role: 'VR Developer',
-          bio: 'Skilled VR developer specializing in Unity 3D and immersive experience creation. Passionate about building virtual worlds that engage and inspire users.',
-          avatar: '👨‍💻',
-          email: 'hrithikram@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/hrithikram',
-          skills: ['Unity 3D', 'C#', 'VR Development', '3D Modeling', 'Game Design'],
-          experience: '3+ years',
-          education: 'Bachelor in Computer Science',
+          name: 'Praneeth Kumar',
+          role: 'CEO & Founder',
+          bio: 'Visionary entrepreneur with 10+ years in technology and innovation. Leading VIRUZVERSE with a passion for transforming digital experiences.',
+          avatar: '👨‍💼',
+          email: 'praneeth@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/praneethkumar',
+          skills: ['Strategic Leadership', 'Innovation', 'Technology Vision', 'Team Building'],
+          experience: '10+ years',
+          education: 'Masters in Computer Science',
           achievements: [
-            'Developed immersive VR training modules',
-            'Created interactive 3D environments',
-            'Optimized VR applications for performance',
-            'Contributed to award-winning VR projects'
+            'Founded VIRUZVERSE in 2020',
+            'Led company to serve 10,000+ users',
+            'Pioneered VR education solutions',
+            'Built cross-functional teams across 3 countries'
           ]
         },
         {
           id: 2,
-          name: 'Gowtham V',
-          role: '3D Artist & Designer',
-          bio: '3D artist and designer with expertise in creating stunning visual assets and immersive environments for VR applications.',
-          avatar: '👨‍🎨',
-          email: 'gowtham@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/gowthamv',
-          skills: ['3D Modeling', 'Blender', 'Maya', 'Texturing', 'Animation'],
-          experience: '2+ years',
-          education: 'Bachelor in Visual Arts',
+          name: 'Sarah Johnson',
+          role: 'CTO',
+          bio: 'Technology expert specializing in VR/AR, AI, and cloud infrastructure. Driving technical excellence across all VIRUZVERSE products.',
+          avatar: '👩‍💻',
+          email: 'sarah@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/sarahjohnson',
+          skills: ['VR/AR Development', 'Cloud Architecture', 'AI/ML', 'Technical Strategy'],
+          experience: '12+ years',
+          education: 'PhD in Computer Science, Stanford',
           achievements: [
-            'Created 100+ high-quality 3D assets',
-            'Designed immersive VR environments',
-            'Optimized 3D models for VR performance',
-            'Collaborated on multiple VR projects'
+            'Architected VIRUZVERSE platform infrastructure',
+            '50+ patents in VR/AR technologies',
+            'Led development of award-winning VR training solutions',
+            'Speaker at 20+ international tech conferences'
           ]
         },
         {
           id: 3,
-          name: 'Jaya Sudhan S',
-          role: 'VR UI/UX Designer',
-          bio: 'VR UI/UX designer focused on creating intuitive and user-friendly interfaces for virtual reality applications and experiences.',
-          avatar: '👨‍🎨',
-          email: 'jayasudhan@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/jayasudhans',
-          skills: ['VR UI Design', 'User Experience', 'Interaction Design', 'Prototyping', 'Unity UI'],
-          experience: '2+ years',
-          education: 'Bachelor in Design',
+          name: 'Michael Rodriguez',
+          role: 'Head of Product',
+          bio: 'Product strategist with deep expertise in user experience and market research. Ensuring our products solve real-world problems.',
+          avatar: '👨‍🔬',
+          email: 'michael@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/michaelrodriguez',
+          skills: ['Product Strategy', 'UX Research', 'Market Analysis', 'Agile Methodology'],
+          experience: '15+ years',
+          education: 'MBA, Harvard Business School',
           achievements: [
-            'Designed intuitive VR user interfaces',
-            'Improved user engagement by 40%',
-            'Created interactive VR prototypes',
-            'Specialized in VR accessibility design'
+            'Launched 5 successful products with 95%+ user satisfaction',
+            'Reduced time-to-market by 40% through agile practices',
+            'Led product teams across 10+ countries',
+            'Established product-market fit for key solutions'
+          ]
+        },
+        {
+          id: 4,
+          name: 'Emily Davis',
+          role: 'Head of Operations',
+          bio: 'Operations expert ensuring smooth business processes and exceptional client delivery across all VIRUZVERSE initiatives.',
+          avatar: '👩‍💼',
+          email: 'emily@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/emilydavis',
+          skills: ['Operations Management', 'Process Optimization', 'Team Leadership', 'Client Success'],
+          experience: '12+ years',
+          education: 'Masters in Business Administration',
+          achievements: [
+            'Implemented operations processes serving 10,000+ users',
+            'Achieved 99.9% client satisfaction rate',
+            'Built global operations team of 50+ professionals',
+            'Streamlined workflows reducing operational costs by 35%'
           ]
         }
       ]
@@ -86,102 +96,47 @@ export default function Teams() {
     {
       id: 'cloud-team',
       name: 'Cloud Team',
-      description: 'Cloud infrastructure specialists architecting scalable, secure, and cost-effective cloud solutions using cutting-edge technologies like AWS, Azure, and modern DevOps practices.',
+      description: 'Cloud infrastructure experts ensuring scalable and reliable solutions',
       icon: '☁️',
       color: '#a34b6e',
-      memberCount: 4,
-      specialties: ['AWS Cloud', 'Azure', 'DevOps', 'Kubernetes', 'Infrastructure as Code', 'Cloud Security'],
+      memberCount: 6,
+      specialties: ['AWS', 'Azure', 'DevOps', 'Infrastructure'],
       image: '/api/placeholder/400/200',
       members: [
         {
-          id: 101,
-          name: 'Pranesh Kumar',
-          role: 'Cloud Solutions Architect',
-          bio: 'Senior cloud architect specializing in designing and implementing scalable cloud infrastructures. Expert in multi-cloud environments and enterprise-grade solutions.',
+          id: 5,
+          name: 'Alex Chen',
+          role: 'Senior Full-stack Developer',
+          bio: 'Expert full-stack developer with expertise in React, Node.js, and cloud technologies. Building scalable applications.',
           avatar: '👨‍💻',
-          email: 'pranesh@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/praneshkumar',
-          skills: ['AWS', 'Azure', 'Cloud Architecture', 'Terraform', 'Kubernetes', 'Docker'],
-          experience: '6+ years',
-          education: 'MS in Cloud Computing',
+          email: 'alex@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/alexchen',
+          skills: ['React', 'Node.js', 'PostgreSQL', 'AWS', 'Docker'],
+          experience: '8+ years',
+          education: 'BS Computer Science',
           achievements: [
-            'Designed cloud infrastructure for 50+ enterprise clients',
-            'Reduced cloud costs by 40% through optimization',
-            'Led migration of legacy systems to cloud-native architectures',
-            'Certified AWS Solutions Architect Professional'
+            'Architected microservices handling 1M+ requests/day',
+            'Reduced application load time by 60%',
+            'Led migration to cloud-native architecture',
+            'Mentored 10+ junior developers'
           ]
         },
         {
-          id: 102,
-          name: 'Chandrapriyan',
+          id: 6,
+          name: 'Lisa Wang',
           role: 'DevOps Engineer',
-          bio: 'DevOps specialist focused on automation, continuous integration, and cloud infrastructure management. Passionate about building reliable and scalable deployment pipelines.',
-          avatar: '👨‍🔧',
-          email: 'chandrapriyan@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/chandrapriyan',
-          skills: ['CI/CD', 'Jenkins', 'Docker', 'Kubernetes', 'AWS', 'Monitoring'],
-          experience: '4+ years',
-          education: 'BS in Information Technology',
+          bio: 'DevOps specialist ensuring robust, scalable, and secure infrastructure for all VIRUZVERSE applications.',
+          avatar: '👩‍🔧',
+          email: 'lisa@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/lisawang',
+          skills: ['Kubernetes', 'Docker', 'CI/CD', 'AWS', 'Monitoring'],
+          experience: '7+ years',
+          education: 'MS in Information Systems',
           achievements: [
-            'Implemented CI/CD pipelines for 100+ projects',
-            'Achieved 99.9% system uptime across all services',
-            'Reduced deployment time from hours to minutes',
-            'Built automated monitoring and alerting systems'
-          ]
-        },
-        {
-          id: 103,
-          name: 'Priya',
-          role: 'Cloud Security Engineer',
-          bio: 'Cloud security specialist ensuring robust security measures across cloud environments. Expert in compliance, threat detection, and security automation.',
-          avatar: '👩‍💼',
-          email: 'priya@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/priya-cloud',
-          skills: ['Cloud Security', 'AWS Security', 'Compliance', 'Identity Management', 'Threat Detection'],
-          experience: '5+ years',
-          education: 'MS in Cybersecurity',
-          achievements: [
-            'Implemented security frameworks for 30+ cloud environments',
-            'Achieved SOC2 and ISO27001 compliance',
-            'Reduced security incidents by 80%',
-            'Built automated security monitoring solutions'
-          ]
-        },
-        {
-          id: 104,
-          name: 'Vibitha BK',
-          role: 'Cloud Solutions Architect',
-          bio: 'Senior cloud architect specializing in designing and implementing scalable cloud infrastructures. Expert in multi-cloud environments and enterprise-grade solutions.',
-          avatar: '👩‍💻',
-          email: 'vibithabkviruzverse.com',
-          linkedin: 'https://linkedin.com/in/praneshkumar',
-          skills: ['AWS', 'Azure', 'Cloud Architecture', 'Terraform', 'Kubernetes', 'Docker'],
-          experience: '6+ years',
-          education: 'MS in Cloud Computing',
-          achievements: [
-            'Designed cloud infrastructure for 50+ enterprise clients',
-            'Reduced cloud costs by 40% through optimization',
-            'Led migration of legacy systems to cloud-native architectures',
-            'Certified AWS Solutions Architect Professional'
-          ]
-        },
-        
-        {
-          id: 105,
-          name: 'Prisha',
-          role: 'Cloud Data Engineer',
-          bio: 'Data engineer specializing in cloud-native data pipelines and analytics. Expert in building scalable data architectures using modern cloud services.',
-          avatar: '👩‍💻',
-          email: 'prisha@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/prisha-data',
-          skills: ['AWS Data Services', 'Apache Spark', 'Data Pipeline', 'BigQuery', 'Snowflake', 'Python'],
-          experience: '3+ years',
-          education: 'MS in Data Science',
-          achievements: [
-            'Built data pipelines processing 10TB+ daily',
-            'Designed real-time analytics platforms',
-            'Optimized data costs by 50% through efficient architectures',
-            'Created ML model deployment pipelines'
+            'Achieved 99.9% system uptime',
+            'Implemented automated CI/CD pipelines',
+            'Reduced deployment time by 80%',
+            'Built comprehensive monitoring solutions'
           ]
         }
       ]
@@ -266,7 +221,7 @@ export default function Teams() {
     },
     {
       id: 'media-branding-team',
-      name: 'Media and Branding',
+      name: 'Media and Branding Team',
       description: 'Creative professionals building compelling brand experiences and visual storytelling',
       icon: '🎨',
       color: '#c34b6e',
@@ -327,48 +282,15 @@ export default function Teams() {
   ];
 
   // If we have a team ID in the URL, show the team detail
-  console.log('Route match:', match, 'params:', params);
   if (match && params.teamId) {
-    console.log('Team ID found:', params.teamId);
     const team = teams.find(t => t.id === params.teamId);
-    console.log('Team found:', team);
     if (team) {
       return <TeamDetail team={team} />;
-    } else {
-      console.log('Team not found for ID:', params.teamId);
-      // Return a not found message or redirect
-      return (
-        <div style={{ padding: '100px', textAlign: 'center' }}>
-          <h1>Team not found</h1>
-          <p>The team with ID "{params.teamId}" does not exist.</p>
-          <Link href="/teams">← Back to Teams</Link>
-        </div>
-      );
     }
   }
 
   const handleTeamHover = (index, isHovering) => {
     setHoveredTeam(isHovering ? index : null);
-  };
-
-  // Function to get team background image
-  const getTeamImage = (teamId) => {
-    switch(teamId) {
-      case 'vr-team':
-        return vrTeamImg;
-      case 'cloud-team':
-        return cloudTeamImg;
-      case 'application-dev':
-        return appDevTeamImg;
-      case 'fullstack-team':
-        return fullStackTeamImg;
-      case 'media-branding-team':
-        return mediaBrandingTeamImg;
-      case 'digital-marketing-team':
-        return digitalMarketingTeamImg;
-      default:
-        return null;
-    }
   };
 
   const styles = {
@@ -517,29 +439,22 @@ export default function Teams() {
     },
     ctaSection: {
       textAlign: 'center',
-      padding: 'var(--spacing-xl) var(--spacing-lg)',
-      background: 'rgba(255,255,255,0.03)',
-      borderRadius: 'var(--radius-lg)',
-      border: '1px solid rgba(255,255,255,0.1)',
-      margin: 'var(--spacing-2xl) 0',
-      backdropFilter: 'blur(10px)',
+      padding: 'var(--spacing-3xl) 0',
+      background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
+      borderRadius: 'var(--radius-xl)',
+      margin: 'var(--spacing-3xl) 0',
     },
     ctaTitle: {
-      fontSize: '24px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-sm)',
-      background: 'var(--gradient-primary)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text',
+      fontSize: '36px',
+      fontWeight: 700,
+      marginBottom: 'var(--spacing-md)',
     },
     ctaDescription: {
-      fontSize: '14px',
-      opacity: 0.8,
-      marginBottom: 'var(--spacing-md)',
-      maxWidth: '400px',
-      margin: '0 auto var(--spacing-md)',
-      lineHeight: 1.5,
+      fontSize: '18px',
+      opacity: 0.9,
+      marginBottom: 'var(--spacing-xl)',
+      maxWidth: '600px',
+      margin: '0 auto var(--spacing-xl)',
     }
   };
 
@@ -574,46 +489,22 @@ export default function Teams() {
             Each team brings unique expertise and passion to deliver exceptional results. Click on any team to learn more about their members and specializations.
           </p>
           <div style={styles.teamsGrid}>
-            {teams.map((team, index) => {
-              const teamImage = getTeamImage(team.id);
-              return (
-                <Link 
-                  key={team.id} 
-                  href={`/teams/${team.id}`}
-                  style={{
-                    ...styles.teamCard,
-                    transform: hoveredTeam === index ? 'translateY(-10px) scale(1.02)' : '',
-                    boxShadow: hoveredTeam === index ? `0 20px 40px ${team.color}40` : '',
-                    borderColor: hoveredTeam === index ? `${team.color}80` : 'rgba(255,255,255,0.1)',
-                    backgroundImage: teamImage && hoveredTeam === index ? `url(${teamImage})` : 'none',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-                  }}
-                  onMouseEnter={() => handleTeamHover(index, true)}
-                  onMouseLeave={() => handleTeamHover(index, false)}
-                >
-                  {/* Background overlay for better text readability on hover */}
-                  {teamImage && hoveredTeam === index && (
-                    <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      backgroundColor: 'rgba(0,0,0,0.7)',
-                      zIndex: 1,
-                      borderRadius: 'var(--radius-xl)'
-                    }} />
-                  )}
-                  <h3 style={{
-                    ...styles.teamName,
-                    position: 'relative',
-                    zIndex: 2
-                  }}>{team.name}</h3>
-                </Link>
-              );
-            })}
+            {teams.map((team, index) => (
+              <Link 
+                key={team.id} 
+                href={`/teams/${team.id}`}
+                style={{
+                  ...styles.teamCard,
+                  transform: hoveredTeam === index ? 'translateY(-10px) scale(1.02)' : '',
+                  boxShadow: hoveredTeam === index ? `0 20px 40px ${team.color}40` : '',
+                  borderColor: hoveredTeam === index ? `${team.color}80` : 'rgba(255,255,255,0.1)'
+                }}
+                onMouseEnter={() => handleTeamHover(index, true)}
+                onMouseLeave={() => handleTeamHover(index, false)}
+              >
+                <h3 style={styles.teamName}>{team.name}</h3>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -628,7 +519,7 @@ export default function Teams() {
             <p style={styles.ctaDescription}>
               Ready to work with exceptional people on cutting-edge projects? Explore career opportunities at VIRUZVERSE.
             </p>
-            <div style={{ display: 'flex', gap: 'var(--spacing-sm)', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 'var(--spacing-lg)', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/careers" className="btn-primary">
                 View Open Positions
               </a>
