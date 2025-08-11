@@ -10,13 +10,13 @@ export default function Teams() {
   // Team data structure
   const teams = [
     {
-      id: 'vr-team',
-      name: 'VR Team',
-      description: 'Creative technologists crafting immersive virtual reality experiences',
-      icon: '🥽',
+      id: 'leadership',
+      name: 'Leadership Team',
+      description: 'Visionary leaders steering VIRUZVERSE towards innovation and growth',
+      icon: '👑',
       color: '#6e4bc3',
-      memberCount: 8,
-      specialties: ['Unity Development', '3D Modeling', 'UX Design', 'Immersive Technology'],
+      memberCount: 4,
+      specialties: ['Strategy', 'Vision', 'Operations', 'Growth'],
       image: '/api/placeholder/400/200',
       members: [
         {
@@ -94,13 +94,13 @@ export default function Teams() {
       ]
     },
     {
-      id: 'cloud-team',
-      name: 'Cloud Team',
-      description: 'Cloud infrastructure experts ensuring scalable and reliable solutions',
-      icon: '☁️',
+      id: 'engineering',
+      name: 'Engineering Team',
+      description: 'Brilliant engineers building cutting-edge technology solutions',
+      icon: '⚙️',
       color: '#a34b6e',
-      memberCount: 6,
-      specialties: ['AWS', 'Azure', 'DevOps', 'Infrastructure'],
+      memberCount: 12,
+      specialties: ['Full-stack Development', 'DevOps', 'Cloud Computing', 'Security'],
       image: '/api/placeholder/400/200',
       members: [
         {
@@ -142,13 +142,13 @@ export default function Teams() {
       ]
     },
     {
-      id: 'application-dev',
-      name: 'Application Dev Team',
-      description: 'Expert developers creating innovative mobile and desktop applications',
-      icon: '📱',
+      id: 'vr-ar',
+      name: 'VR/AR Team',
+      description: 'Creative technologists crafting immersive virtual and augmented reality experiences',
+      icon: '🥽',
       color: '#45b7d1',
-      memberCount: 10,
-      specialties: ['Mobile Development', 'Cross-platform', 'Native Apps', 'UI/UX'],
+      memberCount: 8,
+      specialties: ['Unity Development', '3D Modeling', 'UX Design', 'Immersive Technology'],
       image: '/api/placeholder/400/200',
       members: [
         {
@@ -190,91 +190,91 @@ export default function Teams() {
       ]
     },
     {
-      id: 'fullstack-team',
-      name: 'FullStack Team',
-      description: 'Versatile developers mastering both frontend and backend technologies',
-      icon: '💻',
+      id: 'cybersecurity',
+      name: 'Cybersecurity Team',
+      description: 'Security experts protecting digital assets and ensuring robust protection',
+      icon: '🛡️',
       color: '#4bc36e',
-      memberCount: 12,
-      specialties: ['React', 'Node.js', 'Database Design', 'API Development'],
+      memberCount: 6,
+      specialties: ['Threat Detection', 'Incident Response', 'Penetration Testing', 'Security Architecture'],
       image: '/api/placeholder/400/200',
       members: [
         {
           id: 9,
           name: 'James Wilson',
-          role: 'Senior FullStack Developer',
-          bio: 'Full-stack expert with extensive experience in modern web technologies and scalable application architecture.',
-          avatar: '👨‍💻',
+          role: 'Cybersecurity Lead',
+          bio: 'Cybersecurity expert with extensive experience in threat detection, incident response, and security architecture.',
+          avatar: '👨‍🔒',
           email: 'james@viruzverse.com',
           linkedin: 'https://linkedin.com/in/jameswilson',
-          skills: ['React', 'Node.js', 'PostgreSQL', 'TypeScript', 'GraphQL'],
+          skills: ['Threat Analysis', 'Incident Response', 'SIEM', 'Penetration Testing', 'Compliance'],
           experience: '11+ years',
-          education: 'MS in Software Engineering',
+          education: 'MS in Cybersecurity',
           achievements: [
-            'Built 20+ production applications',
-            'Reduced development time by 40%',
-            'Led team of 15+ developers',
-            'Architected microservices handling millions of requests'
+            'Prevented 500+ security incidents',
+            'Achieved SOC 2 Type II compliance',
+            'Built 24/7 security operations center',
+            'Reduced security response time by 70%'
           ]
         }
       ]
     },
     {
-      id: 'media-branding-team',
-      name: 'Media and Branding ',
-      description: 'Creative professionals building compelling brand experiences and visual storytelling',
-      icon: '🎨',
+      id: 'ai-data',
+      name: 'AI & Data Team',
+      description: 'Data scientists and AI engineers developing intelligent solutions',
+      icon: '🤖',
       color: '#c34b6e',
-      memberCount: 8,
-      specialties: ['Brand Design', 'Video Production', 'Content Creation', 'Visual Identity'],
+      memberCount: 7,
+      specialties: ['Machine Learning', 'Data Science', 'Natural Language Processing', 'Computer Vision'],
       image: '/api/placeholder/400/200',
       members: [
         {
           id: 10,
           name: 'Dr. Aisha Ahmed',
-          role: 'Creative Director',
-          bio: 'Brand strategist and creative director with expertise in building memorable brand experiences across all touchpoints.',
-          avatar: '👩‍🎨',
+          role: 'AI Research Lead',
+          bio: 'AI researcher and data scientist with PhD in Machine Learning, specializing in NLP and computer vision.',
+          avatar: '👩‍🔬',
           email: 'aisha@viruzverse.com',
           linkedin: 'https://linkedin.com/in/aishaahmed',
-          skills: ['Brand Strategy', 'Visual Design', 'Video Editing', 'Adobe Creative Suite', 'Animation'],
+          skills: ['Machine Learning', 'Deep Learning', 'Python', 'TensorFlow', 'NLP'],
           experience: '10+ years',
-          education: 'MFA in Visual Communications',
+          education: 'PhD in Machine Learning, MIT',
           achievements: [
-            'Rebranded 50+ companies',
-            'Created award-winning campaigns',
-            'Led creative team of 20+ professionals',
-            'Increased brand recognition by 300%'
+            'Published 25+ peer-reviewed AI papers',
+            'Developed AI models with 98%+ accuracy',
+            'Led research team of 15+ scientists',
+            'Patents in computer vision and NLP'
           ]
         }
       ]
     },
     {
-      id: 'digital-marketing-team',
-      name: 'Digital Marketing Team',
-      description: 'Marketing experts driving growth through data-driven digital strategies',
-      icon: '📊',
+      id: 'design',
+      name: 'Design Team',
+      description: 'Creative designers crafting beautiful and intuitive user experiences',
+      icon: '🎨',
       color: '#6ec34b',
-      memberCount: 7,
-      specialties: ['SEO/SEM', 'Social Media', 'Content Marketing', 'Analytics'],
+      memberCount: 5,
+      specialties: ['UI/UX Design', 'Visual Design', 'Prototyping', 'Design Systems'],
       image: '/api/placeholder/400/200',
       members: [
         {
           id: 11,
           name: 'Sofia Martinez',
-          role: 'Digital Marketing Lead',
-          bio: 'Marketing strategist passionate about driving growth through innovative digital campaigns and data analysis.',
-          avatar: '👩‍💼',
+          role: 'Lead UX Designer',
+          bio: 'UX designer passionate about creating intuitive and accessible user experiences across all digital touchpoints.',
+          avatar: '👩‍🎨',
           email: 'sofia@viruzverse.com',
           linkedin: 'https://linkedin.com/in/sofiamartinez',
-          skills: ['Digital Strategy', 'Google Analytics', 'Social Media Marketing', 'Content Strategy', 'PPC'],
+          skills: ['UX Research', 'Interaction Design', 'Figma', 'Prototyping', 'Usability Testing'],
           experience: '8+ years',
-          education: 'MS in Digital Marketing',
+          education: 'MS in Human-Computer Interaction',
           achievements: [
-            'Increased organic traffic by 400%',
-            'Generated $2M+ in digital revenue',
-            'Built marketing team from ground up',
-            'Achieved 25% conversion rate improvement'
+            'Improved user satisfaction by 85%',
+            'Designed experiences for 100,000+ users',
+            'Created comprehensive design system',
+            'Reduced user onboarding time by 60%'
           ]
         }
       ]
@@ -439,29 +439,22 @@ export default function Teams() {
     },
     ctaSection: {
       textAlign: 'center',
-      padding: 'var(--spacing-xl) var(--spacing-lg)',
-      background: 'rgba(255,255,255,0.03)',
-      borderRadius: 'var(--radius-lg)',
-      border: '1px solid rgba(255,255,255,0.1)',
-      margin: 'var(--spacing-2xl) 0',
-      backdropFilter: 'blur(10px)',
+      padding: 'var(--spacing-3xl) 0',
+      background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
+      borderRadius: 'var(--radius-xl)',
+      margin: 'var(--spacing-3xl) 0',
     },
     ctaTitle: {
-      fontSize: '24px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-sm)',
-      background: 'var(--gradient-primary)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text',
+      fontSize: '36px',
+      fontWeight: 700,
+      marginBottom: 'var(--spacing-md)',
     },
     ctaDescription: {
-      fontSize: '14px',
-      opacity: 0.8,
-      marginBottom: 'var(--spacing-md)',
-      maxWidth: '400px',
-      margin: '0 auto var(--spacing-md)',
-      lineHeight: 1.5,
+      fontSize: '18px',
+      opacity: 0.9,
+      marginBottom: 'var(--spacing-xl)',
+      maxWidth: '600px',
+      margin: '0 auto var(--spacing-xl)',
     }
   };
 
@@ -486,6 +479,7 @@ export default function Teams() {
         </div>
       </section>
 
+      {/* Overall Stats */}
       
 
       {/* Teams Grid */}
@@ -509,7 +503,26 @@ export default function Teams() {
                 onMouseEnter={() => handleTeamHover(index, true)}
                 onMouseLeave={() => handleTeamHover(index, false)}
               >
+                <div style={styles.teamIcon}>{team.icon}</div>
                 <h3 style={styles.teamName}>{team.name}</h3>
+                <p style={styles.teamDescription}>{team.description}</p>
+                
+                <div style={styles.teamStats}>
+                  <div style={styles.teamStat}>
+                    <div style={styles.statNumber}>{team.memberCount}</div>
+                    <div style={styles.statLabel}>Members</div>
+                  </div>
+                  <div style={styles.teamStat}>
+                    <div style={styles.statNumber}>{team.specialties.length}</div>
+                    <div style={styles.statLabel}>Specialties</div>
+                  </div>
+                </div>
+                
+                <div style={styles.specialtiesList}>
+                  {team.specialties.map((specialty, idx) => (
+                    <span key={idx} style={styles.specialty}>{specialty}</span>
+                  ))}
+                </div>
               </Link>
             ))}
           </div>
@@ -526,7 +539,7 @@ export default function Teams() {
             <p style={styles.ctaDescription}>
               Ready to work with exceptional people on cutting-edge projects? Explore career opportunities at VIRUZVERSE.
             </p>
-            <div style={{ display: 'flex', gap: 'var(--spacing-sm)', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 'var(--spacing-lg)', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/careers" className="btn-primary">
                 View Open Positions
               </a>

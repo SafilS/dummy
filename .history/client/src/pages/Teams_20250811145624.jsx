@@ -219,36 +219,7 @@ export default function Teams() {
         }
       ]
     },
-    {
-      id: 'media-branding-team',
-      name: 'Media and Branding ',
-      description: 'Creative professionals building compelling brand experiences and visual storytelling',
-      icon: '🎨',
-      color: '#c34b6e',
-      memberCount: 8,
-      specialties: ['Brand Design', 'Video Production', 'Content Creation', 'Visual Identity'],
-      image: '/api/placeholder/400/200',
-      members: [
-        {
-          id: 10,
-          name: 'Dr. Aisha Ahmed',
-          role: 'Creative Director',
-          bio: 'Brand strategist and creative director with expertise in building memorable brand experiences across all touchpoints.',
-          avatar: '👩‍🎨',
-          email: 'aisha@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/aishaahmed',
-          skills: ['Brand Strategy', 'Visual Design', 'Video Editing', 'Adobe Creative Suite', 'Animation'],
-          experience: '10+ years',
-          education: 'MFA in Visual Communications',
-          achievements: [
-            'Rebranded 50+ companies',
-            'Created award-winning campaigns',
-            'Led creative team of 20+ professionals',
-            'Increased brand recognition by 300%'
-          ]
-        }
-      ]
-    },
+    
     {
       id: 'digital-marketing-team',
       name: 'Digital Marketing Team',
@@ -439,29 +410,22 @@ export default function Teams() {
     },
     ctaSection: {
       textAlign: 'center',
-      padding: 'var(--spacing-xl) var(--spacing-lg)',
-      background: 'rgba(255,255,255,0.03)',
-      borderRadius: 'var(--radius-lg)',
-      border: '1px solid rgba(255,255,255,0.1)',
-      margin: 'var(--spacing-2xl) 0',
-      backdropFilter: 'blur(10px)',
+      padding: 'var(--spacing-3xl) 0',
+      background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
+      borderRadius: 'var(--radius-xl)',
+      margin: 'var(--spacing-3xl) 0',
     },
     ctaTitle: {
-      fontSize: '24px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-sm)',
-      background: 'var(--gradient-primary)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text',
+      fontSize: '36px',
+      fontWeight: 700,
+      marginBottom: 'var(--spacing-md)',
     },
     ctaDescription: {
-      fontSize: '14px',
-      opacity: 0.8,
-      marginBottom: 'var(--spacing-md)',
-      maxWidth: '400px',
-      margin: '0 auto var(--spacing-md)',
-      lineHeight: 1.5,
+      fontSize: '18px',
+      opacity: 0.9,
+      marginBottom: 'var(--spacing-xl)',
+      maxWidth: '600px',
+      margin: '0 auto var(--spacing-xl)',
     }
   };
 
@@ -526,7 +490,7 @@ export default function Teams() {
             <p style={styles.ctaDescription}>
               Ready to work with exceptional people on cutting-edge projects? Explore career opportunities at VIRUZVERSE.
             </p>
-            <div style={{ display: 'flex', gap: 'var(--spacing-sm)', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 'var(--spacing-lg)', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/careers" className="btn-primary">
                 View Open Positions
               </a>
