@@ -48,9 +48,9 @@ export default function Solutions() {
   ];
 
   const styles = {
-    sectionTitle: {
-      fontSize: '48px',
-      fontWeight: 700,
+    pageHeader: {
+      padding: 'var(--spacing-3xl) 0 var(--spacing-2xl)',
+      paddingTop: '120px',
       textAlign: 'center',
       marginBottom: 'var(--spacing-2xl)',
     },

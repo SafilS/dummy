@@ -8,7 +8,7 @@ export default function Careers() {
       padding: 'var(--spacing-2xl) 0',
       textAlign: 'center',
       background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
-      marginTop: '80px',
+    paddingTop: '120px',
     },
     pageTitle: {
       fontSize: '48px',
