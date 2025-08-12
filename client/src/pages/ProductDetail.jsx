@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { apiGet } from '../lib/api';
@@ -26,21 +26,8 @@ const mockProduct = {
     "24/7 customer support"
   ],
   techStack: ["React Native", "Firebase", "Node.js", "MongoDB", "AWS"],
-  downloads: 15400,
-  users: 2300,
-  rating: 5,
   demoUrl: "https://demo.example.com",
-  repoUrl: "https://github.com/example/repo",
-  pricing: {
-    plan: "Professional",
-    price: "$29/month",
-    features: [
-      "Unlimited projects",
-      "Advanced analytics",
-      "Priority support",
-      "Custom integrations"
-    ]
-  }
+  repoUrl: "https://github.com/example/repo"
 };
 
 export default function ProductDetail() {
@@ -49,6 +36,11 @@ export default function ProductDetail() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  
+  // Touch/swipe state variables
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchEndX, setTouchEndX] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   const {
     data: apiProduct,
@@ -84,9 +76,51 @@ export default function ProductDetail() {
     product.category?.name === 'VR/3D'
   );
 
-  // Enhanced auto-slide functionality with swipe animation
+  // Swipe detection constants
+  const minSwipeDistance = 50;
+
+  // Touch event handlers for swipe functionality - Only left swipes allowed
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+    setTouchEndX(null);
+    setIsDragging(true);
+    setIsAutoPlaying(false);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    setTouchEndX(e.touches[0].clientX);
+    
+    const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+    if (deltaX > 10) {
+      e.preventDefault();
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX || !isDragging) {
+      setIsDragging(false);
+      return;
+    }
+
+    const distance = touchStartX - touchEndX;
+    const isLeftSwipe = distance > minSwipeDistance;
+
+    // Only handle left swipes (next image)
+    if (isLeftSwipe) {
+      handleNext();
+    }
+
+    setTouchStartX(null);
+    setTouchEndX(null);
+    setIsDragging(false);
+    
+    setTimeout(() => setIsAutoPlaying(true), 3000);
+  };
+
+  // Auto-slide only moves to next (left direction)
   useEffect(() => {
-    if (!product?.images || product.images.length <= 1 || !isAutoPlaying) return;
+    if (!product?.images || product.images.length <= 1 || !isAutoPlaying || isDragging) return;
 
     const interval = setInterval(() => {
       setIsTransitioning(true);
@@ -99,24 +133,13 @@ export default function ProductDetail() {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [product?.images, isAutoPlaying]);
+  }, [product?.images, isAutoPlaying, isDragging]);
 
-  // Reset selected image when product changes
   useEffect(() => {
     setSelectedImageIndex(0);
   }, [product?.id]);
 
-  const handlePrevious = () => {
-    if (!product?.images || isTransitioning) return;
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setSelectedImageIndex(prev =>
-        prev === 0 ? product.images.length - 1 : prev - 1
-      );
-      setIsTransitioning(false);
-    }, 150);
-  };
-
+  // Only next function needed for left-only movement
   const handleNext = () => {
     if (!product?.images || isTransitioning) return;
     setIsTransitioning(true);
@@ -166,51 +189,6 @@ export default function ProductDetail() {
       color: '#45b7d1',
       fontWeight: '600',
     },
-    errorContainer: {
-      textAlign: 'center',
-      padding: '4rem 2rem',
-      background: 'rgba(239, 68, 68, 0.05)',
-      borderRadius: '20px',
-      border: '1px solid rgba(239, 68, 68, 0.2)',
-      margin: '2rem 0',
-    },
-    errorTitle: {
-      fontSize: '2rem',
-      fontWeight: '700',
-      color: '#ef4444',
-      marginBottom: '1rem',
-    },
-    errorMessage: {
-      fontSize: '1.1rem',
-      opacity: 0.8,
-      marginBottom: '2rem',
-      color: 'rgba(255, 255, 255, 0.8)',
-    },
-    retryButton: {
-      padding: '1rem 2rem',
-      borderRadius: '30px',
-      border: '2px solid rgba(239, 68, 68, 0.3)',
-      background: 'linear-gradient(135deg, #ef4444, #dc2626)',
-      color: 'white',
-      cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      fontSize: '1rem',
-      fontWeight: '600',
-      marginRight: '1rem',
-    },
-    backButton: {
-      padding: '1rem 2rem',
-      borderRadius: '30px',
-      border: '2px solid rgba(255, 255, 255, 0.2)',
-      background: 'rgba(255, 255, 255, 0.1)',
-      color: 'white',
-      cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      fontSize: '1rem',
-      fontWeight: '600',
-      textDecoration: 'none',
-      display: 'inline-block',
-    },
     header: {
       textAlign: 'center',
       marginBottom: '3rem',
@@ -256,28 +234,30 @@ export default function ProductDetail() {
       margin: '0 auto',
       top: '2rem',
     },
-    // Phone styles (for mobile apps)
     phoneFrame: {
       position: 'relative',
       width: '350px',
-      height: '700px',
+      height: '750px',
       background: 'linear-gradient(145deg, #2a2a2a, #1a1a1a)',
       borderRadius: '55px',
-      padding: '15px',
-      border: '4px solid #0a0a0a',
+      padding: '8px', // **REDUCED: from 15px to 8px for thinner edges**
+      border: '2px solid #0a0a0a', // **REDUCED: from 4px to 2px for thinner frame**
       boxShadow: `
         0 30px 60px rgba(0,0,0,0.4),
-        inset 0 2px 0 rgba(255,255,255,0.1),
-        0 0 0 1px rgba(69,183,209,0.2)
+        inset 0 1px 0 rgba(255,255,255,0.1),
+        0 0 0 1px rgba(69,183,209,0.2),
+        0 0 60px rgba(219, 112, 147, 0.4),
+        0 0 120px rgba(186, 85, 211, 0.3)
       `,
       transition: 'all 0.3s ease',
+      animation: 'pinkPurpleGlow 4s ease-in-out infinite alternate',
     },
     phoneNotch: {
       position: 'absolute',
-      top: '15px',
+      top: '21px',
       left: '50%',
       transform: 'translateX(-50%)',
-      width: '140px',
+      width: '110px', // **REDUCED: from 140px to 110px for narrower dynamic island**
       height: '32px',
       background: 'linear-gradient(145deg, #0a0a0a, #1a1a1a)',
       borderRadius: '25px',
@@ -287,21 +267,22 @@ export default function ProductDetail() {
     phoneScreen: {
       width: '100%',
       height: '100%',
-      borderRadius: '42px',
+      borderRadius: '48px', // **ADJUSTED: Increased to maintain proportion with thinner padding**
       overflow: 'hidden',
       position: 'relative',
       background: '#000',
-      border: '2px solid #333',
+      border: '1px solid #333', // **REDUCED: from 2px to 1px**
       boxShadow: 'inset 0 0 20px rgba(0,0,0,0.5)',
+      touchAction: 'pan-y pinch-zoom',
+      userSelect: 'none',
     },
-    // Tablet styles (for VR/3D products)
     tabletFrame: {
       position: 'relative',
       width: '500px',
       height: '375px',
       background: 'linear-gradient(145deg, #2a2a2a, #1a1a1a)',
       borderRadius: '35px',
-      padding: '20px',
+      padding: '8px',
       border: '4px solid #0a0a0a',
       boxShadow: `
         0 30px 60px rgba(0,0,0,0.4),
@@ -309,6 +290,7 @@ export default function ProductDetail() {
         0 0 0 1px rgba(69,183,209,0.2)
       `,
       transition: 'all 0.3s ease',
+      animation: 'pinkPurpleGlow 4s ease-in-out infinite alternate',
     },
     tabletScreen: {
       width: '100%',
@@ -319,8 +301,9 @@ export default function ProductDetail() {
       background: '#000',
       border: '2px solid #333',
       boxShadow: 'inset 0 0 20px rgba(0,0,0,0.5)',
+      touchAction: 'pan-y pinch-zoom',
+      userSelect: 'none',
     },
-    // Home button for tablet
     tabletHomeButton: {
       position: 'absolute',
       bottom: '8px',
@@ -341,23 +324,24 @@ export default function ProductDetail() {
       top: 0,
       left: 0,
       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+      pointerEvents: 'none',
     },
     slideIndicators: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      gap: '1rem',
-      marginTop: '2rem',
-      padding: '1.5rem',
+      gap: '0.75rem',
+      marginTop: '1.5rem',
+      padding: '1rem',
       background: 'rgba(255,255,255,0.08)',
-      borderRadius: '30px',
+      borderRadius: '25px',
       border: '1px solid rgba(255,255,255,0.15)',
       backdropFilter: 'blur(15px)',
       boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
     },
     dot: {
-      width: '16px',
-      height: '16px',
+      width: '12px',
+      height: '12px',
       borderRadius: '50%',
       background: 'rgba(255,255,255,0.3)',
       cursor: 'pointer',
@@ -368,13 +352,13 @@ export default function ProductDetail() {
     },
     dotActive: {
       background: 'linear-gradient(135deg, #45b7d1, #6e4bc3)',
-      transform: 'scale(1.4)',
+      transform: 'scale(1.3)',
       boxShadow: '0 4px 15px rgba(69, 183, 209, 0.5)',
       border: '2px solid rgba(255,255,255,0.3)',
     },
     navButton: {
-      width: '44px',
-      height: '44px',
+      width: '32px',
+      height: '32px',
       borderRadius: '50%',
       background: 'linear-gradient(135deg, rgba(163,75,110,0.9), rgba(110,75,195,0.9))',
       border: '2px solid rgba(255,255,255,0.2)',
@@ -383,16 +367,16 @@ export default function ProductDetail() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      fontSize: '16px',
+      fontSize: '12px',
       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-      boxShadow: '0 6px 20px rgba(163,75,110,0.4)',
+      boxShadow: '0 4px 15px rgba(163,75,110,0.4)',
       backdropFilter: 'blur(10px)',
     },
     divider: {
-      width: '2px',
-      height: '30px',
+      width: '1px',
+      height: '24px',
       background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.3), transparent)',
-      margin: '0 0.5rem',
+      margin: '0 0.25rem',
       borderRadius: '1px',
     },
     progressBar: {
@@ -464,41 +448,6 @@ export default function ProductDetail() {
       border: '2px solid transparent',
       boxShadow: '0 6px 25px rgba(163,75,110,0.4)',
     },
-    metricsContainer: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
-      gap: '2rem',
-      marginBottom: '2.5rem',
-      padding: '2rem',
-      background: 'rgba(255,255,255,0.05)',
-      borderRadius: '20px',
-      border: '1px solid rgba(255,255,255,0.1)',
-      backdropFilter: 'blur(10px)',
-    },
-    metric: {
-      textAlign: 'center',
-      padding: '1rem',
-      borderRadius: '15px',
-      background: 'rgba(255,255,255,0.03)',
-      border: '1px solid rgba(255,255,255,0.08)',
-      transition: 'all 0.3s ease',
-    },
-    metricValue: {
-      fontSize: '2.5rem',
-      fontWeight: '800',
-      background: 'linear-gradient(135deg, #45b7d1, #6e4bc3)',
-      backgroundClip: 'text',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      display: 'block',
-      marginBottom: '0.5rem',
-    },
-    metricLabel: {
-      fontSize: '1rem',
-      opacity: 0.8,
-      fontWeight: '500',
-      color: 'rgba(255,255,255,0.8)',
-    },
     featuresSection: {
       marginBottom: '2.5rem',
       padding: '2rem',
@@ -539,50 +488,24 @@ export default function ProductDetail() {
       color: '#45b7d1',
       flexShrink: 0,
       filter: 'drop-shadow(0 2px 4px rgba(69,183,209,0.3))',
-    },
-    techStack: {
-      display: 'flex',
-      gap: '0.75rem',
-      flexWrap: 'wrap',
-    },
-    techChip: {
-      padding: '0.75rem 1.5rem',
-      background: 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))',
-      borderRadius: '25px',
-      fontSize: '0.9rem',
-      fontWeight: '500',
-      border: '1px solid rgba(255,255,255,0.2)',
-      backdropFilter: 'blur(10px)',
-      transition: 'all 0.3s ease',
-      color: 'rgba(255,255,255,0.9)',
     }
   };
 
   // Define hover effects object
   const hoverEffects = {
     navButtonHover: {
-      transform: 'scale(1.15) rotate(5deg)',
-      boxShadow: '0 8px 25px rgba(163,75,110,0.6)',
+      transform: 'scale(1.1) rotate(5deg)',
+      boxShadow: '0 6px 20px rgba(163,75,110,0.6)',
     },
     buttonHover: {
       transform: 'translateY(-2px)',
       boxShadow: '0 8px 25px rgba(163,75,110,0.6)',
       background: 'linear-gradient(135deg, #b85579, #7d56d4)',
     },
-    metricHover: {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 10px 30px rgba(69,183,209,0.3)',
-      borderColor: 'rgba(69,183,209,0.2)',
-    },
     featureItemHover: {
       transform: 'translateX(10px)',
       background: 'rgba(255,255,255,0.08)',
       borderColor: 'rgba(69,183,209,0.3)',
-    },
-    techChipHover: {
-      transform: 'translateY(-3px)',
-      background: 'linear-gradient(135deg, rgba(69,183,209,0.2), rgba(110,75,195,0.2))',
-      borderColor: 'rgba(69,183,209,0.4)',
     }
   };
 
@@ -622,22 +545,27 @@ export default function ProductDetail() {
   // Render device frame based on product type
   const renderDeviceFrame = () => {
     if (isVRProduct) {
-      // Tablet layout for VR/3D products
       return (
         <div style={styles.tabletFrame} className="tablet-frame">
           <div style={styles.tabletHomeButton}></div>
-          <div style={styles.tabletScreen}>
+          <div 
+            style={styles.tabletScreen}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {product.images && product.images.length > 0 ? (
               <>
                 {product.images.map((image, index) => {
                   let transform = 'translateX(100%)';
                   let opacity = 0;
 
+                  // Only left-moving animation
                   if (index === selectedImageIndex) {
                     transform = isTransitioning ? 'translateX(-100%)' : 'translateX(0%)';
                     opacity = isTransitioning ? 0 : 1;
-                  } else if (index === (selectedImageIndex - 1 + product.images.length) % product.images.length) {
-                    transform = isTransitioning ? 'translateX(0%)' : 'translateX(-100%)';
+                  } else if (index === (selectedImageIndex + 1) % product.images.length) {
+                    transform = isTransitioning ? 'translateX(0%)' : 'translateX(100%)';
                     opacity = isTransitioning ? 1 : 0;
                   }
 
@@ -682,22 +610,27 @@ export default function ProductDetail() {
         </div>
       );
     } else {
-      // Phone layout for mobile apps
       return (
         <div style={styles.phoneFrame} className="phone-frame">
           <div style={styles.phoneNotch}></div>
-          <div style={styles.phoneScreen}>
+          <div 
+            style={styles.phoneScreen}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {product.images && product.images.length > 0 ? (
               <>
                 {product.images.map((image, index) => {
                   let transform = 'translateX(100%)';
                   let opacity = 0;
 
+                  // Only left-moving animation
                   if (index === selectedImageIndex) {
                     transform = isTransitioning ? 'translateX(-100%)' : 'translateX(0%)';
                     opacity = isTransitioning ? 0 : 1;
-                  } else if (index === (selectedImageIndex - 1 + product.images.length) % product.images.length) {
-                    transform = isTransitioning ? 'translateX(0%)' : 'translateX(-100%)';
+                  } else if (index === (selectedImageIndex + 1) % product.images.length) {
+                    transform = isTransitioning ? 'translateX(0%)' : 'translateX(100%)';
                     opacity = isTransitioning ? 1 : 0;
                   }
 
@@ -763,6 +696,25 @@ export default function ProductDetail() {
             100% { opacity: 0.6; }
           }
 
+          @keyframes pinkPurpleGlow {
+            0% { 
+              box-shadow: 
+                0 30px 60px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                0 0 0 1px rgba(69,183,209,0.2),
+                0 0 60px rgba(219, 112, 147, 0.3),
+                0 0 120px rgba(186, 85, 211, 0.2);
+            }
+            100% { 
+              box-shadow: 
+                0 30px 60px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                0 0 0 1px rgba(69,183,209,0.2),
+                0 0 80px rgba(219, 112, 147, 0.6),
+                0 0 160px rgba(186, 85, 211, 0.4);
+            }
+          }
+
           @media (max-width: 768px) {
             .main-layout {
               grid-template-columns: 1fr !important;
@@ -775,10 +727,6 @@ export default function ProductDetail() {
             
             .button-group {
               flex-direction: column !important;
-            }
-            
-            .metrics-container {
-              grid-template-columns: 1fr !important;
             }
 
             .phone-frame {
@@ -802,7 +750,7 @@ export default function ProductDetail() {
       </style>
 
       <div style={styles.container}>
-        {/* Enhanced Header */}
+        {/* Header */}
         <div style={styles.header}>
           <div style={styles.headerGlow}></div>
           <h1 style={styles.headerTitle}>Product Showcase</h1>
@@ -813,31 +761,17 @@ export default function ProductDetail() {
 
         {/* Main Layout */}
         <div style={styles.mainLayout} className="main-layout">
-          {/* Device Display Section (Phone or Tablet based on product type) */}
+          {/* Device Display Section */}
           <div style={styles.deviceContainer} className="device-container">
             {renderDeviceFrame()}
 
-            {/* Slide Controls */}
+            {/* Slide Controls - Only next button and dots */}
             {product.images && product.images.length > 1 && (
               <div
                 style={styles.slideIndicators}
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}
               >
-                <button
-                  style={styles.navButton}
-                  onClick={handlePrevious}
-                  onMouseOver={(e) => Object.assign(e.target.style, hoverEffects.navButtonHover)}
-                  onMouseOut={(e) => Object.assign(e.target.style, { transform: 'scale(1) rotate(0deg)', boxShadow: '0 6px 20px rgba(163,75,110,0.4)' })}
-                  title="Previous image"
-                  type="button"
-                  disabled={isTransitioning}
-                >
-                  ◀
-                </button>
-
-                <div style={styles.divider}></div>
-
                 {product.images.map((_, index) => (
                   <button
                     key={index}
@@ -860,7 +794,7 @@ export default function ProductDetail() {
                   style={styles.navButton}
                   onClick={handleNext}
                   onMouseOver={(e) => Object.assign(e.target.style, hoverEffects.navButtonHover)}
-                  onMouseOut={(e) => Object.assign(e.target.style, { transform: 'scale(1) rotate(0deg)', boxShadow: '0 6px 20px rgba(163,75,110,0.4)' })}
+                  onMouseOut={(e) => Object.assign(e.target.style, { transform: 'scale(1) rotate(0deg)', boxShadow: '0 4px 15px rgba(163,75,110,0.4)' })}
                   title="Next image"
                   type="button"
                   disabled={isTransitioning}
@@ -871,7 +805,7 @@ export default function ProductDetail() {
             )}
           </div>
 
-          {/* Enhanced Product Details Section */}
+          {/* Product Details Section */}
           <div style={styles.productDetails}>
             <div>
               <div style={styles.categoryBadge}>
@@ -883,7 +817,7 @@ export default function ProductDetail() {
               </p>
             </div>
 
-            {/* Enhanced Action Buttons */}
+            {/* Action Buttons */}
             <div style={styles.buttonGroup} className="button-group">
               <button
                 style={{ ...styles.button, ...styles.buttonPrimary }}
@@ -925,41 +859,7 @@ export default function ProductDetail() {
               )}
             </div>
 
-            {/* Enhanced Metrics */}
-            <div style={styles.metricsContainer} className="metrics-container">
-              <div
-                style={styles.metric}
-                onMouseOver={(e) => Object.assign(e.target.style, hoverEffects.metricHover)}
-                onMouseOut={(e) => Object.assign(e.target.style, { transform: 'translateY(0)', background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.08)' })}
-              > 
-                <span style={styles.metricValue}>
-                  {product.downloads?.toLocaleString() || '15.4K'}
-                </span>
-                <div style={styles.metricLabel}>Downloads</div>
-              </div>
-              <div
-                style={styles.metric}
-                onMouseOver={(e) => Object.assign(e.target.style, hoverEffects.metricHover)}
-                onMouseOut={(e) => Object.assign(e.target.style, { transform: 'translateY(0)', background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.08)' })}
-              >
-                <span style={styles.metricValue}>
-                  {product.users?.toLocaleString() || '2.3K'}
-                </span>
-                <div style={styles.metricLabel}>Active Users</div>
-              </div>
-              <div
-                style={styles.metric}
-                onMouseOver={(e) => Object.assign(e.target.style, hoverEffects.metricHover)}
-                onMouseOut={(e) => Object.assign(e.target.style, { transform: 'translateY(0)', background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.08)' })}
-              >
-                <span style={styles.metricValue}>
-                  {'★'.repeat(product.rating || 5)}
-                </span>
-                <div style={styles.metricLabel}>Rating</div>
-              </div>
-            </div>
-
-            {/* Enhanced Key Features */}
+            {/* Key Features */}
             {product.features && product.features.length > 0 && (
               <div style={styles.featuresSection}>
                 <h3 style={styles.sectionTitle}>✨ Key Features</h3>
@@ -987,7 +887,7 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* Enhanced Back Button */}
+        {/* Back Button */}
         <div style={{ textAlign: 'center', marginTop: '4rem' }}>
           <Link href="/products">
             <button
