@@ -20,13 +20,6 @@ import priyaImg from '../assests/Team members/priya.jpg';
 import sankarImg from '../assests/Team members/sankar.jpg';
 import stefaniaImg from '../assests/Team members/stefania.jpg';
 import vibithabkImg from '../assests/Team members/vibitha bk.jpg';
-import chandraPriyanImg from '../assests/Team members/chandra priyan.jpg';
-import gowthamImg from '../assests/Team members/gowtham.jpg';
-import jayaSudhanImg from '../assests/Team members/jaya sudhan.png';
-import hrithickImg from '../assests/Team members/hrithick.jpg';
-import nivethaImg from '../assests/Team members/nivetha.jpg';
-import susindharanImg from '../assests/Team members/susindharan.jpg';
-import jithendarImg from '../assests/Team members/jithendar.png';
 
 export default function Teams() {
   const [match, params] = useRoute('/teams/:teamId');
@@ -284,9 +277,9 @@ export default function Teams() {
           name: 'Safil',
           role: 'Senior FullStack Developer',
           bio: 'Full-stack expert with extensive experience in modern web technologies and scalable application architecture.',
-          avatar: '👨‍💻',
+          avatar: safil,
           email: 'safil@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/safil',
+          linkedin: 'https://linkedin.com/in/mohammedsafil039',
           skills: ['React', 'Node.js', 'PostgreSQL', 'TypeScript', 'GraphQL'],
           experience: '5+ years',
           education: 'BS in Computer Science',
@@ -320,7 +313,7 @@ export default function Teams() {
           name: 'Nivetha',
           role: 'Full Stack Developer',
           bio: 'Passionate developer focused on creating efficient, user-friendly applications with modern technologies.',
-          avatar: nivethaImg,
+          avatar: '👩‍💻',
           email: 'nivetha@viruzverse.com',
           linkedin: 'https://linkedin.com/in/nivetha',
           skills: ['React', 'Python', 'Django', 'JavaScript', 'MySQL'],
