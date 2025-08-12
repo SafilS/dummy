@@ -20,6 +20,14 @@ import priyaImg from '../assests/Team members/priya.jpg';
 import sankarImg from '../assests/Team members/sankar.jpg';
 import stefaniaImg from '../assests/Team members/stefania.jpg';
 import vibithabkImg from '../assests/Team members/vibitha bk.jpg';
+import hrithickImg from '../assests/Team members/hrithick.jpg';
+import chandraPriyanImg from '../assests/Team members/chandra priyan.jpg';
+import gowthamImg from '../assests/Team members/gowtham.jpg';
+import jayaSudhanImg from '../assests/Team members/jaya sudhan.png';
+import nivethaImg from '../assests/Team members/nivetha.png';
+import susindharanImg from '../assests/Team members/susindharan.jpg';
+import jithendarImg from '../assests/Team members/jithendar.png';
+import safil from '../assests/Team members/safil.jpeg';
 
 export default function Teams() {
   const [match, params] = useRoute('/teams/:teamId');
@@ -313,7 +321,7 @@ export default function Teams() {
           name: 'Nivetha',
           role: 'Full Stack Developer',
           bio: 'Passionate developer focused on creating efficient, user-friendly applications with modern technologies.',
-          avatar: '👩‍💻',
+          avatar: nivethaImg,
           email: 'nivetha@viruzverse.com',
           linkedin: 'https://linkedin.com/in/nivetha',
           skills: ['React', 'Python', 'Django', 'JavaScript', 'MySQL'],
