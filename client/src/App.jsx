@@ -12,7 +12,7 @@ import Home from "./pages/Home";
 import Solutions from "./pages/Solutions";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
-import Features from "./pages/Features";
+
 import About from "./pages/About";
 import Mission from "./pages/Mission";
 import Teams from "./pages/Teams";
@@ -29,7 +29,6 @@ function Router() {
         <Route path="/solutions" component={Solutions} />
         <Route path="/products" component={Products} />
         <Route path="/products/:slug" component={ProductDetail} />
-        <Route path="/features" component={Features} />
         <Route path="/about" component={About} />
         <Route path="/mission" component={Mission} />
         <Route path="/teams" component={Teams} />

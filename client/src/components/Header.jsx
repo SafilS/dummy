@@ -13,7 +13,6 @@ export default function Header() {
     { path: '/', label: 'Home' },
     { path: '/solutions', label: 'Solutions' },
     { path: '/products', label: 'Products' },
-    { path: '/features', label: 'Features' },
     { path: '/careers', label: 'Careers' },
   ];
 
