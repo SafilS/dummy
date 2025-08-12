@@ -35,77 +35,65 @@ export default function Contact() {
   };
 
   const styles = {
+    pageContainer: {
+      backgroundColor: '#f9fafb',
+      color: '#1f2937',
+    },
+    header: {
+      background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${contactBg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      padding: '6rem 1.5rem',
+      textAlign: 'center',
+      color: 'white',
+    },
+    title: {
+      fontSize: '3rem',
+      fontWeight: 'bold',
+      marginBottom: '1rem',
+    },
+    subtitle: {
+      fontSize: '1.2rem',
+      maxWidth: '600px',
+      margin: '0 auto',
+      opacity: 0.9,
+    },
     container: {
       maxWidth: '1200px',
       margin: '0 auto',
-      padding: '0 1.5rem',
-    },
-    pageHeader: {
-      padding: 'var(--spacing-2xl) 0',
-      textAlign: 'center',
-      background: `linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.6) 100%), url(${contactBg})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      paddingTop: '120px',
-      position: 'relative',
-      overflow: 'hidden',
-      minHeight: '40vh',
-      display: 'flex',
-      alignItems: 'center',
-      marginBottom: '4rem',
-    },
-    pageTitle: {
-      fontSize: 'clamp(36px, 6vw, 56px)',
-      fontWeight: 700,
-      marginBottom: '1rem',
-      color: '#ffffff',
-      textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
-      zIndex: 2,
-      position: 'relative',
-    },
-    pageSubtitle: {
-      fontSize: '18px',
-      color: '#ffffff',
-      opacity: 0.95,
-      maxWidth: '700px',
-      margin: '0 auto',
-      lineHeight: 1.6,
-      textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
-      zIndex: 2,
-      position: 'relative',
     },
     contactGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+      gridTemplateColumns: '1fr',
       gap: '2rem',
-      marginBottom: '4rem',
+      '@media (min-width: 1024px)': {
+        gridTemplateColumns: '1fr 1.5fr',
+      },
     },
     contactInfo: {
+      backgroundColor: 'white',
       padding: '2rem',
-      backgroundColor: '#f8f9fa',
       borderRadius: '12px',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
+      boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)',
     },
     sectionTitle: {
       fontSize: '1.5rem',
-      fontWeight: 600,
+      fontWeight: '600',
       marginBottom: '1.5rem',
       color: '#111827',
+      borderBottom: '2px solid #e5e7eb',
+      paddingBottom: '0.5rem',
     },
     contactItem: {
       display: 'flex',
-      alignItems: 'flex-start',
+      alignItems: 'center',
       marginBottom: '1.5rem',
-      '&:last-child': {
-        marginBottom: 0,
-      },
     },
     contactIcon: {
-      backgroundColor: '#4f46e5',
+      backgroundColor: 'var(--primary-color, #6366f1)',
       color: 'white',
-      width: '40px',
-      height: '40px',
+      width: '44px',
+      height: '44px',
       borderRadius: '50%',
       display: 'flex',
       alignItems: 'center',
@@ -113,9 +101,7 @@ export default function Contact() {
       marginRight: '1rem',
       flexShrink: 0,
     },
-    contactText: {
-      flex: 1,
-    },
+    contactText: {},
     contactLabel: {
       display: 'block',
       fontSize: '0.875rem',
@@ -129,16 +115,12 @@ export default function Contact() {
       textDecoration: 'none',
       transition: 'color 0.2s',
       fontWeight: 500,
-      '&:hover': {
-        color: '#4f46e5',
-      },
     },
     formContainer: {
       backgroundColor: 'white',
       padding: '2rem',
       borderRadius: '12px',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
-      border: '1px solid #e5e7eb',
+      boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)',
     },
     formGroup: {
       marginBottom: '1.5rem',
@@ -158,16 +140,10 @@ export default function Contact() {
       borderRadius: '8px',
       backgroundColor: '#f9fafb',
       transition: 'all 0.2s',
-      '&:focus': {
-        outline: 'none',
-        borderColor: '#4f46e5',
-        boxShadow: '0 0 0 3px rgba(79, 70, 229, 0.1)',
-        backgroundColor: 'white',
-      },
     },
     textarea: {
       width: '100%',
-      minHeight: '150px',
+      minHeight: '120px',
       padding: '0.75rem 1rem',
       fontSize: '1rem',
       border: '1px solid #d1d5db',
@@ -175,62 +151,40 @@ export default function Contact() {
       backgroundColor: '#f9fafb',
       resize: 'vertical',
       transition: 'all 0.2s',
-      '&:focus': {
-        outline: 'none',
-        borderColor: '#4f46e5',
-        boxShadow: '0 0 0 3px rgba(79, 70, 229, 0.1)',
-        backgroundColor: 'white',
-      },
     },
     submitButton: {
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#4f46e5',
+      backgroundColor: 'var(--primary-color, #6366f1)',
       color: 'white',
-      padding: '0.75rem 1.5rem',
+      padding: '0.75rem 2rem',
       fontSize: '1rem',
       fontWeight: 500,
       borderRadius: '8px',
       border: 'none',
       cursor: 'pointer',
       transition: 'all 0.2s',
-      '&:hover': {
-        backgroundColor: '#4338ca',
-        transform: 'translateY(-1px)',
-      },
-      '&:active': {
-        transform: 'translateY(0)',
-      },
-      '&:disabled': {
-        opacity: 0.7,
-        cursor: 'not-allowed',
-      },
+      width: '100%',
     },
     successMessage: {
-      backgroundColor: '#ecfdf5',
+      backgroundColor: '#d1fae5',
       color: '#065f46',
       padding: '1rem',
       borderRadius: '8px',
-      marginBottom: '1.5rem',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.5rem',
+      textAlign: 'center',
     },
   };
 
   return (
-    <>
-      {/* Page Header */}
-      <header style={styles.pageHeader}>
-        <div style={styles.container}>
-          <h1 style={styles.pageTitle}>Contact Us</h1>
-          <p style={styles.pageSubtitle}>
-            Have questions or want to discuss a project? We'd love to hear from you. 
-            Fill out the form below or reach out using the contact information provided.
-          </p>
-        </div>
-      </header>
+    <div style={styles.pageContainer}>
+      <div style={styles.header}>
+        <h1 style={styles.title}>Get in Touch</h1>
+        <p style={styles.subtitle}>
+          Have questions or want to discuss a project? We'd love to hear from you. 
+          Fill out the form below or reach out using the contact information provided.
+        </p>
+      </div>
 
       {/* Main Content */}
       <main style={{ ...styles.container, padding: '0 1.5rem 4rem' }}>
@@ -414,6 +368,6 @@ export default function Contact() {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 }

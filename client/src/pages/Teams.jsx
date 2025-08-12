@@ -11,6 +11,18 @@ import fullStackTeamImg from '../assests/fullstack team.jpg';
 import mediaBrandingTeamImg from '../assests/media and branding team.jpg';
 import digitalMarketingTeamImg from '../assests/digital marketing team.jpeg';
 
+// Import member images
+import praneshImg from '../assests/Team members/pranesh.jpg';
+import adityaImg from '../assests/Team members/aditya.jpg';
+import pradeepImg from '../assests/Team members/pradeep.jpg';
+import prishaImg from '../assests/Team members/prisha.jpg';
+import priyaImg from '../assests/Team members/priya.jpg';
+import sankarImg from '../assests/Team members/sankar.jpg';
+import stefaniaImg from '../assests/Team members/stefania.jpg';
+import vibithabkImg from '../assests/Team members/vibitha bk.jpg';
+import safil from '../assests/Team members/safil.jpeg';
+import nivetha from '../assests/Team members/nivetha.png';
+
 export default function Teams() {
   const [match, params] = useRoute('/teams/:teamId');
   const [hoveredTeam, setHoveredTeam] = useState(null);
@@ -20,7 +32,7 @@ export default function Teams() {
     {
       id: 'vr-team',
       name: 'VR Team',
-      description: 'Creative technologists crafting immersive virtual reality experiences using Unity, 3D modeling, and cutting-edge VR technologies to deliver stunning virtual worlds.',
+      description: 'Our VR specialists are pioneering the future of immersive technology, creating breathtaking virtual worlds that transform how people learn, work, and interact. Using advanced Unity development, sophisticated 3D modeling techniques, and cutting-edge VR hardware integration, we build experiences that blur the line between reality and imagination. From educational simulations that make learning engaging to training environments that prepare professionals for real-world challenges, our team delivers VR solutions that captivate users and drive meaningful outcomes.',
       icon: '🥽',
       color: '#6e4bc3',
       memberCount: 3,
@@ -86,7 +98,7 @@ export default function Teams() {
     {
       id: 'cloud-team',
       name: 'Cloud Team',
-      description: 'Cloud infrastructure specialists architecting scalable, secure, and cost-effective cloud solutions using cutting-edge technologies like AWS, Azure, and modern DevOps practices.',
+      description: 'Our cloud architects and DevOps engineers are the backbone of modern digital infrastructure, designing and implementing enterprise-grade cloud solutions that scale seamlessly with business growth. Specializing in AWS, Azure, and Google Cloud platforms, we create robust, secure, and cost-optimized environments that support millions of users. Our expertise spans from containerization with Kubernetes and Docker to advanced CI/CD pipelines, infrastructure as code, and comprehensive monitoring solutions. We ensure 99.99% uptime while reducing operational costs and enhancing security posture for organizations worldwide.',
       icon: '☁️',
       color: '#a34b6e',
       memberCount: 4,
@@ -98,7 +110,7 @@ export default function Teams() {
           name: 'Pranesh Kumar',
           role: 'Cloud Solutions Architect',
           bio: 'Senior cloud architect specializing in designing and implementing scalable cloud infrastructures. Expert in multi-cloud environments and enterprise-grade solutions.',
-          avatar: '👨‍💻',
+          avatar: praneshImg,
           email: 'pranesh@viruzverse.com',
           linkedin: 'https://linkedin.com/in/praneshkumar',
           skills: ['AWS', 'Azure', 'Cloud Architecture', 'Terraform', 'Kubernetes', 'Docker'],
@@ -134,7 +146,7 @@ export default function Teams() {
           name: 'Priya',
           role: 'Cloud Security Engineer',
           bio: 'Cloud security specialist ensuring robust security measures across cloud environments. Expert in compliance, threat detection, and security automation.',
-          avatar: '👩‍💼',
+          avatar: priyaImg,
           email: 'priya@viruzverse.com',
           linkedin: 'https://linkedin.com/in/priya-cloud',
           skills: ['Cloud Security', 'AWS Security', 'Compliance', 'Identity Management', 'Threat Detection'],
@@ -152,7 +164,7 @@ export default function Teams() {
           name: 'Vibitha BK',
           role: 'Cloud Solutions Architect',
           bio: 'Senior cloud architect specializing in designing and implementing scalable cloud infrastructures. Expert in multi-cloud environments and enterprise-grade solutions.',
-          avatar: '👩‍💻',
+          avatar: vibithabkImg,
           email: 'vibithabkviruzverse.com',
           linkedin: 'https://linkedin.com/in/praneshkumar',
           skills: ['AWS', 'Azure', 'Cloud Architecture', 'Terraform', 'Kubernetes', 'Docker'],
@@ -171,7 +183,7 @@ export default function Teams() {
           name: 'Prisha',
           role: 'Cloud Data Engineer',
           bio: 'Data engineer specializing in cloud-native data pipelines and analytics. Expert in building scalable data architectures using modern cloud services.',
-          avatar: '👩‍💻',
+          avatar: prishaImg,
           email: 'prisha@viruzverse.com',
           linkedin: 'https://linkedin.com/in/prisha-data',
           skills: ['AWS Data Services', 'Apache Spark', 'Data Pipeline', 'BigQuery', 'Snowflake', 'Python'],
@@ -188,48 +200,66 @@ export default function Teams() {
     },
     {
       id: 'application-dev',
-      name: 'Application Dev Team',
-      description: 'Expert developers creating innovative mobile and desktop applications',
+      name: 'App Development ',
+      description: 'Our mobile and application development experts create powerful, user-centric applications that connect people and businesses across all platforms. From native iOS and Android development to cross-platform solutions using React Native and Flutter, we build apps that combine stunning design with robust functionality. Our team specializes in creating seamless user experiences, integrating complex backend systems, implementing real-time features, and ensuring optimal performance across devices. Whether developing consumer apps with millions of downloads or enterprise solutions for specific business needs, we deliver applications that users love and businesses depend on.',
       icon: '📱',
       color: '#45b7d1',
-      memberCount: 10,
-      specialties: ['Mobile Development', 'Cross-platform', 'Native Apps', 'UI/UX'],
+      memberCount: 3,
+      specialties: ['Mobile Development', 'React Native', 'Flutter', 'Cross-platform', 'Native Apps', 'API Integration'],
       image: '/api/placeholder/400/200',
       members: [
         {
-          id: 7,
-          name: 'David Kim',
-          role: 'VR/AR Lead Developer',
-          bio: 'VR/AR specialist with expertise in Unity, Unreal Engine, and immersive experience design.',
-          avatar: '👨‍🎨',
-          email: 'david@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/davidkim',
-          skills: ['Unity 3D', 'Unreal Engine', 'C#', 'Blender', 'VR/AR SDKs'],
-          experience: '9+ years',
-          education: 'MS in Computer Graphics',
+          id: 201,
+          name: 'Sarvesh',
+          role: 'Senior Mobile App Developer',
+          bio: 'Experienced mobile app developer specializing in cross-platform solutions and native iOS/Android development. Expert in creating scalable and user-friendly mobile applications.',
+          avatar: '👨‍💻',
+          email: 'sarvesh@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/sarvesh-mobile',
+          skills: ['React Native', 'Flutter', 'iOS Development', 'Android Development', 'TypeScript', 'Firebase'],
+          experience: '5+ years',
+          education: 'BS in Computer Science',
           achievements: [
-            'Developed award-winning VR training applications',
-            'Created immersive experiences for 100+ clients',
-            'Optimized VR applications for mobile platforms',
-            'Published 15+ VR/AR research papers'
+            'Developed 25+ mobile applications',
+            'Built apps with 1M+ downloads on app stores',
+            'Reduced app development time by 40% using cross-platform frameworks',
+            'Led mobile app architecture for enterprise clients'
           ]
         },
         {
-          id: 8,
-          name: 'Maya Patel',
-          role: '3D Artist & Designer',
-          bio: '3D artist and designer creating stunning visual experiences and immersive environments.',
-          avatar: '👩‍🎨',
-          email: 'maya@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/mayapatel',
-          skills: ['3D Modeling', 'Texturing', 'Animation', 'Blender', 'Maya'],
-          experience: '6+ years',
-          education: 'BFA in 3D Animation',
+          id: 202,
+          name: 'Sankar',
+          role: 'Full-Stack App Developer',
+          bio: 'Full-stack developer focused on end-to-end mobile and web application development. Passionate about creating seamless user experiences across all platforms.',
+          avatar: sankarImg,
+          email: 'sankar@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/sankar-fullstack',
+          skills: ['React Native', 'Node.js', 'MongoDB', 'REST APIs', 'GraphQL', 'AWS'],
+          experience: '4+ years',
+          education: 'BE in Information Technology',
           achievements: [
-            'Created 200+ high-quality 3D assets',
-            'Designed immersive environments for education',
-            'Won 3 awards for VR environment design',
-            'Collaborated on Hollywood VFX projects'
+            'Built complete app ecosystems with backend services',
+            'Developed real-time messaging applications',
+            'Optimized app performance for 50% faster load times',
+            'Created reusable component libraries'
+          ]
+        },
+        {
+          id: 203,
+          name: 'Pradeep',
+          role: 'UI/UX App Designer & Developer',
+          bio: 'Designer-developer hybrid specializing in mobile app UI/UX and frontend development. Creates intuitive and visually appealing mobile experiences.',
+          avatar: pradeepImg,
+          email: 'pradeep@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/pradeep-designer',
+          skills: ['UI/UX Design', 'Flutter', 'Figma', 'Adobe XD', 'React Native', 'Animation'],
+          experience: '3+ years',
+          education: 'Bachelor in Design',
+          achievements: [
+            'Designed user interfaces for 30+ mobile apps',
+            'Improved user engagement by 60% through design optimization',
+            'Created design systems for consistent app experiences',
+            'Won 2 awards for mobile app design excellence'
           ]
         }
       ]
@@ -237,29 +267,65 @@ export default function Teams() {
     {
       id: 'fullstack-team',
       name: 'FullStack Team',
-      description: 'Versatile developers mastering both frontend and backend technologies',
+      description: 'Our full-stack developers are the Swiss Army knives of software development, seamlessly bridging frontend elegance with backend power. Masters of modern web technologies including React, Node.js, Python, and cloud platforms, they architect complete digital solutions from database design to user interface. With expertise in microservices architecture, API development, real-time applications, and scalable system design, our full-stack team builds end-to-end solutions that handle everything from startup MVPs to enterprise-scale applications serving millions of users.',
       icon: '💻',
       color: '#4bc36e',
-      memberCount: 12,
+      memberCount: 3,
       specialties: ['React', 'Node.js', 'Database Design', 'API Development'],
       image: '/api/placeholder/400/200',
       members: [
         {
           id: 9,
-          name: 'James Wilson',
+          name: 'Safil',
           role: 'Senior FullStack Developer',
           bio: 'Full-stack expert with extensive experience in modern web technologies and scalable application architecture.',
-          avatar: '👨‍💻',
-          email: 'james@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/jameswilson',
+          avatar: safil,
+          email: 'safil@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/mohammedsafil039',
           skills: ['React', 'Node.js', 'PostgreSQL', 'TypeScript', 'GraphQL'],
-          experience: '11+ years',
-          education: 'MS in Software Engineering',
+          experience: '5+ years',
+          education: 'BS in Computer Science',
           achievements: [
-            'Built 20+ production applications',
-            'Reduced development time by 40%',
-            'Led team of 15+ developers',
-            'Architected microservices handling millions of requests'
+            'Built 15+ production applications',
+            'Reduced development time by 35%',
+            'Led full-stack development projects',
+            'Architected scalable web applications'
+          ]
+        },
+        {
+          id: 10,
+          name: 'Steffania',
+          role: 'Full Stack Developer',
+          bio: 'Versatile developer skilled in both frontend and backend technologies, creating seamless user experiences.',
+          avatar: stefaniaImg,
+          email: 'steffania@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/steffania',
+          skills: ['React', 'Node.js', 'MongoDB', 'Express.js', 'AWS'],
+          experience: '3+ years',
+          education: 'BE in Information Technology',
+          achievements: [
+            'Developed 10+ web applications',
+            'Improved application performance by 40%',
+            'Built responsive user interfaces',
+            'Integrated complex backend systems'
+          ]
+        },
+        {
+          id: 11,
+          name: 'Nivetha',
+          role: 'Full Stack Developer',
+          bio: 'Passionate developer focused on creating efficient, user-friendly applications with modern technologies.',
+          avatar: nivetha,
+          email: 'nivetha@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/nivetha',
+          skills: ['React', 'Python', 'Django', 'JavaScript', 'MySQL'],
+          experience: '3+ years',
+          education: 'BS in Software Engineering',
+          achievements: [
+            'Built end-to-end web solutions',
+            'Optimized database queries for better performance',
+            'Created reusable component libraries',
+            'Collaborated on multiple full-stack projects'
           ]
         }
       ]
@@ -267,29 +333,47 @@ export default function Teams() {
     {
       id: 'media-branding-team',
       name: 'Media and Branding',
-      description: 'Creative professionals building compelling brand experiences and visual storytelling',
+      description: 'Our creative strategists and visual storytellers craft compelling brand narratives that resonate with audiences and drive business growth. Combining artistic vision with strategic thinking, we develop comprehensive brand identities, engaging video content, stunning graphic designs, and cohesive marketing materials that make lasting impressions. From logo design and brand guidelines to social media campaigns and multimedia productions, our team ensures every touchpoint reflects your brand\'s unique personality and values, creating emotional connections that convert prospects into loyal customers.',
       icon: '🎨',
       color: '#c34b6e',
-      memberCount: 8,
+      memberCount: 2,
       specialties: ['Brand Design', 'Video Production', 'Content Creation', 'Visual Identity'],
       image: '/api/placeholder/400/200',
       members: [
         {
-          id: 10,
-          name: 'Dr. Aisha Ahmed',
+          id: 12,
+          name: 'Susindiran G',
           role: 'Creative Director',
           bio: 'Brand strategist and creative director with expertise in building memorable brand experiences across all touchpoints.',
-          avatar: '👩‍🎨',
-          email: 'aisha@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/aishaahmed',
+          avatar: '👨‍🎨',
+          email: 'susindiran@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/susindirang',
           skills: ['Brand Strategy', 'Visual Design', 'Video Editing', 'Adobe Creative Suite', 'Animation'],
-          experience: '10+ years',
-          education: 'MFA in Visual Communications',
+          experience: '6+ years',
+          education: 'Bachelor in Visual Arts',
           achievements: [
-            'Rebranded 50+ companies',
+            'Rebranded 30+ companies',
             'Created award-winning campaigns',
-            'Led creative team of 20+ professionals',
-            'Increased brand recognition by 300%'
+            'Led creative projects for major brands',
+            'Increased brand recognition by 250%'
+          ]
+        },
+        {
+          id: 13,
+          name: 'Aditya K',
+          role: 'Media Designer',
+          bio: 'Creative media designer specializing in visual storytelling, graphic design, and multimedia content creation.',
+          avatar: adityaImg,
+          email: 'aditya@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/adityak',
+          skills: ['Graphic Design', 'Video Production', 'Motion Graphics', 'Photoshop', 'Illustrator'],
+          experience: '4+ years',
+          education: 'Bachelor in Graphic Design',
+          achievements: [
+            'Designed visual content for 100+ projects',
+            'Created engaging social media campaigns',
+            'Produced high-quality video content',
+            'Won 3 design excellence awards'
           ]
         }
       ]
@@ -297,29 +381,47 @@ export default function Teams() {
     {
       id: 'digital-marketing-team',
       name: 'Digital Marketing Team',
-      description: 'Marketing experts driving growth through data-driven digital strategies',
+      description: 'Our digital marketing specialists are growth hackers and data scientists rolled into one, driving measurable business results through strategic online campaigns and analytics-driven decision making. Experts in SEO, SEM, social media marketing, content strategy, and conversion optimization, we create multi-channel campaigns that maximize ROI and build lasting customer relationships. From increasing organic traffic by 400% to generating millions in digital revenue, our team combines creative storytelling with rigorous data analysis to deliver marketing strategies that not only reach but engage and convert your target audience.',
       icon: '📊',
       color: '#6ec34b',
-      memberCount: 7,
+      memberCount: 2,
       specialties: ['SEO/SEM', 'Social Media', 'Content Marketing', 'Analytics'],
       image: '/api/placeholder/400/200',
       members: [
         {
-          id: 11,
-          name: 'Sofia Martinez',
+          id: 14,
+          name: 'Jithender',
           role: 'Digital Marketing Lead',
           bio: 'Marketing strategist passionate about driving growth through innovative digital campaigns and data analysis.',
-          avatar: '👩‍💼',
-          email: 'sofia@viruzverse.com',
-          linkedin: 'https://linkedin.com/in/sofiamartinez',
+          avatar: '👨‍💼',
+          email: 'jithender@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/jithender',
           skills: ['Digital Strategy', 'Google Analytics', 'Social Media Marketing', 'Content Strategy', 'PPC'],
-          experience: '8+ years',
-          education: 'MS in Digital Marketing',
+          experience: '5+ years',
+          education: 'MBA in Digital Marketing',
           achievements: [
-            'Increased organic traffic by 400%',
-            'Generated $2M+ in digital revenue',
-            'Built marketing team from ground up',
-            'Achieved 25% conversion rate improvement'
+            'Increased organic traffic by 350%',
+            'Generated $1.5M+ in digital revenue',
+            'Built successful marketing campaigns',
+            'Achieved 20% conversion rate improvement'
+          ]
+        },
+        {
+          id: 15,
+          name: 'Vibitha',
+          role: 'Digital Marketing Specialist',
+          bio: 'Data-driven marketing professional focused on SEO, content marketing, and performance optimization.',
+          avatar: '👩‍💼',
+          email: 'vibitha@viruzverse.com',
+          linkedin: 'https://linkedin.com/in/vibitha',
+          skills: ['SEO/SEM', 'Content Marketing', 'Social Media', 'Email Marketing', 'Analytics'],
+          experience: '4+ years',
+          education: 'Bachelor in Marketing',
+          achievements: [
+            'Improved website rankings for 50+ keywords',
+            'Created content that generated 500K+ views',
+            'Managed social media campaigns with 2M+ reach',
+            'Increased email open rates by 40%'
           ]
         }
       ]
@@ -425,32 +527,39 @@ export default function Teams() {
     },
     teamsGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-      gap: 'var(--spacing-xl)',
-      marginTop: 'var(--spacing-2xl)',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+      gap: '32px',
+      marginTop: '48px',
+      maxWidth: '1200px',
+      margin: '48px auto 0',
     },
     teamCard: {
-      background: 'var(--color-surface)',
-      borderRadius: 'var(--radius-xl)',
-      padding: 'var(--spacing-xl)',
-      border: '1px solid rgba(255,255,255,0.1)',
-      transition: 'var(--transition-medium)',
+      background: 'rgba(255,255,255,0.02)',
+      borderRadius: '24px',
+      padding: '48px 32px',
+      border: '1px solid rgba(255,255,255,0.08)',
+      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
       cursor: 'pointer',
       position: 'relative',
       overflow: 'hidden',
       textDecoration: 'none',
       color: 'inherit',
-    },
-    teamIcon: {
-      fontSize: '48px',
-      marginBottom: 'var(--spacing-md)',
-      display: 'block',
+      minHeight: '200px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
+      backdropFilter: 'blur(10px)',
     },
     teamName: {
-      fontSize: '24px',
+      fontSize: 'clamp(28px, 4vw, 36px)',
       fontWeight: 700,
-      marginBottom: 'var(--spacing-sm)',
-      color: 'var(--color-text-primary)',
+      color: '#ffffff',
+      letterSpacing: '-0.02em',
+      lineHeight: 1.2,
+      position: 'relative',
+      zIndex: 2,
+      textShadow: '0 2px 10px rgba(0,0,0,0.3)',
     },
     teamDescription: {
       fontSize: '14px',
@@ -582,13 +691,13 @@ export default function Teams() {
                   href={`/teams/${team.id}`}
                   style={{
                     ...styles.teamCard,
-                    transform: hoveredTeam === index ? 'translateY(-10px) scale(1.02)' : '',
-                    boxShadow: hoveredTeam === index ? `0 20px 40px ${team.color}40` : '',
-                    borderColor: hoveredTeam === index ? `${team.color}80` : 'rgba(255,255,255,0.1)',
+                    transform: hoveredTeam === index ? 'translateY(-8px) scale(1.03)' : 'translateY(0) scale(1)',
+                    boxShadow: hoveredTeam === index ? `0 25px 50px ${team.color}30, 0 0 0 1px ${team.color}40` : '0 4px 20px rgba(0,0,0,0.1)',
+                    borderColor: hoveredTeam === index ? `${team.color}60` : 'rgba(255,255,255,0.08)',
                     backgroundImage: teamImage && hoveredTeam === index ? `url(${teamImage})` : 'none',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
+                    backgroundRepeat: 'no-repeat',
                   }}
                   onMouseEnter={() => handleTeamHover(index, true)}
                   onMouseLeave={() => handleTeamHover(index, false)}
@@ -601,16 +710,19 @@ export default function Teams() {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      backgroundColor: 'rgba(0,0,0,0.7)',
+                      backgroundColor: 'rgba(0,0,0,0.6)',
                       zIndex: 1,
-                      borderRadius: 'var(--radius-xl)'
+                      borderRadius: '24px'
                     }} />
                   )}
+                  
                   <h3 style={{
                     ...styles.teamName,
                     position: 'relative',
                     zIndex: 2
-                  }}>{team.name}</h3>
+                  }}>
+                    {team.name}
+                  </h3>
                 </Link>
               );
             })}
