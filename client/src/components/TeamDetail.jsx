@@ -354,6 +354,14 @@ export default function TeamDetail({ team }) {
                           case 'Pradeep': return 'cover';
                           case 'Steffania': return 'cover';
                           case 'Aditya K': return 'cover';
+                          case 'Jithender': return 'cover';
+                          case 'Vibitha': return 'cover';
+                          case 'Susindiran G': return 'cover';
+                          case 'Hrithik Ram .M': return 'cover';
+                          case 'Gowtham V': return 'cover';
+                          case 'Jaya Sudhan S': return 'cover';
+                          case 'Nivetha': return 'cover';
+                          case 'Chandrapriyan': return 'cover';
                           default: return 'cover';
                         }
                       })(),
@@ -368,6 +376,14 @@ export default function TeamDetail({ team }) {
                           case 'Pradeep': return 'center 30%'; // Above center
                           case 'Steffania': return 'center 25%'; // Face positioned higher
                           case 'Aditya K': return 'center 20%'; // Face positioned higher
+                          case 'Jithender': return 'center 25%'; // Digital Marketing Lead
+                          case 'Vibitha': return 'center 30%'; // Digital Marketing Specialist
+                          case 'Susindiran G': return 'center 25%'; // Creative Director
+                          case 'Hrithik Ram .M': return 'center 30%'; // VR Developer
+                          case 'Gowtham V': return 'center 25%'; // 3D Artist
+                          case 'Jaya Sudhan S': return 'center 30%'; // VR UI/UX Designer
+                          case 'Nivetha': return 'center 25%'; // Full Stack Developer
+                          case 'Chandrapriyan': return 'center 30%'; // DevOps Engineer
                           default: return 'center 30%';
                         }
                       })(),
