@@ -1,156 +1,199 @@
-import { useState } from 'react';
-import '../styles/journey-animations.css';
+import React, { useEffect, useRef } from 'react';
+import { FaLightbulb, FaRocket, FaUsers, FaChartLine, FaAward, FaVrCardboard, FaGlobe, FaBullseye } from 'react-icons/fa';
 import journeyBg from '../assests/journey.jpeg';
+import '../styles/journey-animations.css';
 
-export default function Journey() {
-  const [hoveredMilestone, setHoveredMilestone] = useState(null);
+const journeyMilestones = [
+  {
+    year: '2020',
+    title: 'The Spark of an Idea',
+    description: 'Our journey began with a simple yet powerful idea: to revolutionize the digital landscape with immersive and intuitive virtual reality experiences.',
+    icon: <FaLightbulb />,
+  },
+  {
+    year: '2021',
+    title: 'Launch & Liftoff',
+    description: 'After months of relentless development and innovation, we launched our first flagship product, marking our official entry into the market.',
+    icon: <FaRocket />,
+  },
+  {
+    year: '2022',
+    title: 'Expanding Horizons',
+    description: 'We expanded our team, secured key partnerships, and began exploring new frontiers in augmented and mixed reality.',
+    icon: <FaBullseye />,
+  },
+  {
+    year: '2023',
+    title: 'Virtual Reality Mainstream',
+    description: 'Our solutions gained mainstream recognition, being adopted by industries ranging from entertainment to education and healthcare.',
+    icon: <FaVrCardboard />,
+  },
+  {
+    year: '2024',
+    title: 'Global Impact',
+    description: 'With a presence in multiple continents, we continue to push the boundaries of what is possible, shaping the future of digital interaction.',
+    icon: <FaGlobe />,
+  },
+];
 
-  const journeyMilestones = [
-    {
-      year: '2020',
-      title: 'The Spark of Innovation',
-      icon: '💡',
-      description: 'VIRUZVERSE was born from a simple question: What if technology could solve real-world problems while nurturing the next generation of IT leaders?'
-    },
-    {
-      year: '2021',
-      title: 'Building the Foundation',
-      icon: '🚀',
-      description: 'We launched GetMe, a revolutionary school bus tracking solution that showcased our ability to blend cutting-edge technology with practical applications.'
-    },
-    {
-      year: '2022',
-      title: 'Expanding Horizons',
-      icon: '🎯',
-      description: 'We ventured into real estate with Broker App and hospitality with CafeAura, learning that great technology is industry-intelligent.'
-    },
-    {
-      year: '2023',
-      title: 'The VR Revolution',
-      icon: '🥽',
-      description: 'We established our VR Division, creating immersive experiences that transformed how architects and clients collaborate through virtual walkthroughs.'
-    },
-    {
-      year: '2024',
-      title: 'Enterprise Evolution',
-      icon: '🌍',
-      description: 'VIRUZVERSE evolved into a comprehensive digital solutions powerhouse with BillBro, Invoicify, and Sentinel AI protecting enterprises globally.'
-    }
-  ];
+const Journey = () => {
+  const timelineRef = useRef(null);
+  const dotRef = useRef(null);
+  const milestoneRefs = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      },
+      { threshold: 0.5, rootMargin: '-100px 0px -100px 0px' }
+    );
+
+    const handleScroll = () => {
+      if (!timelineRef.current || !dotRef.current) return;
+
+      const timelineRect = timelineRef.current.getBoundingClientRect();
+      const timelineTop = window.scrollY + timelineRect.top;
+      const timelineHeight = timelineRect.height;
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+
+      if (scrollPosition >= timelineTop && scrollPosition <= timelineTop + timelineHeight - windowHeight) {
+        const progress = (scrollPosition - timelineTop) / (timelineHeight - windowHeight);
+        const dotPosition = progress * (timelineHeight - dotRef.current.offsetHeight);
+        dotRef.current.style.top = `${dotPosition}px`;
+      } else if (scrollPosition < timelineTop) {
+        dotRef.current.style.top = '0px';
+      } else {
+        dotRef.current.style.top = `${timelineHeight - dotRef.current.offsetHeight}px`;
+      }
+    };
+
+    const currentMilestones = milestoneRefs.current;
+    currentMilestones.forEach((milestone) => {
+      if (milestone) observer.observe(milestone);
+    });
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      currentMilestones.forEach((milestone) => {
+        if (milestone) observer.unobserve(milestone);
+      });
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const styles = {
     pageContainer: {
       minHeight: '100vh',
       backgroundColor: '#0a0a0a',
       color: '#ffffff',
-      fontFamily: '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+      fontFamily: '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     },
     heroSection: {
       position: 'relative',
       height: '60vh',
-      backgroundImage: `linear-gradient(rgba(248, 181, 181, 0.7),   rgba(208, 143, 143, 0.7)), url(${journeyBg})`,
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${journeyBg})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      textAlign: 'center'
+      textAlign: 'center',
     },
     heroContent: {
       maxWidth: '800px',
-      padding: '0 20px'
+      padding: '0 20px',
     },
     heroTitle: {
       fontSize: '3.5rem',
       fontWeight: 'bold',
       marginBottom: '1rem',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text'
+      color: '#ffffff',
     },
     heroSubtitle: {
       fontSize: '1.3rem',
-      color: '#b0b0b0',
-      marginBottom: '2rem'
+      color: '#ffffff',
+      marginBottom: '2rem',
     },
     timelineSection: {
       padding: '100px 20px',
       position: 'relative',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'column'
-    },
-    timelineWrapper: {
-      position: 'relative',
-      width: '80%',
-      height: '300px',
+      maxWidth: '1000px',
       margin: '0 auto',
+    },
+    movingDot: {
+      width: '20px',
+      height: '20px',
+      backgroundColor: '#4a90e2',
+      borderRadius: '50%',
+      position: 'absolute',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      top: '0',
+      zIndex: 3,
+      transition: 'top 0.3s linear',
+      boxShadow: '0 0 15px #4a90e2, 0 0 25px #4a90e2',
     },
     timelinePath: {
       position: 'absolute',
-      top: '50%',
-      left: '0',
-      right: '0',
-      height: '2px',
-      backgroundColor: '#333',
-      transform: 'translateY(-50%)',
+      top: '0',
+      bottom: '0',
+      left: '50%',
+      width: '3px',
+      backgroundColor: '#2a2a2a',
+      marginLeft: '-1.5px',
     },
-    milestoneNode: {
-      position: 'absolute',
-      width: '100px',
-      textAlign: 'center',
-      cursor: 'pointer',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+    milestoneItem: {
+      padding: '10px 40px',
+      position: 'relative',
+      width: '50%',
+      boxSizing: 'border-box',
+      marginBottom: '50px',
     },
-    milestoneIconContainer: {
+    milestoneContent: {
+      padding: '20px 30px',
       backgroundColor: '#1a1a1a',
+      position: 'relative',
+      borderRadius: '8px',
       border: '1px solid #2a2a2a',
-      borderRadius: '12px',
-      padding: '20px',
-      display: 'inline-block',
-      fontSize: '32px',
-      transition: 'all 0.3s ease',
     },
     milestoneYear: {
-      color: '#888',
       fontWeight: 'bold',
-      marginTop: '10px',
+      color: '#ffffff',
+      marginBottom: '10px',
+      fontSize: '1.2rem',
     },
-    milestoneConnector: {
-      width: '2px',
+    milestoneTitle: {
+      fontWeight: 'bold',
+      fontSize: '1.4rem',
+      marginBottom: '10px',
+    },
+    milestoneDescription: {
+      color: '#ffffff',
+      lineHeight: '1.6',
+    },
+    milestoneIcon: {
+      position: 'absolute',
+      top: '20px',
+      width: '50px',
       height: '50px',
-      backgroundColor: '#444',
-      margin: '5px 0',
-    },
-    milestoneDetails: {
-      marginTop: '40px',
-      backgroundColor: '#1c1c1c',
-      padding: '25px',
-      borderRadius: '12px',
-      border: '1px solid #333',
-      width: '60%',
-      textAlign: 'center',
-      minHeight: '150px',
+      borderRadius: '50%',
+      background: '#0a0a0a',
+      border: '3px solid #4a90e2',
       display: 'flex',
-      flexDirection: 'column',
       justifyContent: 'center',
-      transition: 'opacity 0.3s ease'
+      alignItems: 'center',
+      fontSize: '1.8rem',
+      zIndex: 10,
     },
-    detailsTitle: {
-      fontSize: '1.5rem',
-      fontWeight: 'bold',
-      color: '#667eea',
-      marginBottom: '10px'
-    },
-    detailsDescription: {
-      fontSize: '1rem',
-      color: '#ccc',
-      lineHeight: '1.6'
-    }
   };
 
   return (
@@ -162,55 +205,48 @@ export default function Journey() {
         </div>
       </section>
 
-      <section style={styles.timelineSection}>
-        <div style={styles.timelineWrapper}>
-          <div style={styles.timelinePath}></div>
-          {journeyMilestones.map((milestone, index) => {
-            const isAbove = index % 2 === 0;
-            const nodeStyle = {
-              ...styles.milestoneNode,
-              left: `${(index / (journeyMilestones.length - 1)) * 100}%`,
-              top: isAbove ? 'auto' : '50%',
-              bottom: isAbove ? '50%' : 'auto',
-              transform: `translate(-50%, ${isAbove ? '0' : '0'})`,
-            };
+      <div style={styles.timelineSection} ref={timelineRef}>
+        <div style={styles.timelinePath}></div>
+        <div ref={dotRef} style={styles.movingDot}></div>
+        {journeyMilestones.map((milestone, index) => {
+          const isLeft = index % 2 === 0;
+          const itemStyle = {
+            ...styles.milestoneItem,
+            left: isLeft ? '0' : '50%',
+            paddingLeft: isLeft ? '0' : '40px',
+            paddingRight: isLeft ? '40px' : '0',
+            textAlign: isLeft ? 'right' : 'left',
+          };
+          const contentStyle = {
+            ...styles.milestoneContent,
+            textAlign: 'left',
+          };
+          const iconStyle = {
+            ...styles.milestoneIcon,
+            right: isLeft ? '-25px' : 'auto',
+            left: isLeft ? 'auto' : '-25px',
+          };
 
-            return (
-              <div 
-                key={index} 
-                style={nodeStyle}
-                onMouseEnter={() => setHoveredMilestone(milestone)} 
-                onMouseLeave={() => setHoveredMilestone(null)}
-              >
-                {isAbove ? (
-                  <>
-                    <div style={styles.milestoneIconContainer}>{milestone.icon}</div>
-                    <div style={styles.milestoneYear}>{milestone.year}</div>
-                    <div style={styles.milestoneConnector}></div>
-                  </>
-                ) : (
-                  <>
-                    <div style={styles.milestoneConnector}></div>
-                    <div style={styles.milestoneIconContainer}>{milestone.icon}</div>
-                    <div style={styles.milestoneYear}>{milestone.year}</div>
-                  </>
-                )}
+          return (
+            <div 
+              key={index} 
+              style={itemStyle} 
+              ref={(el) => (milestoneRefs.current[index] = el)}
+              className="journey-milestone"
+              data-index={index}
+            >
+              <div style={contentStyle}>
+                <div style={iconStyle}>{milestone.icon}</div>
+                <h3 style={styles.milestoneYear}>{milestone.year}</h3>
+                <h4 style={styles.milestoneTitle}>{milestone.title}</h4>
+                <p style={styles.milestoneDescription}>{milestone.description}</p>
               </div>
-            );
-          })}
-        </div>
-
-        <div style={{...styles.milestoneDetails, opacity: hoveredMilestone ? 1 : 0}}>
-          {hoveredMilestone ? (
-            <>
-              <h3 style={styles.detailsTitle}>{hoveredMilestone.title}</h3>
-              <p style={styles.detailsDescription}>{hoveredMilestone.description}</p>
-            </>
-          ) : (
-            <p style={styles.detailsDescription}>Hover over a milestone to see the details.</p>
-          )}
-        </div>
-      </section>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
-}
+};
+
+export default Journey;
