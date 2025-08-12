@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import Contact from './Contact';
+import ThemeToggle from '../ThemeToggle.jsx';
+import { useTheme } from '../ThemeContent.jsx';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const [location] = useLocation();
+  const { theme } = useTheme();
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -28,9 +30,13 @@ export default function Header() {
       top: 0,
       left: 0,
       right: 0,
-      background: 'rgba(10,10,10,0.9)',
+      background: theme === 'light' 
+        ? 'rgba(255,255,255,0.95)' 
+        : 'rgba(10,10,10,0.9)',
       backdropFilter: 'blur(20px)',
-      borderBottom: '1px solid rgba(255,255,255,0.1)',
+      borderBottom: theme === 'light' 
+        ? '1px solid rgba(0,0,0,0.1)' 
+        : '1px solid rgba(255,255,255,0.1)',
       zIndex: 50,
       padding: 'var(--spacing-md) 0',
     },
@@ -65,7 +71,7 @@ export default function Header() {
       display: 'flex',
     },
     navLink: {
-      color: 'var(--color-text-primary)',
+      color: theme === 'light' ? '#1a1a1a' : '#ffffff',
       textDecoration: 'none',
       fontWeight: 500,
       transition: 'var(--transition-fast)',
@@ -93,7 +99,7 @@ export default function Header() {
       display: 'none',
       background: 'none',
       border: 'none',
-      color: 'white',
+      color: theme === 'light' ? '#1a1a1a' : '#ffffff',
       fontSize: '24px',
       cursor: 'pointer',
       padding: '4px',
@@ -301,6 +307,7 @@ export default function Header() {
             </nav>
             
             <div style={styles.headerActions}>
+              <ThemeToggle />
               <button 
                 style={styles.mobileMenuBtn}
                 className="mobile-menu-btn"
