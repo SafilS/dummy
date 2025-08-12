@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
+import Contact from './Contact';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -9,7 +10,6 @@ export default function Header() {
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/solutions', label: 'Solutions' },
-    { path: '/vr-3d', label: 'Industry Focus' },
     { path: '/products', label: 'Products' },
     { path: '/features', label: 'Features' },
     { path: '/careers', label: 'Careers' },
@@ -199,20 +199,50 @@ export default function Header() {
             </Link>
             
             <nav style={styles.nav} className="nav-desktop" role="navigation" aria-label="Main navigation">
-              {navItems.map(item => (
-                <Link 
-                  key={item.path} 
-                  href={item.path}
-                  className={`nav-link-enhanced ${location === item.path ? 'active' : ''}`}
-                  style={{
-                    ...styles.navLink,
-                    ...(location === item.path ? styles.navLinkActive : {})
-                  }}
-                >
-                  {item.label}
-                  {location === item.path && <div style={styles.navLinkActiveAfter}></div>}
-                </Link>
-              ))}
+              {navItems.map(item => {
+                if (item.label === 'About') {
+                  return (
+                    <div 
+                      key={item.path}
+                      style={{position: 'relative'}}
+                      onMouseEnter={() => setIsContactDropdownOpen(true)}
+                      onMouseLeave={() => setIsContactDropdownOpen(false)}
+                    >
+                      <Link 
+                        href={item.path}
+                        className={`nav-link-enhanced ${location === item.path ? 'active' : ''}`}
+                        style={{
+                          ...styles.navLink,
+                          ...(location === item.path ? styles.navLinkActive : {})
+                        }}
+                      >
+                        {item.label}
+                        {location === item.path && <div style={styles.navLinkActiveAfter}></div>}
+                      </Link>
+                      {isContactDropdownOpen && (
+                        <div style={{position: 'absolute', top: '100%', left: '-50%', zIndex: 100}}>
+                           <Contact />
+                        </div>
+                      )}
+                    </div>
+                  );
+                } else {
+                  return (
+                    <Link 
+                      key={item.path} 
+                      href={item.path}
+                      className={`nav-link-enhanced ${location === item.path ? 'active' : ''}`}
+                      style={{
+                        ...styles.navLink,
+                        ...(location === item.path ? styles.navLinkActive : {})
+                      }}
+                    >
+                      {item.label}
+                      {location === item.path && <div style={styles.navLinkActiveAfter}></div>}
+                    </Link>
+                  );
+                }
+              })}
               
               {/* About Dropdown */}
               <div 
