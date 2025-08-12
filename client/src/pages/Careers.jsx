@@ -1,477 +1,367 @@
 import { useState } from 'react';
 
 export default function Careers() {
-  const [activeTab, setActiveTab] = useState('trainee');
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  // Image variables
+  const headerBackgroundImage = 'https://i.pinimg.com/736x/4e/77/91/4e779138901d7a9c049f74ebcf83140d.jpg';
+  const floatingShapesImage = 'https://i.pinimg.com/originals/63/59/92/6359927786655355830b3c3d2c5d9c3f.jpg';
+  const ctaBackgroundImage = 'https://i.pinimg.com/1200x/5e/cc/02/5ecc02c20947ae6059dbc1068cd8cf5a.jpg';
 
   const styles = {
     pageHeader: {
-      padding: 'var(--spacing-2xl) 0',
+      padding: '150px 0 100px',
       textAlign: 'center',
-      background: 'linear-gradient(135deg, rgba(163,75,110,0.1) 0%, rgba(110,75,195,0.1) 50%, rgba(69,183,209,0.1) 100%)',
-    paddingTop: '120px',
+      position: 'relative',
+      overflow: 'hidden',
+      backgroundImage: `url(${headerBackgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+    headerOverlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(10, 10, 20, 0.85)',
+    },
+    headerContent: {
+      position: 'relative',
+      zIndex: 2,
     },
     pageTitle: {
-      fontSize: '48px',
-      fontWeight: 700,
-      marginBottom: 'var(--spacing-md)',
+      fontSize: '72px',
+      fontWeight: 800,
+      marginBottom: '20px',
+      color: 'white',
+      textShadow: '0 4px 20px rgba(0,0,0,0.3)',
+      lineHeight: 1.2,
+      position: 'relative',
+      display: 'inline-block',
+    },
+    titleBackground: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundImage: `url(${floatingShapesImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      mixBlendMode: 'overlay',
+      opacity: 0.7,
+      zIndex: -1,
+      borderRadius: '20px',
+      padding: '0 20px',
     },
     pageSubtitle: {
-      fontSize: '18px',
-      opacity: 0.8,
-      maxWidth: '600px',
+      fontSize: '22px',
+      opacity: 0.9,
+      maxWidth: '700px',
       margin: '0 auto',
+      color: 'white',
+      textShadow: '0 2px 10px rgba(0,0,0,0.2)',
+      lineHeight: 1.5,
+    },
+    floatingShapes: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      zIndex: 1,
+      overflow: 'hidden',
+    },
+    shape: {
+      position: 'absolute',
+      borderRadius: '50%',
+      background: 'rgba(255,255,255,0.1)',
+      filter: 'blur(30px)',
     },
     mainSection: {
-      padding: 'var(--spacing-2xl) 0',
+      padding: '80px 0',
+      background: '#0a0a14',
     },
-    tabsContainer: {
-      display: 'flex',
-      justifyContent: 'center',
-      marginBottom: 'var(--spacing-2xl)',
-      borderBottom: '1px solid rgba(255,255,255,0.1)',
-    },
-    tab: {
-      padding: 'var(--spacing-md) var(--spacing-xl)',
-      background: 'none',
-      border: 'none',
-      color: 'rgba(255,255,255,0.7)',
-      cursor: 'pointer',
-      fontSize: '16px',
-      fontWeight: 500,
-      transition: 'var(--transition-medium)',
-      borderBottom: '3px solid transparent',
-    },
-    activeTab: {
-      color: 'var(--color-accent-3)',
-      borderBottomColor: 'var(--color-accent-3)',
-    },
-    tabContent: {
-      maxWidth: '800px',
+    rolesContainer: {
+      maxWidth: '1200px',
       margin: '0 auto',
-      textAlign: 'center',
     },
-    tabTitle: {
-      fontSize: '32px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-lg)',
-      color: 'var(--color-text-primary)',
+    roleCard: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '60px',
+      marginBottom: '120px',
     },
-    tabDescription: {
-      fontSize: '18px',
-      lineHeight: 1.6,
-      marginBottom: 'var(--spacing-xl)',
-      opacity: 0.8,
+    roleCardReverse: {
+      flexDirection: 'row-reverse',
     },
-    requirementsList: {
-      textAlign: 'left',
-      maxWidth: '600px',
-      margin: '0 auto var(--spacing-xl)',
-      padding: 'var(--spacing-lg)',
-      background: 'rgba(255,255,255,0.05)',
-      borderRadius: 'var(--radius-lg)',
-      border: '1px solid rgba(255,255,255,0.1)',
-    },
-    requirementsTitle: {
-      fontSize: '20px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-md)',
-      color: 'var(--color-accent-2)',
-    },
-    requirementsItem: {
-      marginBottom: 'var(--spacing-sm)',
-      paddingLeft: 'var(--spacing-md)',
+    roleImage: {
+      width: '50%',
+      borderRadius: '20px',
+      boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
+      transition: 'all 0.3s ease',
       position: 'relative',
+      cursor: 'pointer',
     },
-    requirementsItemBefore: {
-      content: '"•"',
-      position: 'absolute',
-      left: 0,
-      color: 'var(--color-accent-3)',
+    roleImageHover: {
+      transform: 'scale(1.02)',
+      boxShadow: `
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #a34b6e,
+        0 0 20px #6e4bc3,
+        0 0 25px #45b7d1,
+        0 0 30px #45b7d1
+      `,
     },
-    ctaSection: {
-      marginTop: 'var(--spacing-2xl)',
-      padding: 'var(--spacing-xl)',
+    roleContent: {
+      width: '50%',
+    },
+    roleTitle: {
+      fontSize: '42px',
+      fontWeight: 700,
+      marginBottom: '20px',
+      background: 'linear-gradient(90deg, #a34b6e, #6e4bc3, #45b7d1)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+    },
+    roleDescription: {
+      fontSize: '18px',
+      lineHeight: 1.7,
+      color: 'rgba(255,255,255,0.8)',
+      marginBottom: '30px',
+    },
+    roleSkills: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '10px',
+      marginBottom: '30px',
+    },
+    skillTag: {
+      padding: '8px 15px',
       background: 'rgba(255,255,255,0.05)',
-      borderRadius: 'var(--radius-lg)',
-      border: '1px solid rgba(255,255,255,0.1)',
-    },
-    ctaTitle: {
-      fontSize: '24px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-md)',
-      color: 'var(--color-accent-3)',
-    },
-    ctaDescription: {
-      marginBottom: 'var(--spacing-lg)',
-      opacity: 0.8,
+      borderRadius: '50px',
+      fontSize: '14px',
+      color: 'rgba(255,255,255,0.8)',
     },
     applyButton: {
       display: 'inline-block',
-      padding: 'var(--spacing-md) var(--spacing-xl)',
-      background: 'var(--gradient-primary)',
+      padding: '12px 30px',
+      background: 'linear-gradient(90deg, #a34b6e, #6e4bc3)',
       color: 'white',
       textDecoration: 'none',
-      borderRadius: 'var(--radius-md)',
+      borderRadius: '50px',
       fontWeight: 600,
-      transition: 'var(--transition-medium)',
+      fontSize: '16px',
       border: 'none',
       cursor: 'pointer',
-      fontSize: '16px',
+      transition: 'all 0.3s ease',
+      boxShadow: '0 5px 15px rgba(110, 75, 195, 0.4)',
     },
     applyButtonHover: {
-      transform: 'translateY(-2px)',
-      boxShadow: 'var(--shadow-glow)',
+      transform: 'translateY(-3px)',
+      boxShadow: '0 8px 25px rgba(110, 75, 195, 0.6)',
     },
-    benefitsGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-      gap: 'var(--spacing-lg)',
-      marginTop: 'var(--spacing-xl)',
-    },
-    benefitCard: {
-      padding: 'var(--spacing-lg)',
-      background: 'rgba(255,255,255,0.05)',
-      borderRadius: 'var(--radius-lg)',
-      border: '1px solid rgba(255,255,255,0.1)',
+    ctaSection: {
       textAlign: 'center',
-      transition: 'var(--transition-medium)',
+      padding: '80px 0 40px',
+      backgroundImage: `url(${ctaBackgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      position: 'relative',
+      borderRadius: '20px',
+      margin: '0 40px',
+      overflow: 'hidden',
     },
-    benefitCardHover: {
-      transform: 'translateY(-4px)',
-      boxShadow: 'var(--shadow-glow)',
-      borderColor: 'var(--color-accent-2)',
+    ctaOverlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(10, 10, 20, 0.85)',
+      zIndex: 1,
     },
-    benefitIcon: {
-      fontSize: '32px',
-      marginBottom: 'var(--spacing-md)',
+    ctaContent: {
+      position: 'relative',
+      zIndex: 2,
     },
-    benefitTitle: {
+    ctaTitle: {
+      fontSize: '36px',
+      fontWeight: 700,
+      marginBottom: '20px',
+      background: 'linear-gradient(90deg, #a34b6e, #6e4bc3)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+    },
+    ctaText: {
       fontSize: '18px',
-      fontWeight: 600,
-      marginBottom: 'var(--spacing-sm)',
-      color: 'var(--color-accent-2)',
+      maxWidth: '700px',
+      margin: '0 auto 30px',
+      color: 'rgba(255,255,255,0.8)',
+      lineHeight: 1.6,
     },
-    benefitDescription: {
-      fontSize: '14px',
-      opacity: 0.8,
-      lineHeight: 1.5,
-    }
   };
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
-
-  const handleApplyClick = () => {
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLSeS51F1uURL-dk5mHmT0IU58j2geAuEBMe7KQt4QLBMpUbLLA/viewform', '_blank', 'noopener,noreferrer');
-  };
-
-  const benefits = [
+  const roles = [
     {
-      icon: '🎓',
-      title: 'Learning & Growth',
-      description: 'Access to cutting-edge technologies and mentorship from industry experts'
+      title: "Cloud Architect",
+      description: "Design and implement cutting-edge cloud solutions that power our global infrastructure using AWS, Azure, and GCP to build scalable, secure systems.",
+      image: "https://media.istockphoto.com/id/2203755012/photo/big-data-storage-cloud-computing-concepts.webp?a=1&b=1&s=612x612&w=0&k=20&c=btKH9iH8Cl6fHyrtY-HvMM7COn6cDKVwDFOlMPTEjS0=",
+      skills: ["Cloud Infrastructure", "Security", "DevOps", "Microservices", "Serverless", "Monitoring"]
     },
     {
-      icon: '💼',
-      title: 'Real Projects',
-      description: 'Work on actual client projects and build your portfolio'
+      title: "Fullstack Developer",
+      description: "Create seamless digital experiences from frontend to backend using modern frameworks like React, Node.js, and Next.js to build performant applications.",
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+      skills: ["React/Vue/Angular", "Node.js/Python", "Databases", "APIs", "UI/UX", "Performance"]
     },
     {
-      icon: '🚀',
-      title: 'Career Launch',
-      description: 'Potential for full-time positions upon successful completion'
+      title: "Digital Marketing Strategist",
+      description: "Craft data-driven marketing campaigns that drive growth and engagement through creative strategies combined with analytics.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+      skills: ["Analytics", "SEO/SEM", "Social Media", "Content Creation", "Growth", "Targeting"]
     },
     {
-      icon: '🌍',
-      title: 'Remote Work',
-      description: 'Flexible work arrangements and modern work culture'
+      title: "VR/AR Developer",
+      description: "Push the boundaries of immersive technology by creating groundbreaking virtual and augmented reality experiences using Unity and Unreal Engine.",
+      image: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+      skills: ["Game Engines", "3D Modeling", "XR Hardware", "Spatial Computing", "Performance", "AI Integration"]
+    },
+    {
+      title: "Mobile App Developer",
+      description: "Build performant, beautiful mobile applications for iOS and Android that users love and rely on every day.",
+      image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+      skills: ["Native Development", "Performance", "Security", "State Management", "Analytics", "Tooling"]
+    },
+    {
+      title: "Brand Designer",
+      description: "Shape our visual identity and create compelling brand experiences through stunning visuals, animations, and branding.",
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+      skills: ["Visual Design", "Typography", "Motion Design", "Creative Tools", "Brand Strategy", "Digital Design"]
     }
   ];
 
+  const generateRandomShapes = () => {
+    const shapes = [];
+    for (let i = 0; i < 10; i++) {
+      const size = Math.random() * 300 + 100;
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const opacity = Math.random() * 0.2 + 0.1;
+      
+      shapes.push(
+        <div 
+          key={i}
+          style={{
+            ...styles.shape,
+            width: `${size}px`,
+            height: `${size}px`,
+            left: `${x}%`,
+            top: `${y}%`,
+            opacity: opacity,
+            background: i % 2 === 0 
+              ? 'rgba(163,75,110,0.3)' 
+              : i % 3 === 0 
+                ? 'rgba(110,75,195,0.3)' 
+                : 'rgba(69,183,209,0.3)',
+          }}
+        />
+      );
+    }
+    return shapes;
+  };
+
   return (
-    <>
-      {/* Page Header */}
+    <div style={{ background: '#0a0a14', color: 'white' }}>
+      {/* Hero Section */}
       <section style={styles.pageHeader}>
-        <div className="container">
-          <h1 style={styles.pageTitle} className="text-gradient">
-            Join Our Team
+        <div style={styles.headerOverlay}></div>
+        <div style={styles.floatingShapes}>
+          {generateRandomShapes()}
+        </div>
+        <div style={styles.headerContent} className="container">
+          <h1 style={styles.pageTitle}>
+            <span style={styles.titleBackground}></span>
+            Build the Future With Us
           </h1>
           <p style={styles.pageSubtitle}>
-            Be part of the future of digital innovation. Join VIRUZVERSE and help us build tomorrow's solutions.
+            Join our team of innovators and help create cutting-edge digital experiences.
+            Explore exciting career opportunities across multiple disciplines.
           </p>
         </div>
       </section>
 
       {/* Main Content */}
       <section style={styles.mainSection}>
-        <div className="container">
-          {/* Tabs */}
-          <div style={styles.tabsContainer}>
-            <button
+        <div style={styles.rolesContainer}>
+          {roles.map((role, index) => (
+            <div 
+              key={index} 
               style={{
-                ...styles.tab,
-                ...(activeTab === 'trainee' ? styles.activeTab : {})
+                ...styles.roleCard,
+                ...(index % 2 !== 0 && styles.roleCardReverse)
               }}
-              onClick={() => handleTabChange('trainee')}
             >
-              Trainee Program
-            </button>
-            <button
-              style={{
-                ...styles.tab,
-                ...(activeTab === 'professional' ? styles.activeTab : {})
-              }}
-              onClick={() => handleTabChange('professional')}
-            >
-              Professional
-            </button>
-            <button
-              style={{
-                ...styles.tab,
-                ...(activeTab === 'fulltime' ? styles.activeTab : {})
-              }}
-              onClick={() => handleTabChange('fulltime')}
-            >
-              Full-Time Positions
-            </button>
-            <button
-              style={{
-                ...styles.tab,
-                ...(activeTab === 'internship' ? styles.activeTab : {})
-              }}
-              onClick={() => handleTabChange('internship')}
-            >
-              Internships
-            </button>
-          </div>
-
-          {/* Tab Content */}
-          <div style={styles.tabContent}>
-            {activeTab === 'trainee' && (
-              <>
-                <h2 style={styles.tabTitle}>Trainee Program</h2>
-                <p style={styles.tabDescription}>
-                  Start your journey in the tech industry with our comprehensive trainee program. 
-                  Learn from experienced professionals while working on real-world projects.
-                </p>
-
-                <div style={styles.requirementsList}>
-                  <h3 style={styles.requirementsTitle}>Requirements:</h3>
-                  <div style={styles.requirementsItem}>
-                    <span style={styles.requirementsItemBefore}>•</span>
-                    Currently pursuing or completed B.Tech/B.Sc/M.Tech in Computer Science or related field
-                  </div>
-                  <div style={styles.requirementsItem}>
-                    <span style={styles.requirementsItemBefore}>•</span>
-                    Basic knowledge of programming languages (Java, Python, C++, etc.)
-                  </div>
-                  <div style={styles.requirementsItem}>
-                    <span style={styles.requirementsItemBefore}>•</span>
-                    Understanding of web development fundamentals (HTML, CSS, JavaScript)
-                  </div>
-                  <div style={styles.requirementsItem}>
-                    <span style={styles.requirementsItemBefore}>•</span>
-                    Familiarity with databases and basic software development concepts
-                  </div>
-                  <div style={styles.requirementsItem}>
-                    <span style={styles.requirementsItemBefore}>•</span>
-                    Strong problem-solving skills and eagerness to learn
-                  </div>
-                </div>
-
-                <div style={styles.ctaSection}>
-                  <h3 style={styles.ctaTitle}>Ready to Start Your Journey?</h3>
-                  <p style={styles.ctaDescription}>
-                    Apply now for our trainee program and take the first step towards an exciting career in technology.
-                  </p>
-                  <button 
-                    style={styles.applyButton}
-                    onClick={handleApplyClick}
-                    onMouseEnter={(e) => {
-                      e.target.style.transform = 'translateY(-2px)';
-                      e.target.style.boxShadow = 'var(--shadow-glow)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.transform = '';
-                      e.target.style.boxShadow = '';
-                    }}
-                  >
-                    Apply Now
-                  </button>
-                </div>
-
-                <div style={styles.benefitsGrid}>
-                  {benefits.map((benefit, index) => (
-                    <div 
-                      key={index}
-                      style={styles.benefitCard}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'translateY(-4px)';
-                        e.currentTarget.style.boxShadow = 'var(--shadow-glow)';
-                        e.currentTarget.style.borderColor = 'var(--color-accent-2)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = '';
-                        e.currentTarget.style.boxShadow = '';
-                        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-                      }}
-                    >
-                      <div style={styles.benefitIcon}>{benefit.icon}</div>
-                      <h4 style={styles.benefitTitle}>{benefit.title}</h4>
-                      <p style={styles.benefitDescription}>{benefit.description}</p>
-                    </div>
+              <img 
+                src={role.image}
+                alt={role.title}
+                style={{
+                  ...styles.roleImage,
+                  ...(hoveredCard === `image-${index}` && styles.roleImageHover)
+                }}
+                onMouseEnter={() => setHoveredCard(`image-${index}`)}
+                onMouseLeave={() => setHoveredCard(null)}
+                onClick={() => window.open(role.image, '_blank')}
+              />
+              <div style={styles.roleContent}>
+                <h2 style={styles.roleTitle}>{role.title}</h2>
+                <p style={styles.roleDescription}>{role.description}</p>
+                <div style={styles.roleSkills}>
+                  {role.skills.map((skill, i) => (
+                    <span key={i} style={styles.skillTag}>{skill}</span>
                   ))}
                 </div>
-              </>
-            )}
+                <button 
+                  style={{
+                    ...styles.applyButton,
+                    ...(hoveredCard === `apply-${index}` && styles.applyButtonHover)
+                  }}
+                  onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSeS51F1uURL-dk5mHmT0IU58j2geAuEBMe7KQt4QLBMpUbLLA/viewform', '_blank')}
+                  onMouseEnter={() => setHoveredCard(`apply-${index}`)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
 
-            {activeTab === 'professional' && (
-              <>
-                <h2 style={styles.tabTitle}>Professional Opportunities</h2>
-                <p style={styles.tabDescription}>
-                  Join our team of experienced professionals and contribute to cutting-edge projects. 
-                  We're looking for talented individuals who can bring expertise and innovation to our organization.
-                </p>
-
-                <div style={styles.requirementsList}>
-                  <h3 style={styles.requirementsTitle}>What We're Looking For:</h3>
-                  <div style={styles.requirementsItem}>
-                    <span style={styles.requirementsItemBefore}>•</span>
-                    Experienced developers with 3+ years in software development
-                  </div>
-                  <div style={styles.requirementsItem}>
-                    <span style={styles.requirementsItemBefore}>•</span>
-                    Strong expertise in modern technologies and frameworks
-                  </div>
-                  <div style={styles.requirementsItem}>
-                    <span style={styles.requirementsItemBefore}>•</span>
-                    Proven track record of delivering high-quality software solutions
-                  </div>
-                  <div style={styles.requirementsItem}>
-                    <span style={styles.requirementsItemBefore}>•</span>
-                    Experience with cloud platforms and DevOps practices
-                  </div>
-                  <div style={styles.requirementsItem}>
-                    <span style={styles.requirementsItemBefore}>•</span>
-                    Strong communication and team collaboration skills
-                  </div>
-                </div>
-
-                <div style={styles.ctaSection}>
-                  <h3 style={styles.ctaTitle}>Ready to Join Our Team?</h3>
-                  <p style={styles.ctaDescription}>
-                    Apply for professional positions and become part of our innovative team working on cutting-edge solutions.
-                  </p>
-                  <button 
-                    style={styles.applyButton}
-                    onClick={() => window.open('https://forms.gle/WYdzUCdc19YQ46t48', '_blank', 'noopener,noreferrer')}
-                    onMouseEnter={(e) => {
-                      e.target.style.transform = 'translateY(-2px)';
-                      e.target.style.boxShadow = 'var(--shadow-glow)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.transform = '';
-                      e.target.style.boxShadow = '';
-                    }}
-                  >
-                    Apply Now
-                  </button>
-                </div>
-
-                <div style={styles.benefitsGrid}>
-                  {[
-                    {
-                      icon: '💡',
-                      title: 'Innovation',
-                      description: 'Work on cutting-edge projects and shape the future of technology'
-                    },
-                    {
-                      icon: '🚀',
-                      title: 'Growth',
-                      description: 'Continuous learning opportunities and career advancement'
-                    },
-                    {
-                      icon: '🤝',
-                      title: 'Collaboration',
-                      description: 'Work with talented professionals in a supportive environment'
-                    },
-                    {
-                      icon: '🌍',
-                      title: 'Impact',
-                      description: 'Make a real difference in the digital transformation landscape'
-                    }
-                  ].map((benefit, index) => (
-                    <div 
-                      key={index}
-                      style={styles.benefitCard}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'translateY(-4px)';
-                        e.currentTarget.style.boxShadow = 'var(--shadow-glow)';
-                        e.currentTarget.style.borderColor = 'var(--color-accent-2)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = '';
-                        e.currentTarget.style.boxShadow = '';
-                        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-                      }}
-                    >
-                      <div style={styles.benefitIcon}>{benefit.icon}</div>
-                      <h4 style={styles.benefitTitle}>{benefit.title}</h4>
-                      <p style={styles.benefitDescription}>{benefit.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {activeTab === 'fulltime' && (
-              <>
-                <h2 style={styles.tabTitle}>Full-Time Positions</h2>
-                <p style={styles.tabDescription}>
-                  We're always looking for talented individuals to join our team. 
-                  Check back soon for open positions in development, design, and more.
-                </p>
-                <div style={styles.ctaSection}>
-                  <h3 style={styles.ctaTitle}>No Open Positions Currently</h3>
-                  <p style={styles.ctaDescription}>
-                    We don't have any full-time positions open at the moment, but we're always accepting applications for our trainee program.
-                  </p>
-                  <button 
-                    style={styles.applyButton}
-                    onClick={() => setActiveTab('trainee')}
-                  >
-                    View Trainee Program
-                  </button>
-                </div>
-              </>
-            )}
-
-            {activeTab === 'internship' && (
-              <>
-                <h2 style={styles.tabTitle}>Internship Opportunities</h2>
-                <p style={styles.tabDescription}>
-                  Gain valuable experience through our internship programs. 
-                  Work on real projects while building your skills and network.
-                </p>
-                <div style={styles.ctaSection}>
-                  <h3 style={styles.ctaTitle}>Internships Coming Soon</h3>
-                  <p style={styles.ctaDescription}>
-                    Our internship program is currently under development. 
-                    In the meantime, consider applying for our trainee program to get started.
-                  </p>
-                  <button 
-                    style={styles.applyButton}
-                    onClick={() => setActiveTab('trainee')}
-                  >
-                    View Trainee Program
-                  </button>
-                </div>
-              </>
-            )}
+        {/* CTA */}
+        <div style={styles.ctaSection}>
+          <div style={styles.ctaOverlay}></div>
+          <div style={styles.ctaContent}>
+            <h3 style={styles.ctaTitle}>Not Seeing Your Perfect Role?</h3>
+            <p style={styles.ctaText}>
+              We're always looking for talented individuals. Send us your resume and portfolio,
+              and we'll contact you when a matching opportunity becomes available.
+            </p>
+            <button 
+              style={{
+                ...styles.applyButton,
+                ...(hoveredCard === 'general-apply' && styles.applyButtonHover)
+              }}
+              onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSeS51F1uURL-dk5mHmT0IU58j2geAuEBMe7KQt4QLBMpUbLLA/viewform', '_blank')}
+              onMouseEnter={() => setHoveredCard('general-apply')}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
+              Submit General Application
+            </button>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
-} 
+}
