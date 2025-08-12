@@ -36,27 +36,41 @@ export default function Contact() {
 
   const styles = {
     pageContainer: {
-      backgroundColor: '#f9fafb',
-      color: '#1f2937',
+      minHeight: '100vh',
+      backgroundColor: '#0a0a0a',
+      color: '#ffffff',
+      fontFamily: '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
     },
     header: {
-      background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${contactBg})`,
+      position: 'relative',
+      height: '60vh',
+      backgroundImage: `url(${contactBg})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      padding: '6rem 1.5rem',
-      textAlign: 'center',
-      color: 'white',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center'
     },
     title: {
-      fontSize: '3rem',
+      fontSize: '2.5rem',
       fontWeight: 'bold',
       marginBottom: '1rem',
+      color: '#ffffff',
+      textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
+      textAlign: 'center'
+    },
+    heroContent: {
+      maxWidth: '800px',
+      padding: '0 20px',
+      textAlign: 'center'
     },
     subtitle: {
-      fontSize: '1.2rem',
+      fontSize: '1.3rem',
+      color: '#b0b0b0',
       maxWidth: '600px',
       margin: '0 auto',
-      opacity: 0.9,
+      marginBottom: '2rem'
     },
     container: {
       maxWidth: '1200px',
@@ -71,17 +85,18 @@ export default function Contact() {
       },
     },
     contactInfo: {
-      backgroundColor: 'white',
+      backgroundColor: '#1a1a1a',
+      border: '1px solid #2a2a2a',
       padding: '2rem',
       borderRadius: '12px',
-      boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)',
+      boxShadow: '0 10px 15px -3px rgba(0,0,0,0.3), 0 4px 6px -2px rgba(0,0,0,0.2)',
     },
     sectionTitle: {
       fontSize: '1.5rem',
       fontWeight: '600',
       marginBottom: '1.5rem',
-      color: '#111827',
-      borderBottom: '2px solid #e5e7eb',
+      color: '#ffffff',
+      borderBottom: '2px solid #667eea',
       paddingBottom: '0.5rem',
     },
     contactItem: {
@@ -90,7 +105,7 @@ export default function Contact() {
       marginBottom: '1.5rem',
     },
     contactIcon: {
-      backgroundColor: 'var(--primary-color, #6366f1)',
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       color: 'white',
       width: '44px',
       height: '44px',
@@ -105,22 +120,23 @@ export default function Contact() {
     contactLabel: {
       display: 'block',
       fontSize: '0.875rem',
-      color: '#6b7280',
+      color: '#888',
       marginBottom: '0.25rem',
     },
     contactValue: {
       display: 'block',
       fontSize: '1rem',
-      color: '#1f2937',
+      color: '#ffffff',
       textDecoration: 'none',
       transition: 'color 0.2s',
       fontWeight: 500,
     },
     formContainer: {
-      backgroundColor: 'white',
+      backgroundColor: '#1a1a1a',
+      border: '1px solid #2a2a2a',
       padding: '2rem',
       borderRadius: '12px',
-      boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)',
+      boxShadow: '0 10px 15px -3px rgba(0,0,0,0.3), 0 4px 6px -2px rgba(0,0,0,0.2)',
     },
     formGroup: {
       marginBottom: '1.5rem',
@@ -130,15 +146,16 @@ export default function Contact() {
       marginBottom: '0.5rem',
       fontSize: '0.875rem',
       fontWeight: 500,
-      color: '#374151',
+      color: '#ffffff',
     },
     input: {
       width: '100%',
       padding: '0.75rem 1rem',
       fontSize: '1rem',
-      border: '1px solid #d1d5db',
+      border: '1px solid #2a2a2a',
       borderRadius: '8px',
-      backgroundColor: '#f9fafb',
+      backgroundColor: '#0a0a0a',
+      color: '#ffffff',
       transition: 'all 0.2s',
     },
     textarea: {
@@ -146,9 +163,10 @@ export default function Contact() {
       minHeight: '120px',
       padding: '0.75rem 1rem',
       fontSize: '1rem',
-      border: '1px solid #d1d5db',
+      border: '1px solid #2a2a2a',
       borderRadius: '8px',
-      backgroundColor: '#f9fafb',
+      backgroundColor: '#0a0a0a',
+      color: '#ffffff',
       resize: 'vertical',
       transition: 'all 0.2s',
     },
@@ -156,7 +174,7 @@ export default function Contact() {
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: 'var(--primary-color, #6366f1)',
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       color: 'white',
       padding: '0.75rem 2rem',
       fontSize: '1rem',
@@ -178,13 +196,15 @@ export default function Contact() {
 
   return (
     <div style={styles.pageContainer}>
-      <div style={styles.header}>
-        <h1 style={styles.title}>Get in Touch</h1>
-        <p style={styles.subtitle}>
-          Have questions or want to discuss a project? We'd love to hear from you. 
-          Fill out the form below or reach out using the contact information provided.
-        </p>
-      </div>
+      <header style={styles.header}>
+        <div style={styles.heroContent}>
+            <h1 style={styles.title}>Get in Touch</h1>
+            <p style={styles.subtitle}>
+              Have questions or want to discuss a project? We'd love to hear from you. 
+              Fill out the form below or reach out using the contact information provided.
+            </p>
+        </div>
+      </header>
 
       {/* Main Content */}
       <main style={{ ...styles.container, padding: '0 1.5rem 4rem' }}>
