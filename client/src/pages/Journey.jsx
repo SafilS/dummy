@@ -366,24 +366,7 @@ export default function Journey() {
       color: '#b0b0b0',
       lineHeight: '1.6'
     },
-    ctaSection: {
-      textAlign: 'center',
-      padding: '80px 20px',
-      backgroundColor: '#111111'
-    },
-    ctaTitle: {
-      fontSize: '2.5rem',
-      fontWeight: 'bold',
-      marginBottom: '1rem',
-      color: '#ffffff'
-    },
-    ctaDescription: {
-      fontSize: '1.2rem',
-      color: '#b0b0b0',
-      marginBottom: '2rem',
-      maxWidth: '600px',
-      margin: '0 auto 2rem'
-    }
+
   };
 
   const handleCardHover = (e, isHovering) => {
@@ -506,25 +489,7 @@ export default function Journey() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section style={styles.ctaSection}>
-        <div className="container">
-          <h2 style={styles.ctaTitle}>
-            The Journey Continues
-          </h2>
-          <p style={styles.ctaDescription}>
-            We're just getting started. Join us as we continue to push the boundaries of what's possible in the digital realm.
-          </p>
-          <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="/about" className="btn-primary">
-              Learn About Our Mission
-            </a>
-            <a href="/products" className="btn-secondary">
-              Explore Our Solutions
-            </a>
-          </div>
-        </div>
-      </section>
+
 
       {/* Details Modal */}
       {showDetails && selectedMilestone && (
