@@ -20,6 +20,13 @@ import priyaImg from '../assests/Team members/priya.jpg';
 import sankarImg from '../assests/Team members/sankar.jpg';
 import stefaniaImg from '../assests/Team members/stefania.jpg';
 import vibithabkImg from '../assests/Team members/vibitha bk.jpg';
+import chandraPriyanImg from '../assests/Team members/chandra priyan.jpg';
+import gowthamImg from '../assests/Team members/gowtham.jpg';
+import jayaSudhanImg from '../assests/Team members/jaya sudhan.png';
+import hrithickImg from '../assests/Team members/hrithick.jpg';
+import nivethaImg from '../assests/Team members/nivetha.jpg';
+import susindharanImg from '../assests/Team members/susindharan.jpg';
+import jithendarImg from '../assests/Team members/jithendar.png';
 
 export default function Teams() {
   const [match, params] = useRoute('/teams/:teamId');
@@ -42,7 +49,7 @@ export default function Teams() {
           name: 'Hrithik Ram .M',
           role: 'VR Developer',
           bio: 'Skilled VR developer specializing in Unity 3D and immersive experience creation. Passionate about building virtual worlds that engage and inspire users.',
-          avatar: '👨‍💻',
+          avatar: hrithickImg,
           email: 'hrithikram@viruzverse.com',
           linkedin: 'https://linkedin.com/in/hrithikram',
           skills: ['Unity 3D', 'C#', 'VR Development', '3D Modeling', 'Game Design'],
@@ -60,7 +67,7 @@ export default function Teams() {
           name: 'Gowtham V',
           role: '3D Artist & Designer',
           bio: '3D artist and designer with expertise in creating stunning visual assets and immersive environments for VR applications.',
-          avatar: '👨‍🎨',
+          avatar: gowthamImg,
           email: 'gowtham@viruzverse.com',
           linkedin: 'https://linkedin.com/in/gowthamv',
           skills: ['3D Modeling', 'Blender', 'Maya', 'Texturing', 'Animation'],
@@ -78,7 +85,7 @@ export default function Teams() {
           name: 'Jaya Sudhan S',
           role: 'VR UI/UX Designer',
           bio: 'VR UI/UX designer focused on creating intuitive and user-friendly interfaces for virtual reality applications and experiences.',
-          avatar: '👨‍🎨',
+          avatar: jayaSudhanImg,
           email: 'jayasudhan@viruzverse.com',
           linkedin: 'https://linkedin.com/in/jayasudhans',
           skills: ['VR UI Design', 'User Experience', 'Interaction Design', 'Prototyping', 'Unity UI'],
@@ -126,7 +133,7 @@ export default function Teams() {
           name: 'Chandrapriyan',
           role: 'DevOps Engineer',
           bio: 'DevOps specialist focused on automation, continuous integration, and cloud infrastructure management. Passionate about building reliable and scalable deployment pipelines.',
-          avatar: '👨‍🔧',
+          avatar: chandraPriyanImg,
           email: 'chandrapriyan@viruzverse.com',
           linkedin: 'https://linkedin.com/in/chandrapriyan',
           skills: ['CI/CD', 'Jenkins', 'Docker', 'Kubernetes', 'AWS', 'Monitoring'],
@@ -313,7 +320,7 @@ export default function Teams() {
           name: 'Nivetha',
           role: 'Full Stack Developer',
           bio: 'Passionate developer focused on creating efficient, user-friendly applications with modern technologies.',
-          avatar: '👩‍💻',
+          avatar: nivethaImg,
           email: 'nivetha@viruzverse.com',
           linkedin: 'https://linkedin.com/in/nivetha',
           skills: ['React', 'Python', 'Django', 'JavaScript', 'MySQL'],
@@ -343,7 +350,7 @@ export default function Teams() {
           name: 'Susindiran G',
           role: 'Creative Director',
           bio: 'Brand strategist and creative director with expertise in building memorable brand experiences across all touchpoints.',
-          avatar: '👨‍🎨',
+          avatar: susindharanImg,
           email: 'susindiran@viruzverse.com',
           linkedin: 'https://linkedin.com/in/susindirang',
           skills: ['Brand Strategy', 'Visual Design', 'Video Editing', 'Adobe Creative Suite', 'Animation'],
@@ -391,7 +398,7 @@ export default function Teams() {
           name: 'Jithender',
           role: 'Digital Marketing Lead',
           bio: 'Marketing strategist passionate about driving growth through innovative digital campaigns and data analysis.',
-          avatar: '👨‍💼',
+          avatar: jithendarImg,
           email: 'jithender@viruzverse.com',
           linkedin: 'https://linkedin.com/in/jithender',
           skills: ['Digital Strategy', 'Google Analytics', 'Social Media Marketing', 'Content Strategy', 'PPC'],
@@ -409,7 +416,7 @@ export default function Teams() {
           name: 'Vibitha',
           role: 'Digital Marketing Specialist',
           bio: 'Data-driven marketing professional focused on SEO, content marketing, and performance optimization.',
-          avatar: '👩‍💼',
+          avatar: vibithabkImg,
           email: 'vibitha@viruzverse.com',
           linkedin: 'https://linkedin.com/in/vibitha',
           skills: ['SEO/SEM', 'Content Marketing', 'Social Media', 'Email Marketing', 'Analytics'],
